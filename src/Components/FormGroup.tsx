@@ -372,7 +372,7 @@ const FormGroup: React.FC<formProps> = ({
             )
         case "response":
             return (
-                <form onSubmit={createResponse.handleSubmit} className='w-[100%] h-max py-6 px-12 border-[2px] border-blue-500 border-dashed bg-white shadow-lg rounded-[12px]'>
+                <form onSubmit={createResponse.handleSubmit} className='w-[100%] h-max pt-2 pb-8 md:pb-6 md:pt-6 md:py-6 px-6 md:px-12 border-[2px] border-blue-500 border-dashed bg-white shadow-lg rounded-[12px]'>
                     <div className='flex flex-col my-5'>
                         <label className='mb-3 font-normal' htmlFor="username">Nama anda</label>
                         <input type="text" name='username' value={createResponse.values.username} onChange={createResponse.handleChange} onBlur={createResponse.handleBlur} placeholder='Muhammad Khoirulhuda' className='bg-white rounded-[10px] w-full px-3 py-3 outline-0 border border-blue-700' />

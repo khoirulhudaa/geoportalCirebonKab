@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { FaChevronDown } from 'react-icons/fa'
+import { FaChevronDown, FaTimes } from 'react-icons/fa'
 import { Diskominfo } from '../assets'
 
 interface NavbarProps {
@@ -9,13 +9,30 @@ interface NavbarProps {
 const Navbar: React.FC<NavbarProps> = ({ handleClear }) => {
 
   const [activeMenu, setActiveMenu] = useState<boolean>(false)
+  const [sidebar, setSideber] = useState<boolean>(false)
 
   return (
     <div className='w-screen h-[60px] bg-white relative flex items-center justify-between shadow-lg shadow-blue-100 px-8 jsutify-between'>
       <div>
-        <img onClick={() => handleClear()} src={Diskominfo} alt="logo-diskominfo" className='w-[35%] relative left-6' />
+        <img onClick={() => handleClear()} src={Diskominfo} alt="logo-diskominfo" className='w-[35%] relative left-[-14px] md:left-6' />
       </div>
-      <div className='w-[80%]'>
+      <div onClick={() => setSideber(!sidebar)} className='w-[54px] px-1 h-[40px] rounded-[8px] cursor-pointer border border-slate-300 active:scale-[0.98] hover:brightness-[90%] flex flex-col items-center justify-center'>
+        <div className='w-[80%] h-[3px] bg-slate-400 rounded-full'></div>
+        <div className='w-[80%] h-[3px] my-2 bg-slate-400 rounded-full'></div>
+        <div className='w-[80%] h-[3px] bg-slate-400 rounded-full'></div>
+      </div>
+      <div className={`md:hidden flex bg-white z-[999999] flex-col fixed ${sidebar ? 'left-0' : 'left-[-100%]'} top-0 duration-300 ease-in w-screen min-h-screen p-6 overflow-y-auto`}>
+        <div onClick={() => setSideber(!sidebar)} className='absolute top-6 right-6 shadow-md  flex items-center justify-center w-[40px] h-[40px] bg-red-500 text-white rounded-[10px] cursor-pointer hover:brightnes-[90%] active:scale-[0.9]'>
+          <FaTimes />
+        </div>
+        <ul className='mt-12'>
+            <li className='mb-10 border-b border-slate-500 pb-5 font-medium text-slate-500 hover:text-blue-500 cursor-pointer active:scale-[0.98] text-[15px]'>Homepage</li>
+            <li className='mb-10 border-b border-slate-500 pb-5 font-medium text-slate-500 hover:text-blue-500 cursor-pointer active:scale-[0.98] text-[15px]'>Daftar geospasial</li>
+            <li className='mb-10 border-b border-slate-500 pb-5 font-medium text-slate-500 hover:text-blue-500 cursor-pointer active:scale-[0.98] text-[15px]'>API Geopasial</li>
+            <li className='mb-10 border-b border-slate-500 pb-5 font-medium text-slate-500 hover:text-blue-500 cursor-pointer active:scale-[0.98] text-[15px]'>Masukan & Saran</li>
+          </ul>
+      </div>
+      <div className='w-[80%] md:flex hidden'>
         <ul className='flex items-center justify-end'>
             <li className='md:mr-12 font-medium text-slate-500 hover:text-blue-500 cursor-pointer active:scale-[0.98] text-[15px]'>Homepage</li>
             <li className='md:mr-12 font-medium text-slate-500 hover:text-blue-500 cursor-pointer active:scale-[0.98] text-[15px]'>Daftar geospasial</li>

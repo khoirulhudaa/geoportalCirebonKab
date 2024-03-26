@@ -566,21 +566,21 @@ const Homepage: React.FC = () => {
                     </>
                 ):
                 <>
-                    <div className='w-screen h-[50px] bg-[#e1f3fc] flex items-center justify-center text-blue-600 text-[14px]'>
+                    <div className='w-screen md:flex hidden text-center h-[50px] bg-[#e1f3fc] items-center justify-center text-blue-600 text-[10px] md:text-[14px]'>
                         <p>Cirebon merupakan salah satu simpul Jaringan Informasi Geospasial Nasional <b className='underline text-blue-600 cursor-pointer hover:text-blue-900 ml-1' onClick={() => null}>(JIGN)</b>.</p>
                     </div>
                     {/* Hero Component */}
-                    <section className='relative w-full border-b-[3px] border-t-[3px] border border-blue-300 h-[90vh] overflow-hidden flex justify-center items-center bg-blue-800 p-12'>
+                    <section className='relative w-full border-b-[3px] border-t-[3px] border border-blue-300 h-max md:h-[90vh] overflow-hidden flex justify-center items-center bg-blue-800 p-12'>
                         <img src={Square} alt="square" loading="lazy" className='absolute opacity-[1] w-[40%] left-0 top-0' />
                         <img src={Square} alt="square" loading="lazy" className='absolute opacity-[1] w-[40%] left-[30%] top-0' />
                         <img src={Square} alt="square" loading="lazy" className='absolute opacity-[1] w-[40%] left-[45%] bottom-[-80px]' />
                         <img src={Square} alt="square" loading="lazy" className='absolute opacity-[1] w-[40%] right-[-20%] top-0' />
                         <img src={Square} alt="square" loading="lazy" className='absolute opacity-[1] w-[40%] right-[5%] bottom-[-80px]' />
-                        <div className='w-full text-center z-[3] relative h-full flex flex-col justify-center text-white'>
-                            <h2 className='text-[68px] mt-[-30px] w-[90%] mx-auto font-normal'>Web Geoportal 2024, Koordinat Daerah Cirebon.</h2>
-                            <p className='text-[18px] leading-loose mt-6 w-[80%] mx-auto x-[555]'>Firebase adalah platform pengembangan aplikasi yang membantu Anda mem-build serta mengembangkan aplikasi dan game favorit pengguna. Didukung oleh Google.</p>
+                        <div className='w-screen md:w-full text-center z-[3] relative hmax md:h-full flex flex-col justify-center text-white'>
+                            <h2 className='text-[30px] md:text-[68px] md:mt-[-30px] w-screen md:w-[90%] mx-auto font-normal'>Web Geoportal 2024 Koordinat Daerah Cirebon.</h2>
+                            <p className='text-[13px] md:text-[18px] md:flex hidden leading-loose mt-6 w-[90vw] md:w-[80%] mx-auto x-[555]'>Firebase adalah platform pengembangan aplikasi yang membantu Anda mem-build serta mengembangkan aplikasi dan game favorit pengguna. Didukung oleh Google.</p>
                             <a href="#daftar">
-                                <div id='btn-hero' className='relative overflow-hidden mx-auto brightness-[90%] px-6 py-4 text-[17px] mt-12 bg-white rounded-[10px] shadow-lg text-blue-600 w-max flex items-center justify-center cursor-pointer hover:brightness-[90%] active:scale-[0.99] z-[9999]'>
+                                <div id='btn-hero' className='relative overflow-hidden mx-auto brightness-[90%] px-6 py-4 text-[14px] md:text-[17px] mt-12 md:mb-0 mb-3 bg-white rounded-[10px] shadow-lg text-blue-600 w-max flex items-center justify-center cursor-pointer hover:brightness-[90%] active:scale-[0.99] z-[9999]'>
                                     Cek Geospasial Sekarang
                                 </div>
                             </a>
@@ -596,34 +596,42 @@ const Homepage: React.FC = () => {
                     </section>
 
                     {/* Section 1 Component */}
-                    <section id='daftar' className='relative overflow-hidden text-center w-screen bg-[#fbffff] h-max pt-14 pb-16 px-16'>
+                    <section id='daftar' className='relative overflow-hidden text-center w-screen bg-[#fbffff] h-max pt-8 md:pt-14 pb-0 md:px-16'>
                         <img src={Square2} alt="square" loading="lazy" className='absolute opacity-[0.7] w-[40%] right-[-140px] rotate-[90deg] z-[1] top-[0px]' />
                         
-                        <h2 className='text-[36px] font-normal'>Daftar Data Geospasial</h2>
-                        <p className='text-slate-500 mt-2 mb-10'>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Numquam, perferendis.</p>
+                        <h2 className='text-[26px] w-screen md:text-[36px] font-normal'>Daftar Data Geospasial</h2>
+                        <p className='md:block hidden text-slate-500 mt-2 mb-10'>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Numquam, perferendis.</p>
 
-                        <div className='relative w-max flex mx-auto items-center z-[44]'>
-                            <div onClick={() => setActiveData('geospasial')} className={`w-max h-max border ${activeData === 'geospasial' ? 'bg-blue-700 text-white' : 'bg-white hover:bg-blue-100 hover:text-blue-600 hover:border-blue-500'} border-slate-400 rounded-[10px] shadow-lg py-[12px] mr-4 px-6 py-2 flex items-center justify-center cursor-pointer active:scale-[0.99]`}>
-                                Data Geospasial
+                        <div className='relative w-screen overflow-x-auto w-max flex justify-center items-center z-[44] md:mt-0 mt-6'>
+                            <div onClick={() => setActiveData('geospasial')} className={`w-[43%] md:w-max h-max border ${activeData === 'geospasial' ? 'bg-blue-700 text-white' : 'bg-white hover:bg-blue-100 hover:text-blue-600 hover:border-blue-500'} border-slate-400 rounded-[10px] shadow-lg py-[10px] md:mb-0 mb-4 mr-2 md:mr-4 px-6 py-2 flex items-center justify-center cursor-pointer active:scale-[0.99]`}>
+                                <p className="w-max flex">
+                                    <span className="md:flex hidden mr-2">Data</span> Geospasial
+                                </p>
                             </div>
-                            <div onClick={() => setActiveData('subdistrict')} className={`w-max h-max border ${activeData === 'subdistrict' ? 'bg-blue-700 text-white' : 'bg-white hover:bg-blue-100 hover:text-blue-600 hover:border-blue-500'} border-slate-400 rounded-[10px] shadow-lg py-[12px] mr-4 px-6 py-2 flex items-center justify-center cursor-pointer active:scale-[0.99]`}>
-                                Data Kecamatan
+                            <div onClick={() => setActiveData('subdistrict')} className={`w-[43%] md:w-max h-max border ${activeData === 'subdistrict' ? 'bg-blue-700 text-white' : 'bg-white hover:bg-blue-100 hover:text-blue-600 hover:border-blue-500'} border-slate-400 rounded-[10px] shadow-lg py-[10px] md:mb-0 mb-4 md:ml-0 ml-2 md:mr-4 px-6 py-2 flex items-center justify-center cursor-pointer active:scale-[0.99]`}>
+                                <p className="w-max flex">
+                                    <span className="md:flex hidden mr-2">Data</span> Kecamatan
+                                </p>
                             </div>
-                            <div onClick={() => {window.location.href = 'https://www.google.com/maps', setActiveData('map')}} className={`w-max h-max border ${activeData === 'map' ? 'bg-blue-700 text-white' : 'bg-white hover:bg-blue-100 hover:text-blue-600 hover:border-blue-500'} border-slate-400 rounded-[10px] shadow-lg py-[12px] mr-4 px-6 py-2 flex items-center justify-center cursor-pointer active:scale-[0.99]`}>
-                                Google Map
+                            <div onClick={() => {window.location.href = 'https://www.google.com/maps', setActiveData('map')}} className={`w-max h-max border hidden md:flex ${activeData === 'map' ? 'bg-blue-700 text-white' : 'bg-white hover:bg-blue-100 hover:text-blue-600 hover:border-blue-500'} border-slate-400 rounded-[10px] shadow-lg py-[10px] md:mb-0 mb-4 mr-4 px-6 py-2 flex items-center justify-center cursor-pointer active:scale-[0.99]`}>
+                                <p className="w-max">
+                                    Google Map
+                                </p>
                             </div>
-                            <div onClick={() => {window.location.href = 'https://opendata.cirebonkab.go.id/', setActiveData('openData')}} className={`w-max h-max border ${activeData === 'openData' ? 'bg-blue-700 text-white' : 'bg-white hover:bg-blue-100 hover:text-blue-600 hover:border-blue-500'} border-slate-400 rounded-[10px] shadow-lg py-[12px] mr-4 px-6 py-2 flex items-center justify-center cursor-pointer active:scale-[0.99]`}>
-                                Web Open Data
+                            <div onClick={() => {window.location.href = 'https://opendata.cirebonkab.go.id/', setActiveData('openData')}} className={`w-max h-max border hidden md:flex ${activeData === 'openData' ? 'bg-blue-700 text-white' : 'bg-white hover:bg-blue-100 hover:text-blue-600 hover:border-blue-500'} border-slate-400 rounded-[10px] shadow-lg py-[10px] md:mb-0 mb-4 mr-4 px-6 py-2 flex items-center justify-center cursor-pointer active:scale-[0.99]`}>
+                                <p className="w-max">
+                                    Web Open Data
+                                </p>
                             </div>
                             <a href="#masukan">
-                                <div className={`w-max h-max border bg-white border-slate-400 rounded-[10px] shadow-lg py-[12px] mr-4 px-6 py-2 flex items-center justify-center cursor-pointer hover:bg-blue-100 hover:text-blue-600 hover:border-blue-500 active:scale-[0.99]`}>
+                                <div className={`w-max h-max border hidden md:flex bg-white border-slate-400 rounded-[10px] shadow-lg py-[10px] md:mb-0 mb-4 mr-4 px-6 py-2 flex items-center justify-center cursor-pointer hover:bg-blue-100 hover:text-blue-600 hover:border-blue-500 active:scale-[0.99]`}>
                                     Tanggapan
                                 </div>
                             </a>
                         </div>
 
-                        <div className='w-full my-6'>
-                            <input type="text" name='search' onChange={(e: any) => setSearch(e.target.value)} placeholder='Cari data lebih cepat...' className='bg-white rounded-[10px] w-[60%] px-3 py-3 outline-0 border border-blue-700' />
+                        <div className={`w-full my-6 ${activeData === 'subdistrict' ? 'hidden' : 'flex'}`}>
+                            <input type="text" name='search' onChange={(e: any) => setSearch(e.target.value)} placeholder='Cari data lebih cepat...' className='bg-white rounded-[10px] w-[90vw] mx-auto md:mx-0 md:w-[60%] px-3 py-3 outline-0 border border-blue-700' />
                         </div>
                         
                         {
@@ -635,7 +643,7 @@ const Homepage: React.FC = () => {
                                 </div>
                             ):
                                 <div className='w-full flex h-max'>
-                                    <div className='relative mt-3 w-[30%] pt-[24px] pb-1 px-7 h-max rounded-[10px] text-left bg-white border border-blue-500 border-dashed'>
+                                    <div className='relative mt-3 w-[30%] pt-[24px] hidden md:flex pb-1 px-7 h-max rounded-[10px] text-left bg-white border border-blue-500 border-dashed'>
                                         <h2 className='font-[500] text-[18px] mb-6'>Daftar Dinas</h2>
                                         <hr className='mb-7' />
                                         <div className='flex flex-col my-2 w-full'>
@@ -656,7 +664,7 @@ const Homepage: React.FC = () => {
                                             }
                                         </div>
                                     </div>
-                                    <div className='w-[70%] px-4'>
+                                    <div className='w-[94vw] md:w-[70%] mx-auto md:mx-0 md:px-4'>
                                         <div className='relative mb-5 z-[44] w-full h-max flex flex-col'>
                                             {
                                                 listGeoData?.length > 0 ? (
@@ -685,18 +693,18 @@ const Homepage: React.FC = () => {
                                                                         <h3 onClick={() => {setDinasID(data?.dinas_id), setTitleID(data?.title_id), setSelectTitle(data?.title), window.scrollTo(0, 0)}} className='text-[18px] cursor-pointer hover:text-blue-600 active:scale-[0.99] underline font-[500]'>
                                                                             {data?.title}
                                                                         </h3>
-                                                                        <div className='rounded-[10px] text-[12px] w-max h-max px-4 py-2 flex items-center justify-center bg-green-600 text-white mr-4'>
+                                                                        <div className='rounded-[10px] text-[12px] w-max h-max px-4 py-2 hidden md:flex items-center justify-center bg-green-600 text-white mr-4'>
                                                                             {data?.type ?? 'Public'}
                                                                         </div>
                                                                     </div>
-                                                                    <div className='w-full flex mt-3 items-center'>
-                                                                        <div className='rounded-full w-max h-max px-4 py-2 flex items-center justify-center bg-slate-200 text-slate-500 mr-3'>
+                                                                    <div className='w-full flex flex-wrap mt-3 items-center'>
+                                                                        <div className='rounded-full md:mb-0 mb-3 w-max h-max px-4 py-2 flex items-center justify-center bg-slate-200 text-slate-500 mr-3'>
                                                                             <FaCalendarAlt className='mr-2' /> {data?.year ?? new Date().getFullYear()}
                                                                         </div>
-                                                                        <div className={`rounded-full w-max h-max px-4 py-2 flex items-center justify-center ${data?.status === 'Sementara' ? 'bg-green-200' : 'bg-green-500 text-white'} text-green-600 mr-4`}>
+                                                                        <div className={`rounded-full md:mb-0 mb-3 w-max h-max px-4 py-2 flex items-center justify-center ${data?.status === 'Sementara' ? 'bg-green-200' : 'bg-green-500 text-white'} text-green-600 mr-4`}>
                                                                             <FaClock className='mr-2' /> {data?.status ?? 'Tidak ber-status'}
                                                                         </div>
-                                                                        <div className='rounded-full max-w-[56%] h-max px-4 py-2 flex items-center justify-center bg-blue-200 text-blue-600 mr-4'>
+                                                                        <div className='rounded-full md:mb-0 mb-3 max-w-[56%] h-max px-4 py-2 flex items-center justify-center bg-blue-200 text-blue-600 mr-4'>
                                                                             <FaBuilding className='mr-2' /> 
                                                                             <p className='max-w-full overflow-hidden overflow-ellipsis whitespace-nowrap'>
                                                                                 {data?.name_dinas ?? 'Tidak ada dinas'}
@@ -704,12 +712,12 @@ const Homepage: React.FC = () => {
                                                                         </div>
                                                                     </div>
                                                                     <hr className='mt-4' />
-                                                                    <p className='text-[14px] w-[96%] overflow-hidden leading-[1.6em] text-slate-600 mt-4 text-left'>
+                                                                    <p className='text-[14px] w-full md:w-[96%] overflow-hidden leading-[1.6em] text-slate-600 mt-4 text-left'>
                                                                         {data?.description ?? 'Deskripsi belum tersedia.'}
                                                                     </p>
                                                                     <div className="w-full flex items-center">
                                                                         <div className='rounded-full w-max h-max px-4 py-2 flex items-center justify-center mt-5 bg-red-200 text-red-600 text-[12px]'>
-                                                                            <FaMapMarkerAlt className='mr-2' /> {data?.coordinate?.length ?? 0} Lokasi/koordinat
+                                                                            <FaMapMarkerAlt className='mr-2' /> {data?.coordinate?.length ?? 0} <span className="md:flex hidden">Lokasi/koordinat</span>
                                                                         </div>
                                                                         <div className='rounded-full w-max h-max px-4 py-2 flex items-center ml-3 justify-center mt-5 bg-yellow-200 text-yellow-600 text-[12px]'>
                                                                             {data?.category === 'Titik Koordinat' ? <FaDotCircle className='mr-2' /> : data?.category === 'Polygon' ? <FaDrawPolygon className='mr-2' /> : <FaBezierCurve className='mr-2' />} {data?.category ?? '-'}
@@ -725,7 +733,7 @@ const Homepage: React.FC = () => {
                                                     </div>
                                                 )
                                             }
-                                            <div className="flex items-center w-full justify-between md:mt-6 md:mb-0 mb-16">
+                                            <div className="flex items-center w-full justify-between mt-8 md:mt-6 md:mb-0 mb-16">
                                                 <div className="flex items-center w-max h-max">
                                                     <div className="flex w-max rounded-[10px] bg-white justify-start px-6 py-2 border border-dashed border-blue-700">
                                                         <select name="totalPage" value={totalPage} className="bg-white outline-0" onChange={(e: any) => setTotalPage(e.target.value)} id="totalPage">
@@ -766,16 +774,16 @@ const Homepage: React.FC = () => {
 
                     <div className='border-t border-t-[2px] border-dashed border-blue-700 w-screen mx-auto relative'></div>
 
-                    <section id='API' className='relative overflow-hidden w-screen bg-blue-700 h-max pt-20 pb-28 px-16'>
+                    <section id='API' className='relative overflow-hidden w-screen bg-blue-700 h-max pt-14 md:pt-20 pb-16 md:pb-28 px-6 md:px-16'>
                         <img src={Square} alt="square" loading="lazy" className='absolute opacity-[1] w-[40%] left-0 top-[-260px]' />
                         <img src={Square} alt="square" loading="lazy" className='absolute opacity-[1] w-[40%] left-[30%] top-[-260px]' />
                         <img src={Square} alt="square" loading="lazy" className='absolute opacity-[1] w-[40%] left-[45%] bottom-[-100px]' />
                         <img src={Square} alt="square" loading="lazy" className='absolute opacity-[1] w-[40%] right-[-20%] top-[-260px]' />
                         <img src={Square} alt="square" loading="lazy" className='absolute opacity-[1] w-[40%] right-[5%] bottom-[-100x]' />
-                        <h2 className='text-[36px] text-white font-normal text-center'>API Geospasial 💻</h2>
-                        <p className='text-slate-500 text-slate-300 mt-2 mb-10 text-center'>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Numquam, perferendis.</p>    
-                        <div className='relative w-full z-[444] px-12 pt-14 pb-20 flex mx-auto rounded-[16px] bg-white border-[2px] border-blue-500 border-dashed'>
-                            <div className='w-1/2 h-[500px] flex justify-between flex-col'>
+                        <h2 className='text-[26px] mb-8 md:mb-0 md:text-[36px] text-white font-normal text-center'>API Geospasial 💻</h2>
+                        <p className='text-slate-200 md:flex hidden mt-4 mb-10 text-center'>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Numquam, perferendis.</p>    
+                        <div className='relative w-ful z-[444] px-4 md:px-12 pt-6 md:pt-14 pb-6 md:pb-20 flex mx-auto rounded-[16px] bg-white border-[2px] min-h-[680px] border-blue-500 border-dashed'>
+                            <div className='w-full md:w-1/2 h-[500px] flex justify-between flex-col'>
                                 <label htmlFor="api-dinas" className='font-[500] flex items-center'>&#123;&#123; BASE_URL &#125;&#125;</label>
                                 <div className='relative rounded-[10px] bg-blue-200 text-blue-700 w-[100%] p-4 flex items-center my-6'>
                                     <code className="w-[86%] overflow-hidden overflow-ellipsis whitespace-nowrap">https://be-geospasial.vercel.app/v2/api</code>
@@ -783,14 +791,40 @@ const Homepage: React.FC = () => {
                                         <FaCopy />
                                     </div>
                                 </div>
-                                <label htmlFor="api-dinas" className='font-[500] flex items-center'>API Data Kecamatan <div className="w-max ml-auto flex items-center"><div className='w-max bg-green-400 mr-4 px-3 py-2 w-max h-max text-[10px] rounded-md text-white'>(GET)</div></div><p onClick={() => {setSelectAPI('Kecamatan'), setActiveAPI(true)}} className='text-blue-600 cursor-pointer active:scale-[0.98] hover:text-blue-800'>Lihat Respon</p></label>
+                                <label htmlFor="api-dinas" className='font-[500] md:flex items-center'>
+                                    API Data Kecamatan  
+                                    <div className="w-max mt-3 md:mt-0 md:ml-auto flex items-center">
+                                        <div className='w-max bg-green-400 mr-4 px-3 py-2 w-max h-max text-[10px] rounded-md text-white'>
+                                            (GET)
+                                        </div>
+                                        <p onClick={() => {setSelectAPI('Kecamatan'), setActiveAPI(true)}} className='text-blue-600 md:hidden cursor-pointer active:scale-[0.98] hover:text-blue-800'>
+                                            Lihat Respon
+                                        </p>    
+                                    </div>
+                                    <p onClick={() => {setSelectAPI('Kecamatan'), setActiveAPI(true)}} className='text-blue-600 cursor-pointer md:flex hidden active:scale-[0.98] hover:text-blue-800'>
+                                        Lihat Respon
+                                    </p>
+                                </label>
                                 <div className='relative rounded-[10px] bg-blue-200 text-blue-700 w-[100%] p-4 flex items-center my-6'>
                                     <code className="w-[86%] overflow-hidden overflow-ellipsis whitespace-nowrap">&#123;&#123;BASE_URL&#125;&#125;/v2/api/kecamatan</code>
                                     <div onClick={() => copyToClipboard3()} className='absolute right-1 z-[444] scale-[0.9] z-[999] rounded-[10px] shadow-lg w-[50px] h-[50px] bg-blue-500 flex items-center justify-center cursor-pointer hover:brightness-[90%] active:p-2 duration-200 text-white'>
                                         <FaCopy />
                                     </div>
                                 </div>
-                                <label htmlFor="api-dinas" className='font-[500] flex items-center'>API Data Dinas  <div className="w-max ml-auto flex items-center"><div className='w-max bg-green-400 mr-4 px-3 py-2 w-max h-max text-[10px] rounded-md text-white'>(GET)</div></div><p onClick={() => {setSelectAPI('Dinas'), setActiveAPI(true)}} className='text-blue-600 cursor-pointer active:scale-[0.98] hover:text-blue-800'>Lihat Respon</p></label>
+                                <label htmlFor="api-dinas" className='font-[500] md:flex items-center'>
+                                    API Data Dinas  
+                                    <div className="w-max mt-3 md:mt-0 md:ml-auto flex items-center">
+                                        <div className='w-max bg-green-400 mr-4 px-3 py-2 w-max h-max text-[10px] rounded-md text-white'>
+                                            (GET)
+                                        </div>
+                                        <p onClick={() => {setSelectAPI('Dinas'), setActiveAPI(true)}} className='text-blue-600 md:hidden cursor-pointer active:scale-[0.98] hover:text-blue-800'>
+                                            Lihat Respon
+                                        </p>    
+                                    </div>
+                                    <p onClick={() => {setSelectAPI('Dinas'), setActiveAPI(true)}} className='text-blue-600 cursor-pointer md:flex hidden active:scale-[0.98] hover:text-blue-800'>
+                                        Lihat Respon
+                                    </p>
+                                </label>
                                 <div className='relative rounded-[10px] bg-blue-200 text-blue-700 w-[100%] p-4 flex items-center my-6'>
                                     <code className='w-[86%] overflow-hidden overflow-ellipsis whitespace-nowrap'>
                                         &#123;&#123;BASE_URL&#125;&#125;/v2/api/dinas
@@ -799,7 +833,20 @@ const Homepage: React.FC = () => {
                                         <FaCopy />
                                     </div>
                                 </div>
-                                <label htmlFor="api-dinas" className='font-[500] flex items-center'>API Data Judul  <div className="w-max ml-auto flex items-center"><div className='w-max bg-green-400 mr-4 px-3 py-2 w-max h-max text-[10px] rounded-md text-white'>(GET)</div></div><p onClick={() => {setSelectAPI('Title'), setActiveAPI(true)}} className='text-blue-600 cursor-pointer active:scale-[0.98] hover:text-blue-800'>Lihat Respon</p></label>
+                                <label htmlFor="api-dinas" className='font-[500] md:flex items-center'>
+                                    API Data Judul  
+                                    <div className="w-max mt-3 md:mt-0 md:ml-auto flex items-center">
+                                        <div className='w-max bg-green-400 mr-4 px-3 py-2 w-max h-max text-[10px] rounded-md text-white'>
+                                            (GET)
+                                        </div>
+                                        <p onClick={() => {setSelectAPI('Title'), setActiveAPI(true)}} className='text-blue-600 md:hidden cursor-pointer active:scale-[0.98] hover:text-blue-800'>
+                                            Lihat Respon
+                                        </p>    
+                                    </div>
+                                    <p onClick={() => {setSelectAPI('Title'), setActiveAPI(true)}} className='text-blue-600 cursor-pointer md:flex hidden active:scale-[0.98] hover:text-blue-800'>
+                                        Lihat Respon
+                                    </p>
+                                </label>
                                 <div className='relative rounded-[10px] bg-blue-200 text-blue-700 w-[100%] p-4 flex items-center my-6'>
                                     <code className='w-[86%] overflow-hidden overflow-ellipsis whitespace-nowrap'>
                                         &#123;&#123;BASE_URL&#125;&#125;/v2/api/title
@@ -833,41 +880,43 @@ const Homepage: React.FC = () => {
                                 </div>
                                 </div>
                             </div>
-                            <div className='relative w-1/2 h-[500px] flex flex-col justify-center items-center overflow-hidden'>
+                            <div className='relative w-1/2 h-[500px] hidden md:flex flex-col justify-center items-center overflow-hidden'>
                                 <img src={APIImage} alt="ilustration developer" title='Image by freepik' className='w-[100%] right-[-30px] top-2 relative' />
                             </div>
                         </div>
                     </section>
                     
-                    <section id="masukan" className='w-screen h-max bg-[#fbffff] flex flex-col items-center pt-20 px-16 pb-6'>
-                        <div className='w-full text-center h-max py-2'>
-                            <h2 className='text-[36px] font-normal'>Masukan Untuk Kami 📮</h2>
-                            <p className='text-slate-500 w-[70%] mx-auto leading-loose mt-2 mb-10'>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ex saepe atque perferendis voluptate accusamus possimus? Atque aperiam aut provident iusto, similique iste fugit nisi qui..</p>
+                    <section id="masukan" className='w-screen h-max bg-[#fbffff] flex flex-col items-center pt-10 md:pt-20 md:px-16 pb-6'>
+                        <div className='w-full text-center h-max py-2 md:mb-0 mb-8'>
+                            <h2 className='text-[26px] md:text-[36px] font-normal'>Masukan Untuk Kami 📮</h2>
+                            <p className='text-slate-500 w-full md:w-[70%] mx-auto md:flex hidden leading-loose mt-2 mb-10'>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ex saepe atque perferendis voluptate accusamus possimus? Atque aperiam aut provident iusto, similique iste fugit nisi qui..</p>
                         </div>
                         
-                        <FormGroup type="response" />
+                        <div className="md:w-max w-[90vw]">
+                            <FormGroup type="response" />
+                        </div>
                         
                     </section>
 
-                    <footer className='relative overflow-hidden w-screen mx-auto p-12 mt-12 h-max bg-blue-800 border-y-[3px] border-dashed border-blue-300'>
+                    <footer className='relative overflow-hidden w-screen mx-auto md:pb-0 pb-12 p-6 md:p-12 mt-12 h-max bg-blue-800 border-y-[3px] border-dashed border-blue-300'>
                         <img src={Square} alt="square" loading="lazy" className='absolute opacity-[1] w-[40%] right-[5%] bottom-[0px]' />
-                        <div className='w-full h-full flex items-center'>
-                            <div className='text-white h-full w-[40%]'>
-                                <div className='bg-white rounded-[10px] w-max'>
+                        <div className='w-full h-full md:flex items-center'>
+                            <div className='text-white h-full w-full md:w-[40%]'>
+                                <div className='bg-white rounded-[10px] w-[80%] md:w-max'>
                                     <img src={Diskominfo} alt="diskominfo-logo" className='w-[55%] my-6' />
                                 </div>
-                                <p className='text-[14px] w-[80%] leading-loose'>Jl. Sunan Drajat No.15, Sumber, Kec. Sumber, Kabupaten Cirebon, Jawa Barat 45611</p>
+                                <p className='text-[14px] w-full md:w-[80%] leading-loose'>Jl. Sunan Drajat No.15, Sumber, Kec. Sumber, Kabupaten Cirebon, Jawa Barat 45611</p>
                             </div>
-                            <ul className='text-white w-[30%] h-full flex flex-col justify-between'>
-                                <li className='mb-7 cursor-pointer active:scale-[0.99] relative rounded-full w-max hover:px-3 py-2 cursor-pointer hover:bg-blue-300 hover:text-blue-700 duration-200'>Geoportal</li>
-                                <li className='mb-7 cursor-pointer active:scale-[0.99] relative rounded-full w-max hover:px-3 py-2 cursor-pointer hover:bg-blue-300 hover:text-blue-700 duration-200'>Open Data</li>
-                                <li className='mb-7 cursor-pointer active:scale-[0.99] relative rounded-full w-max hover:px-3 py-2 cursor-pointer hover:bg-blue-300 hover:text-blue-700 duration-200'>Sat0u Data</li>
+                            <ul className='text-white w-full md:w-[30%] h-full md:border-0 md:pt-0 pt-6 border-t border-t-white flex md:mt-0 mt-12 flex-col justify-between'>
+                                <li className='mb-4 md:mb-7 cursor-pointer active:scale-[0.99] relative rounded-full w-max hover:px-3 py-2 cursor-pointer hover:bg-blue-300 hover:text-blue-700 duration-200'>Geoportal</li>
+                                <li className='mb-4 md:mb-7 cursor-pointer active:scale-[0.99] relative rounded-full w-max hover:px-3 py-2 cursor-pointer hover:bg-blue-300 hover:text-blue-700 duration-200'>Open Data</li>
+                                <li className='mb-4 md:mb-7 cursor-pointer active:scale-[0.99] relative rounded-full w-max hover:px-3 py-2 cursor-pointer hover:bg-blue-300 hover:text-blue-700 duration-200'>Sat0u Data</li>
                                 <li className='cursor-pointer active:scale-[0.99] relative rounded-full w-max hover:px-3 py-2 cursor-pointer hover:bg-blue-300 hover:text-blue-700 duration-200'>Kabupaten Cirebon</li>
                             </ul>
-                            <ul className='text-white w-[30%] h-full flex flex-col justify-between'>
-                                <li className='mb-7 cursor-pointer active:scale-[0.99] relative rounded-full w-max hover:px-3 py-2 cursor-pointer hover:bg-blue-300 hover:text-blue-700 duration-200'>Diskominfo Cirebon</li>
-                                <li className='mb-7 cursor-pointer active:scale-[0.99] relative rounded-full w-max hover:px-3 py-2 cursor-pointer hover:bg-blue-300 hover:text-blue-700 duration-200'>Berita Cirebon</li>
-                                <li className='mb-7 cursor-pointer active:scale-[0.99] relative rounded-full w-max hover:px-3 py-2 cursor-pointer hover:bg-blue-300 hover:text-blue-700 duration-200'>Google Map</li>
+                            <ul className='text-white w-full md:w-[30%] h-full flex md:mt-0 mt-4 flex-col justify-between'>
+                                <li className='mb-4 md:mb-7 cursor-pointer active:scale-[0.99] relative rounded-full w-max hover:px-3 py-2 cursor-pointer hover:bg-blue-300 hover:text-blue-700 duration-200'>Diskominfo Cirebon</li>
+                                <li className='mb-4 md:mb-7 cursor-pointer active:scale-[0.99] relative rounded-full w-max hover:px-3 py-2 cursor-pointer hover:bg-blue-300 hover:text-blue-700 duration-200'>Berita Cirebon</li>
+                                <li className='mb-4 md:mb-7 cursor-pointer active:scale-[0.99] relative rounded-full w-max hover:px-3 py-2 cursor-pointer hover:bg-blue-300 hover:text-blue-700 duration-200'>Google Map</li>
                                 <li className='cursor-pointer active:scale-[0.99] relative rounded-full w-max hover:px-3 py-2 cursor-pointer hover:bg-blue-300 hover:text-blue-700 duration-200'>Pelayanan Adminidistratif</li>
                             </ul>
                         </div>
