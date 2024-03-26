@@ -1,7 +1,7 @@
 import copy from "copy-to-clipboard";
 import jsPDF from 'jspdf';
 import React, { RefObject, useEffect, useRef, useState } from 'react';
-import { FaArrowLeft, FaArrowRight, FaBuilding, FaCalendarAlt, FaClock, FaCopy, FaFileExcel, FaFilePdf, FaMapMarkerAlt, FaTimes } from 'react-icons/fa';
+import { FaArrowLeft, FaArrowRight, FaBezierCurve, FaBuilding, FaCalendarAlt, FaClock, FaCopy, FaDotCircle, FaDrawPolygon, FaFileExcel, FaFilePdf, FaMapMarkerAlt, FaTimes } from 'react-icons/fa';
 import * as XLSX from 'xlsx';
 import { Map, Subdistrict } from '../Components';
 import FormGroup from "../Components/FormGroup";
@@ -707,8 +707,13 @@ const Homepage: React.FC = () => {
                                                                     <p className='text-[14px] w-[96%] overflow-hidden leading-[1.6em] text-slate-600 mt-4 text-left'>
                                                                         {data?.description ?? 'Deskripsi belum tersedia.'}
                                                                     </p>
-                                                                    <div className='rounded-full w-max h-max px-4 py-2 flex items-center justify-center mt-5 bg-blue-200 text-blue-600 text-[12px]'>
-                                                                        <FaMapMarkerAlt className='mr-2' /> {data?.coordinate?.length ?? 0} Lokasi/koordinat
+                                                                    <div className="w-full flex items-center">
+                                                                        <div className='rounded-full w-max h-max px-4 py-2 flex items-center justify-center mt-5 bg-red-200 text-red-600 text-[12px]'>
+                                                                            <FaMapMarkerAlt className='mr-2' /> {data?.coordinate?.length ?? 0} Lokasi/koordinat
+                                                                        </div>
+                                                                        <div className='rounded-full w-max h-max px-4 py-2 flex items-center ml-3 justify-center mt-5 bg-yellow-200 text-yellow-600 text-[12px]'>
+                                                                            {data?.category === 'Titik Koordinat' ? <FaDotCircle className='mr-2' /> : data?.category === 'Polygon' ? <FaDrawPolygon className='mr-2' /> : <FaBezierCurve className='mr-2' />} {data?.category ?? '-'}
+                                                                        </div>
                                                                     </div>
                                                                 </div>
                                                             ))
