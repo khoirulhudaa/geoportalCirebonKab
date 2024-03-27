@@ -120,7 +120,7 @@ const Subdistrict: React.FC<popUpProps> = ({
   }
 
   return (
-    <div className='w-full'>
+    <div className='relative w-full z-[999999]'>
         <div className="flex items-center justify-center md:justify-between flex-column flex-wrap md:flex-row space-y-4 md:space-y-0 pb-4 dark:bg-gray-900">
             <div className="relative">
                 <div className="absolute inset-y-0 rtl:inset-r-0 start-0 flex items-center ps-3 pointer-events-none">
