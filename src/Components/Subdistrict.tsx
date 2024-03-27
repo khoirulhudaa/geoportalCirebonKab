@@ -34,6 +34,7 @@ const Subdistrict: React.FC<popUpProps> = ({
         Kecamatan: obj?.name_subdistrict,
         Latitude: obj?.lat,
         Longitude: obj?.long,
+        Kabupaten: 'Cirebon',
     }));
   
     if (filteredArray) {
@@ -88,6 +89,7 @@ const Subdistrict: React.FC<popUpProps> = ({
         Kecamatan: obj?.name_subdistrict,
         Latitude: obj?.lat,
         Longitude: obj?.long,
+        Kabupaten: 'Cirebon',
     }));
 
 
@@ -147,7 +149,7 @@ const Subdistrict: React.FC<popUpProps> = ({
                             Longitude
                         </th>
                         <th scope="col" className="px-6 py-6">
-                            Link Peta
+                            Kabupaten
                         </th>
                     </tr>
                 </thead>
@@ -178,7 +180,7 @@ const Subdistrict: React.FC<popUpProps> = ({
                                         {parseFloat(data.long)}
                                     </td>
                                     <td className="px-6 py-4">
-                                        {parseFloat(data.long)}
+                                        Cirebon
                                     </td>
                                 </tr>
                             ))

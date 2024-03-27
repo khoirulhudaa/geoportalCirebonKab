@@ -100,16 +100,16 @@ const Homepage: React.FC = () => {
     const mapRef: RefObject<any> = useRef<any>(null); // Make sure it's initialized properly
 
     const exportToExcel = () => {
+
         const getCoordinate = () => {
-        let coordinateList: any = [];
-        allTitle && allTitle.forEach((data: any) => {
-            coordinateList.push(data.coordinate);
-        });
-        return coordinateList;
+            let coordinateList: any = [];
+            coordinateList = allTitle?.flatMap(entry => entry.coordinate)
+            return coordinateList;
         }
+    
         const listCoordinate = getCoordinate();
 
-        listCoordinate[0].sort((a: any, b: any) => {
+        listCoordinate.sort((a: any, b: any) => {
             const kecamatanA = a.name_location.toUpperCase(); 
             const kecamatanB = b.name_location.toUpperCase();
         
@@ -123,7 +123,7 @@ const Homepage: React.FC = () => {
             return 0;
         });
     
-        const filteredArray = listCoordinate[0] && listCoordinate[0]?.map((obj: any, index: number) => ({
+        const filteredArray = listCoordinate && listCoordinate?.map((obj: any, index: number) => ({
             No: (index + 1).toString(),
             Nama_lokasi: obj?.name_location,
             Latitude: obj?.lat,
@@ -162,17 +162,20 @@ const Homepage: React.FC = () => {
     }
 
     const exportToPDF = () => {
+
+        console.log('all titie pdf:', allTitle)
+
         const doc = new jsPDF() as any;
         const getCoordinate = () => {
-        let coordinateList: any = [];
-        allTitle && allTitle.forEach((data) => {
-            coordinateList.push(data.coordinate);
-        });
-        return coordinateList;
+            let coordinateList: any = [];
+            coordinateList = allTitle?.flatMap(entry => entry.coordinate)
+            return coordinateList;
         }
     
         const listCoordinate = getCoordinate();
-        listCoordinate[0].sort((a: any, b: any) => {
+
+        console.log('list cpprd:', listCoordinate)
+        listCoordinate.sort((a: any, b: any) => {
             const kecamatanA = a.name_location.toUpperCase(); // Konversi kecamatam menjadi huruf besar untuk memastikan urutan yang konsisten
             const kecamatanB = b.name_location.toUpperCase();
         
@@ -187,7 +190,7 @@ const Homepage: React.FC = () => {
             return 0;
         });
 
-        const filteredArray = listCoordinate[0] && listCoordinate[0]?.map((obj: any, index: number) => ({
+        const filteredArray = listCoordinate && listCoordinate?.map((obj: any, index: number) => ({
             No: index + 1,
             Nama_lokasi: obj?.name_location,
             Latitude: obj?.lat,
@@ -561,7 +564,7 @@ const Homepage: React.FC = () => {
                             selectTypeChart === 'pie' ? (
                                 <GrafikPie titleID={titleID ?? ''} />
                             ):  
-                                <Grafik data={allTitle ?? []} titleID={titleID ?? ''} dinasID={dinasID} />
+                                <Grafik data={allTitle ?? []} titleID={titleID ?? ''} />
                         }
                     </>
                 ):
@@ -570,14 +573,15 @@ const Homepage: React.FC = () => {
                         <p>Cirebon merupakan salah satu simpul Jaringan Informasi Geospasial Nasional <b className='underline text-blue-600 cursor-pointer hover:text-blue-900 ml-1' onClick={() => null}>(JIGN)</b>.</p>
                     </div>
                     {/* Hero Component */}
-                    <section className='relative w-full border-b-[3px] border-t-[3px] border border-blue-300 h-max md:h-[90vh] overflow-hidden flex justify-center items-center bg-blue-800 p-12'>
+
+                    <section id="home" className='relative w-full border-b-[3px] border-t-[3px] border border-blue-300 h-max md:h-[90vh] overflow-hidden flex justify-center items-center bg-blue-800 p-12'>
                         <img src={Square} alt="square" loading="lazy" className='absolute opacity-[1] w-[40%] left-0 top-0' />
                         <img src={Square} alt="square" loading="lazy" className='absolute opacity-[1] w-[40%] left-[30%] top-0' />
                         <img src={Square} alt="square" loading="lazy" className='absolute opacity-[1] w-[40%] left-[45%] bottom-[-80px]' />
                         <img src={Square} alt="square" loading="lazy" className='absolute opacity-[1] w-[40%] right-[-20%] top-0' />
                         <img src={Square} alt="square" loading="lazy" className='absolute opacity-[1] w-[40%] right-[5%] bottom-[-80px]' />
                         <div className='w-screen md:w-full text-center z-[3] relative hmax md:h-full flex flex-col justify-center text-white'>
-                            <h2 className='text-[30px] md:text-[68px] md:mt-[-30px] w-screen md:w-[90%] mx-auto font-normal'>Web Geoportal 2024 Koordinat Daerah Cirebon.</h2>
+                            <h2 className='text-[30px] md:text-[68px] md:mt-[-30px] w-screen md:w-[90%] mx-auto font-normal'>Web Geoportal 2024 Koordinat Daerah Cirebon</h2>
                             <p className='text-[13px] md:text-[18px] md:flex hidden leading-loose mt-6 w-[90vw] md:w-[80%] mx-auto x-[555]'>Firebase adalah platform pengembangan aplikasi yang membantu Anda mem-build serta mengembangkan aplikasi dan game favorit pengguna. Didukung oleh Google.</p>
                             <a href="#daftar">
                                 <div id='btn-hero' className='relative overflow-hidden mx-auto brightness-[90%] px-6 py-4 text-[14px] md:text-[17px] mt-12 md:mb-0 mb-3 bg-white rounded-[10px] shadow-lg text-blue-600 w-max flex items-center justify-center cursor-pointer hover:brightness-[90%] active:scale-[0.99] z-[9999]'>
@@ -595,15 +599,14 @@ const Homepage: React.FC = () => {
                         </div>
                     </section>
 
-                    {/* Section 1 Component */}
-                    <section id='daftar' className='relative overflow-hidden text-center w-screen bg-[#fbffff] h-max pt-8 md:pt-14 pb-0 md:px-16'>
+                    <section id='daftar' className='relative overflow-hidden text-center w-screen bg-[#fbffff] h-max pt-8 md:pt-14 md:pb-14 pb-0 md:px-16'>
                         <img src={Square2} alt="square" loading="lazy" className='absolute opacity-[0.7] w-[40%] right-[-140px] rotate-[90deg] z-[1] top-[0px]' />
                         
-                        <h2 className='text-[26px] w-screen md:text-[36px] font-normal'>Daftar Data Geospasial</h2>
+                        <h2 className='text-[26px] w-full md:text-[36px] font-normal'>Daftar Data Geospasial 🗺️</h2>
                         <p className='md:block hidden text-slate-500 mt-2 mb-10'>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Numquam, perferendis.</p>
 
-                        <div className='relative w-screen overflow-x-auto w-max flex justify-center items-center z-[44] md:mt-0 mt-6'>
-                            <div onClick={() => setActiveData('geospasial')} className={`w-[43%] md:w-max h-max border ${activeData === 'geospasial' ? 'bg-blue-700 text-white' : 'bg-white hover:bg-blue-100 hover:text-blue-600 hover:border-blue-500'} border-slate-400 rounded-[10px] shadow-lg py-[10px] md:mb-0 mb-4 mr-2 md:mr-4 px-6 py-2 flex items-center justify-center cursor-pointer active:scale-[0.99]`}>
+                        <div className='relative mx-auto overflow-x-auto w-max flex justify-center items-center z-[44] md:mt-0 mt-6'>
+                            <div onClick={() => setActiveData('geospasial')} className={`w-[43%] md:w-max h-max border ${activeData === 'geospasial' ? 'bg-blue-700 text-white' : 'bg-white hover:bg-blue-100 hover:text-blue-600 hover:border-blue-500'} border-slate-400 rounded-[10px] shadow-lg py-[10px] md:mb-0 mb-4 mr-2 md:mx-4 px-6 py-2 flex items-center justify-center cursor-pointer active:scale-[0.99]`}>
                                 <p className="w-max flex">
                                     <span className="md:flex hidden mr-2">Data</span> Geospasial
                                 </p>
@@ -631,7 +634,7 @@ const Homepage: React.FC = () => {
                         </div>
 
                         <div className={`w-full my-6 ${activeData === 'subdistrict' ? 'hidden' : 'flex'}`}>
-                            <input type="text" name='search' onChange={(e: any) => setSearch(e.target.value)} placeholder='Cari data lebih cepat...' className='bg-white rounded-[10px] w-[90vw] mx-auto md:mx-0 md:w-[60%] px-3 py-3 outline-0 border border-blue-700' />
+                            <input type="text" name='search' onChange={(e: any) => setSearch(e.target.value)} placeholder='Cari data lebih cepat...' className='bg-white rounded-[10px] w-[90vw] mx-auto md:w-[60%] px-3 py-3 outline-0 border border-blue-700' />
                         </div>
                         
                         {
@@ -643,7 +646,7 @@ const Homepage: React.FC = () => {
                                 </div>
                             ):
                                 <div className='w-full flex h-max'>
-                                    <div className='relative mt-3 w-[30%] pt-[24px] hidden md:flex pb-1 px-7 h-max rounded-[10px] text-left bg-white border border-blue-500 border-dashed'>
+                                    <div className='relative mt-3 w-[30%] pt-[24px] hidden md:block pb-1 px-7 min-h-full rounded-[10px] text-left bg-white border border-blue-500 border-dashed'>
                                         <h2 className='font-[500] text-[18px] mb-6'>Daftar Dinas</h2>
                                         <hr className='mb-7' />
                                         <div className='flex flex-col my-2 w-full'>
@@ -720,7 +723,7 @@ const Homepage: React.FC = () => {
                                                                             <FaMapMarkerAlt className='mr-2' /> {data?.coordinate?.length ?? 0} <span className="md:flex hidden">Lokasi/koordinat</span>
                                                                         </div>
                                                                         <div className='rounded-full w-max h-max px-4 py-2 flex items-center ml-3 justify-center mt-5 bg-yellow-200 text-yellow-600 text-[12px]'>
-                                                                            {data?.category === 'Titik Koordinat' ? <FaDotCircle className='mr-2' /> : data?.category === 'Polygon' ? <FaDrawPolygon className='mr-2' /> : <FaBezierCurve className='mr-2' />} {data?.category ?? '-'}
+                                                                            {data?.category === 'Koordinat' ? <FaDotCircle className='mr-2' /> : data?.category === 'Polygon' ? <FaDrawPolygon className='mr-2' /> : <FaBezierCurve className='mr-2' />} {data?.category ?? '-'}
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -781,7 +784,7 @@ const Homepage: React.FC = () => {
                         <img src={Square} alt="square" loading="lazy" className='absolute opacity-[1] w-[40%] right-[-20%] top-[-260px]' />
                         <img src={Square} alt="square" loading="lazy" className='absolute opacity-[1] w-[40%] right-[5%] bottom-[-100x]' />
                         <h2 className='text-[26px] mb-8 md:mb-0 md:text-[36px] text-white font-normal text-center'>API Geospasial 💻</h2>
-                        <p className='text-slate-200 md:flex hidden mt-4 mb-10 text-center'>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Numquam, perferendis.</p>    
+                        <p className='text-slate-200 md:block hidden mt-4 mb-10 text-center'>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Numquam, perferendis.</p>    
                         <div className='relative w-ful z-[444] px-4 md:px-12 pt-6 md:pt-14 pb-6 md:pb-20 flex mx-auto rounded-[16px] bg-white border-[2px] min-h-[680px] border-blue-500 border-dashed'>
                             <div className='w-full md:w-1/2 h-[500px] flex justify-between flex-col'>
                                 <label htmlFor="api-dinas" className='font-[500] flex items-center'>&#123;&#123; BASE_URL &#125;&#125;</label>
@@ -892,32 +895,30 @@ const Homepage: React.FC = () => {
                             <p className='text-slate-500 w-full md:w-[70%] mx-auto md:flex hidden leading-loose mt-2 mb-10'>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ex saepe atque perferendis voluptate accusamus possimus? Atque aperiam aut provident iusto, similique iste fugit nisi qui..</p>
                         </div>
                         
-                        <div className="md:w-max w-[90vw]">
+                        <div className="w-[90vw]">
                             <FormGroup type="response" />
                         </div>
                         
                     </section>
 
-                    <footer className='relative overflow-hidden w-screen mx-auto md:pb-0 pb-12 p-6 md:p-12 mt-12 h-max bg-blue-800 border-y-[3px] border-dashed border-blue-300'>
+                    <footer id="footer" className='relative overflow-hidden w-screen mx-auto pb-12 p-6 md:p-12 mt-12 h-max bg-blue-800 border-y-[3px] border-dashed border-blue-300'>
                         <img src={Square} alt="square" loading="lazy" className='absolute opacity-[1] w-[40%] right-[5%] bottom-[0px]' />
                         <div className='w-full h-full md:flex items-center'>
-                            <div className='text-white h-full w-full md:w-[40%]'>
+                            <div className='text-white h-full w-full md:w-[50%]'>
                                 <div className='bg-white rounded-[10px] w-[80%] md:w-max'>
                                     <img src={Diskominfo} alt="diskominfo-logo" className='w-[55%] my-6' />
                                 </div>
-                                <p className='text-[14px] w-full md:w-[80%] leading-loose'>Jl. Sunan Drajat No.15, Sumber, Kec. Sumber, Kabupaten Cirebon, Jawa Barat 45611</p>
+                                <p className='text-[14px] w-full md:w-[70%] leading-loose'>Jl. Sunan Drajat No.15, Sumber, Kec. Sumber, Kabupaten Cirebon, Jawa Barat 45611</p>
                             </div>
-                            <ul className='text-white w-full md:w-[30%] h-full md:border-0 md:pt-0 pt-6 border-t border-t-white flex md:mt-0 mt-12 flex-col justify-between'>
-                                <li className='mb-4 md:mb-7 cursor-pointer active:scale-[0.99] relative rounded-full w-max hover:px-3 py-2 cursor-pointer hover:bg-blue-300 hover:text-blue-700 duration-200'>Geoportal</li>
-                                <li className='mb-4 md:mb-7 cursor-pointer active:scale-[0.99] relative rounded-full w-max hover:px-3 py-2 cursor-pointer hover:bg-blue-300 hover:text-blue-700 duration-200'>Open Data</li>
-                                <li className='mb-4 md:mb-7 cursor-pointer active:scale-[0.99] relative rounded-full w-max hover:px-3 py-2 cursor-pointer hover:bg-blue-300 hover:text-blue-700 duration-200'>Sat0u Data</li>
-                                <li className='cursor-pointer active:scale-[0.99] relative rounded-full w-max hover:px-3 py-2 cursor-pointer hover:bg-blue-300 hover:text-blue-700 duration-200'>Kabupaten Cirebon</li>
+                            <ul className='text-white w-full md:w-[25%] h-full md:border-0 md:pt-0 pt-6 border-t border-t-white flex md:mt-0 mt-12 flex-col justify-between'>
+                                <li className='mb-4 md:mb-12 cursor-pointer active:scale-[0.99] relative rounded-full w-max hover:px-3 py-2 cursor-pointer hover:bg-blue-300 hover:text-blue-700 duration-200'>Geoportal</li>
+                                <li className='mb-4 md:mb-12 cursor-pointer active:scale-[0.99] relative rounded-full w-max hover:px-3 py-2 cursor-pointer hover:bg-blue-300 hover:text-blue-700 duration-200'>Open Data</li>
+                                <li className='mb-4 md:mb-0 cursor-pointer active:scale-[0.99] relative rounded-full w-max hover:px-3 py-2 cursor-pointer hover:bg-blue-300 hover:text-blue-700 duration-200'>Satu Data</li>
                             </ul>
-                            <ul className='text-white w-full md:w-[30%] h-full flex md:mt-0 mt-4 flex-col justify-between'>
-                                <li className='mb-4 md:mb-7 cursor-pointer active:scale-[0.99] relative rounded-full w-max hover:px-3 py-2 cursor-pointer hover:bg-blue-300 hover:text-blue-700 duration-200'>Diskominfo Cirebon</li>
-                                <li className='mb-4 md:mb-7 cursor-pointer active:scale-[0.99] relative rounded-full w-max hover:px-3 py-2 cursor-pointer hover:bg-blue-300 hover:text-blue-700 duration-200'>Berita Cirebon</li>
-                                <li className='mb-4 md:mb-7 cursor-pointer active:scale-[0.99] relative rounded-full w-max hover:px-3 py-2 cursor-pointer hover:bg-blue-300 hover:text-blue-700 duration-200'>Google Map</li>
-                                <li className='cursor-pointer active:scale-[0.99] relative rounded-full w-max hover:px-3 py-2 cursor-pointer hover:bg-blue-300 hover:text-blue-700 duration-200'>Pelayanan Adminidistratif</li>
+                            <ul className='text-white w-full md:w-[25%] h-full flex md:mt-0 mt-4 flex-col justify-between'>
+                                <li className='mb-4 md:mb-12 cursor-pointer active:scale-[0.99] relative rounded-full w-max hover:px-3 py-2 cursor-pointer hover:bg-blue-300 hover:text-blue-700 duration-200'>Diskominfo Cirebon</li>
+                                <li className='mb-4 md:mb-12 cursor-pointer active:scale-[0.99] relative rounded-full w-max hover:px-3 py-2 cursor-pointer hover:bg-blue-300 hover:text-blue-700 duration-200'>Berita Cirebon</li>
+                                <li className='mb-4 cursor-pointer active:scale-[0.99] relative rounded-full w-max hover:px-3 py-2 cursor-pointer hover:bg-blue-300 hover:text-blue-700 duration-200'>Google Map</li>
                             </ul>
                         </div>
                     </footer>

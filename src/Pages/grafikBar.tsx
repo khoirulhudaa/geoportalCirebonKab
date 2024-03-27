@@ -4,11 +4,10 @@ import API from '../Services/service';
 
 interface GrafikProps {
     data?: any[];
-    dinasID?: string;
     titleID?: string;
 }
 
-const Grafik: React.FC<GrafikProps> = ({ data, dinasID, titleID }) => {
+const Grafik: React.FC<GrafikProps> = ({ data, titleID }) => {
     const chartRef2 = useRef<any>(null);
     const contentRef = useRef<any>(null);
     
@@ -53,22 +52,21 @@ const Grafik: React.FC<GrafikProps> = ({ data, dinasID, titleID }) => {
         return [subdistrictNames, subdistrictValues];
     };
     
-    const [subdistrictNames, subdistrictValues] = countSubdistrictData(data?.flatMap(entry => entry.coordinate));
+    const [subdistrictNames, subdistrictValues] = countSubdistrictData(data?.filter((data: any) => data?.title_id === titleID)?.flatMap(entry => entry.coordinate));
 
     useEffect(() => {
         if (data) {
             setDataTitle(
                 data
-                .filter((item:any) => item.dinas_id === dinasID)
+                .filter((item:any) => item.title_id === titleID)
                 .map((item: any) => item.title)
             );
             setDataCoordinate(data.map((item: any) => item.coordinate.length));
         }
-    }, [data, dinasID]);
-    
-    // Chart Data koordinat per-kecamatan
+    }, [data, titleID]);
+
     useEffect(() => {
-        if (dataTitle.length > 0 && dataCoordinate.length > 0) {
+        if (dataTitle?.length > 0 && dataCoordinate?.length > 0) {
             const ctx = chartRef2.current.getContext('2d');
             if (ctx) {
                 // Hancurkan chart yang ada jika sudah ada
@@ -132,7 +130,7 @@ const Grafik: React.FC<GrafikProps> = ({ data, dinasID, titleID }) => {
                                 Kecamatan
                             </th>
                             <th scope="col" className="py-6">
-                                JUmlah
+                                Jumlah
                             </th>
                         </tr>
                     </thead>

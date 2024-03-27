@@ -6,7 +6,7 @@ import markerShadowUrl from 'leaflet/dist/images/marker-shadow.png';
 import 'leaflet/dist/leaflet.css';
 import React, { useEffect, useRef, useState } from "react";
 import ReactDOMServer from 'react-dom/server';
-import { FaBuilding, FaCameraRetro, FaEye, FaEyeSlash, FaFileExport, FaGoogle, FaGripLines, FaIcons, FaTextHeight, FaTimes, FaUpload, FaVectorSquare } from 'react-icons/fa';
+import { FaBuilding, FaCameraRetro, FaEye, FaEyeSlash, FaFileExport, FaGoogle, FaGripLines, FaIcons, FaTextHeight, FaVectorSquare } from 'react-icons/fa';
 import { MapContainer, Marker, Polygon, Polyline, Popup, TileLayer, Tooltip, useMapEvent } from "react-leaflet";
 import { useDispatch, useSelector } from 'react-redux';
 import * as XLSX from 'xlsx';
@@ -2113,10 +2113,8 @@ const Map: React.FC<mapProps> = ({
       <div className="w-max z-[444] flex items-center h-[68px] py-[14px] pl-4 rounded-bl-[32px] absolute top-0 right-2">
         <div className={`w-max ${activeClick ? 'hidden' : 'flex'} items-center top-4 mr-3`}>
           <div title='Kotak area koordinat' onClick={() => subdistrictDots ? null : setActiveArea(!activeArea)} className={`${activeArea ? 'bg-green-200' : 'bg-white'} ${subdistrictDots ? 'cursor-not-allowed bg-red-400 before:absolute before:h-[50px] before:w-[3px] before:rotate-[40deg] before:bg-red-400 text-slate-400' : 'cursor-pointer active:scale-[0.98] hover:bg-green-200'} z-[22222] w-max h-max px-4 py-2 flex items-center justify-center text-center rounded-full text-[16px] border border-slate-700 top-4 right-4`}>Area titik <FaVectorSquare className="ml-3" /></div>
+          <div onClick={() => exportToGeoJSON()} className={`bg-white hover:bg-green-200 cursor-pointer active:scale-[0.98] z-[22222] w-max h-max px-4 ml-4 py-2 flex items-center justify-center text-center rounded-full text-[16px] border border-slate-700 top-4`}>GeoJSON <FaFileExport className="ml-3" /></div>
           <div title='Bukan google map' className="flex items-center top-4 mr-3">
-            <a href="https://www.google.com/maps/place/Cirebon,+Kota+Cirebon,+Jawa+Barat/@-6.7428609,108.5128389,13z/data=!3m1!4b1!4m15!1m8!3m7!1s0x2e6f1d0f69dbc5d5:0x301e8f1fc28ba20!2sKabupaten+Cirebon,+Jawa+Barat!3b1!8m2!3d-6.6898876!4d108.4750846!16zL20vMGdjN3h6!3m5!1s0x2e6ee2649e6e5bbb:0x70a07638a7fe12fe!8m2!3d-6.7320229!4d108.5523164!16s%2Fg%2F11bc5j9s76?entry=ttu" target='__blank'>
-              <div title='Google map' className="ml-4 cursor-pointer active:scale-[0.98] hover:bg-green-200 z-[22222] w-[45px] h-[45px] px-2 py-2 flex items-center justify-center text-center bg-white rounded-full text-[16px] border border-slate-700 right-0 top-20"><FaGoogle /></div>
-            </a>
             <div title='Lihat garis antar koordinat' onClick={() => setActiveLineMarker(!activeLineMarker)} className={`${activeLineMarker ? 'bg-green-200' : 'bg-white'} ml-4 cursor-pointer active:scale-[0.98] hover:bg-green-200 z-[22222] w-[45px] h-[45px] px-2 py-2 flex items-center justify-center text-center rounded-full text-[16px] border border-slate-700 right-0 top-36`}><FaGripLines /></div>
             <div title='Layar tinggi penuh' onClick={() => handleHeight()} className={`${height ? 'bg-green-200' : 'bg-white'} ml-4 cursor-pointer active:scale-[0.98] hover:bg-green-200 z-[22222] w-[45px] h-[45px] px-2 py-2 flex items-center justify-center text-center rounded-full text-[16px] border border-slate-700 right-0 top-36`}><FaTextHeight /></div>
           </div>
@@ -2142,25 +2140,13 @@ const Map: React.FC<mapProps> = ({
       
       <div className='absolute right-2 pl-7 bottom-4 w-full flex items-center justify-between'>
         <div className='w-max flex items-center'>
-          {
-            nameFile !== '' ? (
-              <div className="z-[552] w-[180px] h-max px-4 py-2 flex items-center justify-center text-center bg-green-200 rounded-full text-[16px] border border-slate-700 bottom-4 left-4">
-                <p className='max-w-full overflow-hidden overflow-ellipsis whitespace-nowrap'>
-                  { nameFile }
-                </p>
-                <FaTimes onClick={() => {setExcelData([]), setNameFile('')}} className='text-red-500 cursor-pointer hover:brightness-[80%] active:scale-[0.9]' />
-              </div>
-            ):
-              null
-          }
-          <div className={`z-[552] ${nameFile ? 'ml-3' : 'ml-0'} w-max h-max px-4 py-2 flex items-center justify-center text-center bg-white rounded-full text-[16px] border border-slate-700 bottom-4`}>{ currentPosition?.[0].toFixed(6) + `  |  ` + currentPosition?.[1].toFixed(6) ?? 0 }</div>
+          <div className={`z-[552] ml-0 w-max h-max px-4 py-2 flex items-center justify-center text-center bg-white rounded-full text-[16px] border border-slate-700 bottom-4`}>{ currentPosition?.[0].toFixed(6) + `  |  ` + currentPosition?.[1].toFixed(6) ?? 0 }</div>
         </div>
         <div className={`w-max ${activeClick ? 'hidden' : 'flex'} items-center`}>
           <div title='Kantor kecataman' onClick={() => setSubdistrictDots(!subdistrictDots)} className={`${subdistrictDots ? 'bg-green-200' : 'bg-white'} mr-3 hover:bg-green-200 cursor-pointer active:scale-[0.98] z-[22222] w-[40px] h-[40px] py-2 flex items-center justify-center text-center rounded-full text-[16px] border border-slate-700 top-4`}><FaBuilding /></div>
           <div title='Lihat semua koordinat' onClick={() => handleShowAll()} className={`${showAll ? 'bg-green-200' : 'bg-white'} mr-3 hover:bg-green-200 cursor-pointer active:scale-[0.98] z-[22222] w-[40px] h-[40px] py-2 flex items-center justify-center text-center rounded-full text-[16px] border border-slate-700 top-4`}>{showAll ? <FaEyeSlash /> : <FaEye />}</div>
-          <div onClick={() => exportToGeoJSON()} className={`bg-white mr-3 hover:bg-green-200 cursor-pointer active:scale-[0.98] z-[22222] w-max h-max px-4 py-2 flex items-center justify-center text-center rounded-full text-[16px] border border-slate-700 top-4`}>GeoJSON <FaFileExport className="ml-3" /></div>
+          <div title='Ambil gambar peta' onClick={() => window.location.href = 'https://www.google.com/maps/place/Cirebon,+Kota+Cirebon,+Jawa+Barat/@-6.7428609,108.5128389,13z/data=!3m1!4b1!4m15!1m8!3m7!1s0x2e6f1d0f69dbc5d5:0x301e8f1fc28ba20!2sKabupaten+Cirebon,+Jawa+Barat!3b1!8m2!3d-6.6898876!4d108.4750846!16zL20vMGdjN3h6!3m5!1s0x2e6ee2649e6e5bbb:0x70a07638a7fe12fe!8m2!3d-6.7320229!4d108.5523164!16s%2Fg%2F11bc5j9s76?entry=ttu'} className={`z-[33333] active:bg-green-200 bg-white mr-3 hover:brightness-[90%] cursor-pointer active:scale-[0.98] z-[22222] w-[40px] h-[40px] py-2 flex items-center justify-center text-center rounded-full text-[16px] border border-slate-700 top-4`}><FaGoogle /></div>
           <div title='Ambil gambar peta' onClick={() => downloadImage()} className={`z-[33333] active:bg-green-200 bg-white mr-3 hover:brightness-[90%] cursor-pointer active:scale-[0.98] z-[22222] w-[40px] h-[40px] py-2 flex items-center justify-center text-center rounded-full text-[16px] border border-slate-700 top-4`}><FaCameraRetro /></div>
-          <div title='Upload excel' onClick={() => setActiveUploadExcel(!activeUploadExcel)} className={`z-[3333333333333333] active:bg-green-200 bg-white mr-3 hover:brightness-[90%] cursor-pointer active:scale-[0.98] z-[22222] w-[40px] h-[40px] py-2 flex items-center justify-center text-center rounded-full text-[16px] border border-slate-700 top-4`}><FaUpload /></div>
         </div>
       </div>
       
