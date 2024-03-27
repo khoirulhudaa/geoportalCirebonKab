@@ -674,22 +674,22 @@ const Homepage: React.FC = () => {
                                                     <>
                                                         {
                                                             listGeoData
-                                                            ?.slice(currentPage * totalPage, (currentPage + 1) * totalPage)
-                                                            .filter((data: any) => {
+                                                            ?.filter((data: any) => {
+                                                                // If a search term is present, filter by it
+                                                                if (search && search !== '') {
+                                                                    return data?.title.toLowerCase().includes(search.toLowerCase());
+                                                                }
+                                                
                                                                 // If no checkboxes are checked, return all data
                                                                 if (Object.values(checkedDinas).every((val: any) => !val)) {
                                                                     return true;
                                                                 }
+                                                
                                                                 // Otherwise, return only items that match checked checkboxes
                                                                 const matchesCheckedDinas = Object.keys(checkedDinas).some((key) => checkedDinas[key as keyof typeof checkedDinas] && data?.name_dinas === key);
-                                                            
-                                                                // If a search term is present, filter by it
-                                                                if (search && search !== '') {
-                                                                    return data?.title.toLowerCase().includes(search.toLowerCase()) && matchesCheckedDinas;
-                                                                }
-                                                                // If no search term is present, return items that match checked checkboxes
                                                                 return matchesCheckedDinas;
                                                             })
+                                                            ?.slice(currentPage * totalPage, (currentPage + 1) * totalPage)
                                                             .map((data: any, index: number) => (
                                                                 <div key={index} className='w-full min-h-[180px] my-3 shadow-lg border border-blue-500 border-dashed rounded-[12px] bg-white show-lg p-5'>
                                                                     <div className='w-full h-[50%] flex items-center justify-between overflow-hidden text-left rounded-[8px]'>
