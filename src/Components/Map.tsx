@@ -2207,6 +2207,10 @@ const Map: React.FC<mapProps> = ({
                         <p className='text-center mt-[-10px]'>
                           {marker.name_location}
                         </p>
+                        <hr />
+                        <p className='text-center mt-[-10px]'>
+                          {marker?.address ?? 'Alamat tidak tersedia'}
+                        </p>
                       </Popup>
                     }
                   <Tooltip sticky>{(subdistrictDots ? marker.name_subdistrict : marker.name_location)}</Tooltip> {/* Label hanya muncul saat hover */}

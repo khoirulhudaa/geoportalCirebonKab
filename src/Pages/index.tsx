@@ -720,7 +720,7 @@ const Homepage: React.FC = () => {
                                                                     </p>
                                                                     <div className="w-full flex items-center">
                                                                         <div className='rounded-full w-max h-max px-4 py-2 flex items-center justify-center mt-5 bg-red-200 text-red-600 text-[12px]'>
-                                                                            <FaMapMarkerAlt className='mr-2' /> {data?.coordinate?.length ?? 0} <span className="md:flex hidden">Lokasi/koordinat</span>
+                                                                            <FaMapMarkerAlt className='mr-2' /> {data?.coordinate?.length ?? 0} <span className="md:flex hidden ml-1">Lokasi/koordinat</span>
                                                                         </div>
                                                                         <div className='rounded-full w-max h-max px-4 py-2 flex items-center ml-3 justify-center mt-5 bg-yellow-200 text-yellow-600 text-[12px]'>
                                                                             {data?.category === 'Koordinat' ? <FaDotCircle className='mr-2' /> : data?.category === 'Polygon' ? <FaDrawPolygon className='mr-2' /> : <FaBezierCurve className='mr-2' />} {data?.category ?? '-'}
