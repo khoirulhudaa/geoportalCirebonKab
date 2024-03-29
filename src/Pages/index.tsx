@@ -103,7 +103,7 @@ const Homepage: React.FC = () => {
 
         const getCoordinate = () => {
             let coordinateList: any = [];
-            coordinateList = allTitle?.flatMap(entry => entry.coordinate)
+            coordinateList = allTitle?.filter((data: any) => data?.title_id === titleID)?.flatMap(entry => entry.coordinate)
             return coordinateList;
         }
     
@@ -168,7 +168,7 @@ const Homepage: React.FC = () => {
         const doc = new jsPDF() as any;
         const getCoordinate = () => {
             let coordinateList: any = [];
-            coordinateList = allTitle?.flatMap(entry => entry.coordinate)
+            coordinateList = allTitle?.filter((data: any) => data?.title_id === titleID)?.flatMap(entry => entry.coordinate)
             return coordinateList;
         }
     
@@ -428,7 +428,7 @@ const Homepage: React.FC = () => {
                 dinasID !== '' && titleID !== '' ? (
                     <div className={`w-[90%] mx-auto ${activeHeight ? 'mt-[-120px] opacity-0' : 'mt-0 opacity-1'} flex duration-200 ease py-8 items-center justify-between`}>
                         <div className='w-[40%] flex items-center'>
-                            <div onClick={() => handleClear()} className="w-[50px] h-[40px] text-black text-[20px] font-normal rounded-[10px] flex items-center justify-center cursor-pointer hover:brightness-[90%] active:scale-[0.98] mr-3">
+                            <div onClick={() => handleClear()} className="w-[50px] h-[40px] bg-blue-600 text-white text-[20px] font-normal rounded-[10px] flex items-center justify-center cursor-pointer hover:brightness-[90%] active:scale-[0.98] mr-3">
                                 <FaArrowLeft />
                             </div>
                             <h2 className='w-full overflow-hidden overflow-ellipsis whitespace-nowrap items-center text-[21px]' title={selectTitle !== '' ? selectTitle : 'Data Geospasial Kabupaten Cirebon 🗺️'}>{selectTitle !== '' ? selectTitle : 'Data Geospasial Kabupaten Cirebon 🗺️'}</h2>
@@ -547,7 +547,7 @@ const Homepage: React.FC = () => {
                     ):
                     <>
                         <div className='w-[90%] flex mx-auto items-center mt-8 justify-between'>
-                            <div className='w-full mx-auto flex items-center'>
+                            <div className='w-[80%] mx-auto flex items-center'>
                                 <div className='md:w-[50%] h-[50px] rounded-[8px] bg-white border border-blue-600 outline-0 p-2 shadow-md text-black'>
                                     <select name='selectTypeChart' value={selectTypeChart} onChange={(e: any) => setSelectTypeChart(e.target.value)} className='w-full bg-white h-full border-0 outline-0 text-black'>
                                         <option className='text-black' value="Pilih Tampilan Chart" disabled={true}>Pilih Tampilan Chart</option>   
@@ -556,16 +556,20 @@ const Homepage: React.FC = () => {
                                     </select>
                                 </div>
                             </div>
-                            <div className='w-max flex items-center'>
-                                <button onClick={() => exportToPDF()} className='border-0 outline-0 active:scale-[0.98] hover:brightness-[90%] rounded-[10px] flex items-center bg-red-600 cursor-pointer text-white px-12 py-3'>PDF <FaFilePdf className='ml-3' /></button>
+                            <div className='w-[20%] flex justify-end mr-1 items-center'>
+                                <p>
+                                    Jumlah data : <b>{allTitle?.filter((data: any) => data?.title_id === titleID)?.flatMap((entry: any) => entry?.coordinate)?.length}</b>
+                                </p>
                             </div>
                         </div>    
-                        {
-                            selectTypeChart === 'pie' ? (
-                                <GrafikPie titleID={titleID ?? ''} />
-                            ):  
-                                <Grafik data={allTitle ?? []} titleID={titleID ?? ''} />
-                        }
+                        <div className="pb-14">
+                            {
+                                selectTypeChart === 'pie' ? (
+                                    <GrafikPie titleID={titleID ?? ''} />
+                                ):  
+                                    <Grafik data={allTitle ?? []} titleID={titleID ?? ''} />
+                            }
+                        </div>
                     </>
                 ):
                 <>
@@ -574,7 +578,7 @@ const Homepage: React.FC = () => {
                     </div>
                     {/* Hero Component */}
 
-                    <section id="home" className='relative w-full border-b-[3px] border-t-[3px] border border-blue-300 h-max md:h-[90vh] overflow-hidden flex justify-center items-center bg-blue-800 p-12'>
+                    <section id="home" className='relative w-full border-b-[3px] border-t-[3px] border border-blue-300 h-max md:h-[96vh] overflow-hidden flex justify-center items-center bg-blue-800 p-12'>
                         <img src={Square} alt="square" loading="lazy" className='absolute opacity-[1] w-[40%] left-0 top-0' />
                         <img src={Square} alt="square" loading="lazy" className='absolute opacity-[1] w-[40%] left-[30%] top-0' />
                         <img src={Square} alt="square" loading="lazy" className='absolute opacity-[1] w-[40%] left-[45%] bottom-[-80px]' />

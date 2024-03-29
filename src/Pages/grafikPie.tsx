@@ -27,7 +27,7 @@ const GrafikPie: React.FC<{titleID: string}> = ({titleID}) => {
     }, [])
 
   return (
-     <div className='w-[90%] mx-auto bg-white rounded-[20px] mt-8 h-max flex'>
+     <div className='w-[90%] mx-auto bg-white border-[2px] border-blue-500 border-dashed rounded-[20px] mt-8 h-max flex'>
         <div className='relative overflow-hidden w-[60%] flex justify-center items-center h-max left-[-20px]'>
             {
                 dataChart && dataChart?.length > 0 ? (

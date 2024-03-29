@@ -114,7 +114,7 @@ const Grafik: React.FC<GrafikProps> = ({ data, titleID }) => {
     }, [subdistrictNames, subdistrictValues]);
   
     return (
-        <div className='w-[90%] mx-auto bg-white rounded-[20px] mt-8 h-max flex justify-center'>
+        <div className='w-[90%] mx-auto bg-white border-[2px] border-blue-500 border-dashed rounded-[20px] mt-8 h-max flex justify-center'>
             <div className='relative overflow-hidden w-[60%] flex py-7 justify-center items-center h-max'>
                 <div className='flex mx-auto items-center flex-col h-max w-full' ref={contentRef}>
                     <div className='flex flex-col w-[90%] items-center mx-auto h-max'>
