@@ -922,7 +922,7 @@ const Homepage: React.FC = () => {
                             <ul className='text-white w-full md:w-[25%] h-full flex md:mt-0 mt-4 flex-col justify-between'>
                                 <li className='mb-4 md:mb-12 cursor-pointer active:scale-[0.99] relative rounded-full w-max hover:px-3 py-2 cursor-pointer hover:bg-blue-300 hover:text-blue-700 duration-200'>Diskominfo Cirebon</li>
                                 <li className='mb-4 md:mb-12 cursor-pointer active:scale-[0.99] relative rounded-full w-max hover:px-3 py-2 cursor-pointer hover:bg-blue-300 hover:text-blue-700 duration-200'>Berita Cirebon</li>
-                                <li className='mb-4 cursor-pointer active:scale-[0.99] relative rounded-full w-max hover:px-3 py-2 cursor-pointer hover:bg-blue-300 hover:text-blue-700 duration-200'>Google Map</li>
+                                <li className='mb-4 md:mb-0 cursor-pointer active:scale-[0.99] relative rounded-full w-max hover:px-3 py-2 cursor-pointer hover:bg-blue-300 hover:text-blue-700 duration-200'>Google Map</li>
                             </ul>
                         </div>
                     </footer>

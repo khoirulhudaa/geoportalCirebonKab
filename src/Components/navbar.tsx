@@ -25,38 +25,38 @@ const Navbar: React.FC<NavbarProps> = ({ handleClear }) => {
           <FaTimes />
         </div>
         <ul className='mt-12'>
-            <a href="#home">
+            <a href="#home" onClick={() => handleClear()}>
               <li className='mb-10 border-b border-slate-500 pb-5 font-medium text-slate-500 hover:text-blue-500 cursor-pointer active:scale-[0.98] text-[15px]'>Homepage</li>
             </a>
-            <a href="#daftar">
+            <a href="#daftar" onClick={() => handleClear()}>
               <li className='mb-10 border-b border-slate-500 pb-5 font-medium text-slate-500 hover:text-blue-500 cursor-pointer active:scale-[0.98] text-[15px]'>Daftar geospasial</li>
             </a>
-            <a href="#API">
+            <a href="#API" onClick={() => handleClear()}>
               <li className='mb-10 border-b border-slate-500 pb-5 font-medium text-slate-500 hover:text-blue-500 cursor-pointer active:scale-[0.98] text-[15px]'>API Geopasial</li>
             </a>
-            <a href="https://opendata.cirebonkab.go.id/" target='__blank'>
+            <a href="https://opendata.cirebonkab.go.id/" target='__blank' onClick={() => handleClear()}>
               <li className='mb-10 border-b border-slate-500 pb-5 font-medium text-slate-500 hover:text-blue-500 cursor-pointer active:scale-[0.98] text-[15px]'>Open Data</li>
             </a>
-            <a href="#masukan">
+            <a href="#masukan" onClick={() => handleClear()}>
               <li className='mb-10 border-b border-slate-500 pb-5 font-medium text-slate-500 hover:text-blue-500 cursor-pointer active:scale-[0.98] text-[15px]'>Masukan & Saran</li>
             </a>
           </ul>
       </div>
       <div className='w-[80%] md:flex hidden'>
         <ul className='flex items-center ml-auto justify-end'>
-            <a href="#home">
+            <a href="#home" onClick={() => handleClear()}>
               <li className='md:mr-12 font-medium text-slate-500 hover:text-blue-500 cursor-pointer active:scale-[0.98] text-[15px]'>Homepage</li>
             </a>
-            <a href="#daftar">
+            <a href="#daftar" onClick={() => handleClear()}>
               <li className='md:mr-12 font-medium text-slate-500 hover:text-blue-500 cursor-pointer active:scale-[0.98] text-[15px]'>Daftar geospasial</li>
             </a>
-            <a href="#API">
+            <a href="#API" onClick={() => handleClear()}>
               <li className='md:mr-12 font-medium text-slate-500 hover:text-blue-500 cursor-pointer active:scale-[0.98] text-[15px]'>API Geopasial</li>
             </a>
-            <a href="https://opendata.cirebonkab.go.id/" target='__blank'>
+            <a href="https://opendata.cirebonkab.go.id/" target='__blank' onClick={() => handleClear()}>
               <li className='md:mr-12 font-medium text-slate-500 hover:text-blue-500 cursor-pointer active:scale-[0.98] text-[15px]'>Open Data Kab. Cirebon</li>
             </a>
-            <a href="#masukan">
+            <a href="#masukan" onClick={() => handleClear()}>
               <li className='md:mr-12 font-medium text-slate-500 hover:text-blue-500 cursor-pointer active:scale-[0.98] text-[15px]'>Masukan & Saran</li>
             </a>
         </ul>
