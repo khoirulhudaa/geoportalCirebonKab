@@ -41,7 +41,9 @@ export interface mapProps {
     width?: boolean;
     search?: string;
     handleShowAll?: any;
+    showMap?: boolean;
     showAll?: boolean;
+    searchLocation?: string;
     dataSubdistrict?: any;
     name?: string;
     color?: string;

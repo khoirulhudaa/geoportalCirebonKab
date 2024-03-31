@@ -1,7 +1,7 @@
 import copy from "copy-to-clipboard";
 import jsPDF from 'jspdf';
 import React, { RefObject, useEffect, useRef, useState } from 'react';
-import { FaArrowLeft, FaArrowRight, FaBezierCurve, FaBuilding, FaCalendarAlt, FaChevronDown, FaClock, FaCopy, FaDotCircle, FaDrawPolygon, FaFileExcel, FaFilePdf, FaMapMarkerAlt, FaTimes } from 'react-icons/fa';
+import { FaArrowLeft, FaArrowRight, FaBezierCurve, FaBuilding, FaCalendarAlt, FaChevronDown, FaClock, FaCopy, FaDotCircle, FaDrawPolygon, FaEye, FaEyeSlash, FaFileExcel, FaFilePdf, FaMapMarkerAlt, FaTimes } from 'react-icons/fa';
 import * as XLSX from 'xlsx';
 import { Map, Subdistrict } from '../Components';
 import FormGroup from "../Components/FormGroup";
@@ -22,6 +22,7 @@ const Homepage: React.FC = () => {
     const [status, setStatus] = useState<boolean>(false)
     const [activeHeight, setActiveHeight] = useState<boolean>(false)
     const [showAll, setShowAll] = useState<boolean>(false)
+    const [showMap, setShowMap] = useState<boolean>(true)
     const [activePage, setActivePage] = useState<string>('')
     const [dinasID, setDinasID] = useState<string>('')
     const [titleID, setTitleID] = useState<string>('')
@@ -35,6 +36,7 @@ const Homepage: React.FC = () => {
     const [selectTypeChart, setSelectTypeChart] = useState<string>('pie')
     const [activeAPI, setActiveAPI] = useState<boolean>(false)
     const [selectAPI, setSelectAPI] = useState<string>('')
+    const [searchLocation, setSearchLocation] = useState<string>('')
     const [checkedDinas, setCheckedDinas] = useState<any>({});
     const [searchDinas, setSearchDinas] = useState<string>('');
     const [activeListDinas, setActiveListDinas] = useState<boolean>(true);
@@ -462,8 +464,23 @@ const Homepage: React.FC = () => {
                 dinasID && titleID !== '' ? (
                     activePage === '' || activePage === 'peta' ? (
                         <div className='w-[90%] mx-auto mb-14 h-max'>
-                            <div className='w-full mt-8 h-max border-[1px] border-black ease duration-200 rounded-[16px] overflow-hidden mx-auto overflow-hidden'>
-                                <Map customData={custom} dataSubdistrict={allSubdistrict} handleShowAll={() => setShowAll(!showAll)} showAll={showAll} search={search} height={activeHeight} handleHeight={() => setActiveHeight(!activeHeight)} ref={mapRef} data={!showAll ? allTitle?.filter((data: any) => data?.title_id === titleID) : allTitle?.filter((data: any) => data?.dinas_id === dinasID) ?? []} line={line} />
+
+                            <div className="mt-5 flex items-center justify-between md:justify-between space-y-4 md:space-y-0 dark:bg-gray-900">
+                                <div className="relative w-full flex items-center justify-between">
+                                    <div className="absolute inset-y-0 rtl:inset-r-0 start-0 flex items-center ps-3 pointer-events-none">
+                                        <svg className="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                                            <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
+                                        </svg>
+                                    </div>
+                                    <input type="text" name='searchSubdistrict' value={searchLocation} onChange={(e: any) => setSearchLocation(e.target.value)} id="search" className="outline-0 block px-2 py-3 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-[40%] bg-white focus:ring-blue-500 focus:border-blue-500" placeholder="Cari kecamatan...." />
+                                </div>
+                                <div className='w-max flex items-center'>
+                                    <button onClick={() => setShowMap(!showMap)} className='border-0 outline-0 active:scale-[0.98] hover:brightness-[90%] rounded-[10px] flex w-[170px] text-center justify-center items-center bg-white cursor-pointer text-black px-6 py-3'>{showMap ? 'Tutup Peta' : 'Lihat Peta' } {showMap ? <FaEyeSlash className="ml-3" /> : <FaEye className="ml-3" />}</button>
+                                </div>
+                            </div>
+
+                            <div className={`w-full mt-8 duration-200 ${showMap ? 'h-max' : 'h-[0px]'} border-[1px] border-black ease duration-200 rounded-[16px] overflow-hidden mx-auto overflow-hidden`}>
+                                <Map showMap={showMap} searchLocation={searchLocation ?? ''} customData={custom} dataSubdistrict={allSubdistrict} handleShowAll={() => setShowAll(!showAll)} showAll={showAll} search={search} height={activeHeight} handleHeight={() => setActiveHeight(!activeHeight)} ref={mapRef} data={!showAll ? allTitle?.filter((data: any) => data?.title_id === titleID) : allTitle?.filter((data: any) => data?.dinas_id === dinasID) ?? []} line={line} />
                             </div>
 
                             <div className="flex items-center justify-between flex-column mt-12 flex-wrap md:flex-row space-y-4 md:space-y-0 pb-4 dark:bg-gray-900">
