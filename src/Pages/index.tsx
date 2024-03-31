@@ -664,94 +664,125 @@ const Homepage: React.FC = () => {
                                         </div>
                                         <div className='flex flex-col my-2 w-full'>
                                             {
-                                                allDinas && allDinas?.length > 0 ? (
-                                                    allDinas?.filter((data: any) => {
-                                                        if(searchDinas !== '') {
-                                                            return (data?.name_dinas).toLowerCase().includes(searchDinas.toLowerCase())
+                                            allDinas && allDinas.length > 0 ? (
+                                                (() => {
+                                                    // Lakukan filter terlebih dahulu
+                                                    const filteredDinas = allDinas?.filter((data: any) => {
+                                                        if (searchDinas !== '') {
+                                                            return data?.name_dinas.toLowerCase().includes(searchDinas.toLowerCase());
                                                         }
-                                                        return true
-                                                    })
-                                                    .map((data: any, index: number) => (
-                                                        <div key={index} className="w-full inline-flex items-center mb-6">
-                                                            <div className='w-[10%]'>
-                                                                <input type="checkbox" name={data?.name_dinas} checked={checkedDinas[data?.name_dinas as keyof typeof checkedDinas] || false} onChange={handleCheckboxChange} value={data?.name_dinas} className="scale-[1.6] outline-0 p-1 rounded-[20px] overflow-hidden mr-3 rounded-lg"/>
+                                                        return true;
+                                                    });
+
+                                                    // Periksa apakah hasil filter tidak mengandung data
+                                                    if (filteredDinas.length > 0) {
+                                                        return filteredDinas.map((data: any, index: number) => (
+                                                            <div key={index} className="w-full inline-flex items-center mb-6">
+                                                                <div className='w-[10%]'>
+                                                                    <input type="checkbox" name={data?.name_dinas} checked={checkedDinas[data?.name_dinas as keyof typeof checkedDinas] || false} onChange={handleCheckboxChange} value={data?.name_dinas} className="scale-[1.6] outline-0 p-1 rounded-[20px] overflow-hidden mr-3 rounded-lg"/>
+                                                                </div>
+                                                                <div className='w-[90%]'>
+                                                                    <p>{data?.name_dinas}</p>
+                                                                </div>
                                                             </div>
-                                                            <div className='w-[90%]'>
-                                                                <p>{data?.name_dinas}</p>
+                                                        ));
+                                                    } else {
+                                                        return (
+                                                            <div className="w-full h-max flex items-center justify-center py-6 border border-dashed border-blue-500 rounded-[10px] mb-4">
+                                                                <p>Dinas Tidak Tersedia</p>
                                                             </div>
-                                                        </div>
-                                                    ))
-                                                ):
-                                                    <p>Dinas Tidak tersedia</p>
-                                            }
+                                                        )
+                                                    }
+                                                })()
+                                            ) : (
+                                                <p>Dinas Tidak Tersedia</p>
+                                            )
+                                        }
                                         </div>
                                     </div>
                                     <div className='w-[94vw] md:w-[70%] mx-auto md:mx-0 md:px-4'>
                                         <div className='relative mb-5 z-[44] w-full h-max flex flex-col'>
-                                            {
-                                                listGeoData?.length > 0 ? (
-                                                    <>
-                                                        {
-                                                            listGeoData
-                                                            ?.filter((data: any) => {
-                                                                // If a search term is present, filter by it
-                                                                if (search && search !== '') {
-                                                                    return data?.title.toLowerCase().includes(search.toLowerCase());
-                                                                }
-                                                
-                                                                // If no checkboxes are checked, return all data
-                                                                if (Object.values(checkedDinas).every((val: any) => !val)) {
-                                                                    return true;
-                                                                }
-                                                
-                                                                // Otherwise, return only items that match checked checkboxes
-                                                                const matchesCheckedDinas = Object.keys(checkedDinas).some((key) => checkedDinas[key as keyof typeof checkedDinas] && data?.name_dinas === key);
-                                                                return matchesCheckedDinas;
-                                                            })
-                                                            ?.slice(currentPage * totalPage, (currentPage + 1) * totalPage)
-                                                            .map((data: any, index: number) => (
-                                                                <div key={index} className='w-full min-h-[180px] my-3 shadow-lg border border-blue-500 border-dashed rounded-[12px] bg-white show-lg p-5'>
-                                                                    <div className='w-full h-[50%] flex items-center justify-between overflow-hidden text-left rounded-[8px]'>
-                                                                        <h3 onClick={() => {setDinasID(data?.dinas_id), setTitleID(data?.title_id), setSelectTitle(data?.title), window.scrollTo(0, 0)}} className='text-[18px] cursor-pointer hover:text-blue-600 active:scale-[0.99] underline font-[500]'>
-                                                                            {data?.title}
-                                                                        </h3>
-                                                                        <div className='rounded-[10px] text-[12px] w-max h-max px-4 py-2 hidden md:flex items-center justify-center bg-green-600 text-white mr-4'>
-                                                                            {data?.type ?? 'Public'}
-                                                                        </div>
-                                                                    </div>
-                                                                    <div className='w-full flex flex-wrap mt-3 items-center'>
-                                                                        <div className='rounded-full md:mb-0 mb-3 w-max h-max px-4 py-2 flex items-center justify-center bg-slate-200 text-slate-500 mr-3'>
-                                                                            <FaCalendarAlt className='mr-2' /> {data?.year ?? new Date().getFullYear()}
-                                                                        </div>
-                                                                        <div className={`rounded-full md:mb-0 mb-3 w-max h-max px-4 py-2 flex items-center justify-center ${data?.status === 'Sementara' ? 'bg-green-200' : 'bg-green-500 text-white'} text-green-600 mr-4`}>
-                                                                            <FaClock className='mr-2' /> {data?.status ?? 'Tidak ber-status'}
-                                                                        </div>
-                                                                        <div className='rounded-full md:mb-0 mb-3 max-w-[56%] h-max px-4 py-2 flex items-center justify-center bg-blue-200 text-blue-600 mr-4'>
-                                                                            <FaBuilding className='mr-2' /> 
-                                                                            <p className='max-w-full overflow-hidden overflow-ellipsis whitespace-nowrap'>
-                                                                                {data?.name_dinas ?? 'Tidak ada dinas'}
-                                                                            </p>
-                                                                        </div>
-                                                                    </div>
-                                                                    <hr className='mt-4' />
-                                                                    <p className='text-[14px] w-full md:w-[96%] overflow-hidden leading-[1.6em] text-slate-600 mt-4 text-left'>
-                                                                        {data?.description ?? 'Deskripsi belum tersedia.'}
-                                                                    </p>
-                                                                    <div className="w-full flex items-center">
-                                                                        <div className='rounded-full w-max h-max px-4 py-2 flex items-center justify-center mt-5 bg-red-200 text-red-600 text-[12px]'>
-                                                                            <FaMapMarkerAlt className='mr-2' /> {data?.coordinate?.length ?? 0} <span className="md:flex hidden ml-1">Lokasi/koordinat</span>
-                                                                        </div>
-                                                                        <div className='rounded-full w-max h-max px-4 py-2 flex items-center ml-3 justify-center mt-5 bg-yellow-200 text-yellow-600 text-[12px]'>
-                                                                            {data?.category === 'Koordinat' ? <FaDotCircle className='mr-2' /> : data?.category === 'Polygon' ? <FaDrawPolygon className='mr-2' /> : <FaBezierCurve className='mr-2' />} {data?.category ?? '-'}
-                                                                        </div>
+                                        {
+                                            listGeoData && listGeoData.length > 0 ? (
+                                                (() => {
+                                                    const filteredData = listGeoData.filter((data: any) => {
+                                                        // Filter logic here
+                                                        if (search && search !== '') {
+                                                            return data?.title.toLowerCase().includes(search.toLowerCase());
+                                                        }
+                                                        if (Object.values(checkedDinas).every((val: any) => !val)) {
+                                                            return true;
+                                                        }
+                                                        const matchesCheckedDinas = Object.keys(checkedDinas).some((key) => checkedDinas[key as keyof typeof checkedDinas] && data?.name_dinas === key);
+                                                        return matchesCheckedDinas;
+                                                    });
+
+                                                    if (filteredData.length === 0 && (search !== '' || checkedDinas)) {
+                                                        return (
+                                                            <div className="w-full h-[500px] flex items-center justify-center bg-white rounded-[10px] mt-3 border border-dashed border-blue-700">
+                                                                <p>Data Tidak Tersedia</p>
+                                                            </div>
+                                                        );
+                                                    }
+
+                                                    return (search !== '' || checkedDinas ? filteredData : listGeoData)
+                                                        .slice(currentPage * totalPage, (currentPage + 1) * totalPage)
+                                                        .sort((a: any, b: any) => {
+                                                            // Pastikan a.created_at dan b.created_at adalah tanggal yang valid sebelum membandingkannya
+                                                            const dateA: any = new Date(a?.created_at);
+                                                            const dateB: any = new Date(b?.created_at);
+                                                        
+                                                            // Periksa apakah dateA dan dateB adalah tanggal yang valid
+                                                            if (isNaN(dateA.getTime()) || isNaN(dateB.getTime())) {
+                                                                // Tanggal tidak valid, kembalikan 0 (tidak ada perubahan urutan)
+                                                                return 0;
+                                                            }
+                                                        
+                                                            // Urutkan berdasarkan tanggal pembuatan terbaru
+                                                            return dateB - dateA;
+                                                        })
+                                                        .map((data: any, index: number) => (
+                                                            <div key={index} className='w-full min-h-[180px] my-3 shadow-lg border border-blue-500 border-dashed rounded-[12px] bg-white show-lg p-5'>
+                                                                <div className='w-full h-[50%] flex items-center justify-between overflow-hidden text-left rounded-[8px]'>
+                                                                    <h3 onClick={() => {setDinasID(data?.dinas_id), setTitleID(data?.title_id), setSelectTitle(data?.title), window.scrollTo(0, 0)}} className='text-[18px] cursor-pointer hover:text-blue-600 active:scale-[0.99] underline font-[500]'>
+                                                                        {data?.title}
+                                                                    </h3>
+                                                                    <div className='rounded-[10px] text-[12px] w-max h-max px-4 py-2 hidden md:flex items-center justify-center bg-green-600 text-white mr-4'>
+                                                                        {data?.type ?? 'Public'}
                                                                     </div>
                                                                 </div>
-                                                            ))
-                                                        }
-                                                    </>
-                                                ): (
+                                                                <div className='w-full flex flex-wrap mt-3 items-center'>
+                                                                    <div className='rounded-full md:mb-0 mb-3 w-max h-max px-4 py-2 flex items-center justify-center bg-slate-200 text-slate-500 mr-3'>
+                                                                        <FaCalendarAlt className='mr-2' /> {data?.year ?? new Date().getFullYear()}
+                                                                    </div>
+                                                                    <div className={`rounded-full md:mb-0 mb-3 w-max h-max px-4 py-2 flex items-center justify-center ${data?.status === 'Sementara' ? 'bg-green-200' : 'bg-green-500 text-white'} text-green-600 mr-4`}>
+                                                                        <FaClock className='mr-2' /> {data?.status ?? 'Tidak ber-status'}
+                                                                    </div>
+                                                                    <div className='rounded-full md:mb-0 mb-3 max-w-[56%] h-max px-4 py-2 flex items-center justify-center bg-blue-200 text-blue-600 mr-4'>
+                                                                        <FaBuilding className='mr-2' /> 
+                                                                        <p className='max-w-full overflow-hidden overflow-ellipsis whitespace-nowrap'>
+                                                                            {data?.name_dinas ?? 'Tidak ada dinas'}
+                                                                        </p>
+                                                                    </div>
+                                                                </div>
+                                                                <hr className='mt-4' />
+                                                                <p className='text-[14px] w-full md:w-[96%] overflow-hidden leading-[1.6em] text-slate-600 mt-4 text-left'>
+                                                                    {data?.description ?? 'Deskripsi belum tersedia.'}
+                                                                </p>
+                                                                <div className="w-full flex items-center">
+                                                                    <div className='rounded-full w-max h-max px-4 py-2 flex items-center justify-center mt-5 bg-red-200 text-red-600 text-[12px]'>
+                                                                        <FaMapMarkerAlt className='mr-2' /> {data?.coordinate?.length ?? 0} <span className="md:flex hidden ml-1">Lokasi/koordinat</span>
+                                                                    </div>
+                                                                    <div className='rounded-full w-max h-max px-4 py-2 flex items-center ml-3 justify-center mt-5 bg-yellow-200 text-yellow-600 text-[12px]'>
+                                                                        {data?.category === 'Koordinat' ? <FaDotCircle className='mr-2' /> : data?.category === 'Polygon' ? <FaDrawPolygon className='mr-2' /> : <FaBezierCurve className='mr-2' />} {data?.category ?? '-'}
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        ))
+                                                    })()
+                                                ) : (
                                                     <div className="w-full h-[500px] flex items-center justify-center bg-white rounded-[10px] mt-3 border border-dashed border-blue-700">
-                                                        <p>Belum data yang di upload...</p>
+                                                        <p>Data Tidak Tersedia</p>
                                                     </div>
                                                 )
                                             }
