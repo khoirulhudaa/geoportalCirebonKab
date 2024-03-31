@@ -1,7 +1,7 @@
 import copy from "copy-to-clipboard";
 import jsPDF from 'jspdf';
 import React, { RefObject, useEffect, useRef, useState } from 'react';
-import { FaArrowLeft, FaArrowRight, FaBezierCurve, FaBuilding, FaCalendarAlt, FaClock, FaCopy, FaDotCircle, FaDrawPolygon, FaFileExcel, FaFilePdf, FaMapMarkerAlt, FaTimes } from 'react-icons/fa';
+import { FaArrowLeft, FaArrowRight, FaBezierCurve, FaBuilding, FaCalendarAlt, FaChevronDown, FaClock, FaCopy, FaDotCircle, FaDrawPolygon, FaFileExcel, FaFilePdf, FaMapMarkerAlt, FaTimes } from 'react-icons/fa';
 import * as XLSX from 'xlsx';
 import { Map, Subdistrict } from '../Components';
 import FormGroup from "../Components/FormGroup";
@@ -35,7 +35,9 @@ const Homepage: React.FC = () => {
     const [selectTypeChart, setSelectTypeChart] = useState<string>('pie')
     const [activeAPI, setActiveAPI] = useState<boolean>(false)
     const [selectAPI, setSelectAPI] = useState<string>('')
-    const [checkedDinas, setCheckedDinas] = useState({});
+    const [checkedDinas, setCheckedDinas] = useState<any>({});
+    const [searchDinas, setSearchDinas] = useState<string>('');
+    const [activeListDinas, setActiveListDinas] = useState<boolean>(true);
 
     const [currentPage, setCurrentPage] = useState(0);
 
@@ -94,7 +96,7 @@ const Homepage: React.FC = () => {
 
     const handleCheckboxChange = (event: any) => {
         const { name, checked } = event.target;
-        setCheckedDinas(prevState => ({ ...prevState, [name]: checked }));
+        setCheckedDinas((prevState: any) => ({ ...prevState, [name]: checked }));
     };
 
     const mapRef: RefObject<any> = useRef<any>(null); // Make sure it's initialized properly
@@ -639,7 +641,7 @@ const Homepage: React.FC = () => {
                         </div>
 
                         <div className={`w-full my-6 ${activeData === 'subdistrict' ? 'hidden' : 'flex'}`}>
-                            <input type="text" name='search' onChange={(e: any) => setSearch(e.target.value)} placeholder='Cari data lebih cepat...' className='bg-white rounded-[10px] w-[90vw] mx-auto md:w-[60%] px-3 py-3 outline-0 border border-blue-700' />
+                            <input type="text" name='search' onChange={(e: any) => setSearch(e.target.value)} placeholder='Cari judul geospasial...' className='bg-white rounded-[10px] w-[90vw] mx-auto md:w-[60%] px-3 py-3 outline-0 border border-blue-700' />
                         </div>
                         
                         {
@@ -651,13 +653,25 @@ const Homepage: React.FC = () => {
                                 </div>
                             ):
                                 <div className='w-full flex h-max'>
-                                    <div className='relative mt-3 w-[30%] pt-[24px] hidden md:block pb-1 px-7 min-h-full rounded-[10px] text-left bg-white border border-blue-500 border-dashed'>
-                                        <h2 className='font-[500] text-[18px] mb-6'>Daftar Dinas</h2>
-                                        <hr className='mb-7' />
+                                    <div className={`relative mt-3 w-[30%] pt-[24px] hidden md:block pb-1 px-7 ${activeListDinas ? 'min-h-full duration-200' : 'h-[80px] duration-200'} overflow-y-hidden rounded-[10px] text-left bg-white border border-blue-500 border-dashed`}>
+                                        <div className="w-full flex items-center pb-4 justify-between">
+                                            <h2 className='font-[500] text-[18px]'>Daftar Dinas</h2>
+                                            <FaChevronDown onClick={() => setActiveListDinas(!activeListDinas)} className="text-slate-400 cursor-pointer active:scale-[0.98]" />
+                                        </div>
+                                        <hr className={`${activeListDinas ? 'mb-3 block' : 'hidden'}`} />
+                                        <div className="w-[102%] ml-[-4px] mb-4">
+                                            <input name="searchDinas" value={searchDinas} onChange={(e: any) => setSearchDinas(e.target.value)} type="text" className="w-full rounded-[10px] bg-white my-2 px-3 py-3 text-slate-600 outline-0 border border-slate-300 text-[13px]" placeholder="Cari nama dinas..." />
+                                        </div>
                                         <div className='flex flex-col my-2 w-full'>
                                             {
                                                 allDinas && allDinas?.length > 0 ? (
-                                                    allDinas?.map((data: any, index: number) => (
+                                                    allDinas?.filter((data: any) => {
+                                                        if(searchDinas !== '') {
+                                                            return (data?.name_dinas).toLowerCase().includes(searchDinas.toLowerCase())
+                                                        }
+                                                        return true
+                                                    })
+                                                    .map((data: any, index: number) => (
                                                         <div key={index} className="w-full inline-flex items-center mb-6">
                                                             <div className='w-[10%]'>
                                                                 <input type="checkbox" name={data?.name_dinas} checked={checkedDinas[data?.name_dinas as keyof typeof checkedDinas] || false} onChange={handleCheckboxChange} value={data?.name_dinas} className="scale-[1.6] outline-0 p-1 rounded-[20px] overflow-hidden mr-3 rounded-lg"/>
