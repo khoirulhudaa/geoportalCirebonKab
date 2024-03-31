@@ -418,6 +418,7 @@ const Homepage: React.FC = () => {
 
     return (
     <div className='w-screen h-max'>
+        {/* <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3958.1671931379157!2d108.5281263152966!3d-6.709586995200332!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e6ee218c1dc5149%3A0xa56ae9c210a9cffb!2sUPTD%20Puskesmas%20Kedawung!5e0!3m2!1sen!2sid!4v1648622108774!5m2!1sen!2sid" width="600" height="450" allowfullscreen="" loading="lazy"></iframe> */}
         <input value="https://be-geospasial.vercel.app/v2/api" className='absolute opacity-0' disabled type="text" ref={textRefMain} />
         <input value="https://be-geospasial.vercel.app/v2/api/dinas" className='absolute opacity-0' disabled type="text" ref={textRef} />
         <input value="https://be-geospasial.vercel.app/v2/api/title" className='absolute opacity-0' disabled type="text" ref={textRef2} />
@@ -574,7 +575,7 @@ const Homepage: React.FC = () => {
                 ):
                 <>
                     <div className='w-screen md:flex hidden text-center h-[50px] bg-[#e1f3fc] items-center justify-center text-blue-600 text-[10px] md:text-[14px]'>
-                        <p>Cirebon merupakan salah satu simpul Jaringan Informasi Geospasial Nasional <b className='underline text-blue-600 cursor-pointer hover:text-blue-900 ml-1' onClick={() => null}>(JIGN)</b>.</p>
+                        <p>Cirebon merupakan salah satu simpul Jaringan Informasi Geospasial Nasional <b title='Jaringan Informasi Geospasial Nasional (JIGN) adalah suatu sistem penyelenggaraan pengelolaan data geospasial secara bersama, tertib, terukur, terintegrasi dan berkesinambungan serta berdayaguna.' className='text-blue-600 cursor-pointer hover:text-blue-900 ml-1' onClick={() => null}>(JIGN)</b>.</p>
                     </div>
                     {/* Hero Component */}
 
@@ -585,8 +586,8 @@ const Homepage: React.FC = () => {
                         <img src={Square} alt="square" loading="lazy" className='absolute opacity-[1] w-[40%] right-[-20%] top-0' />
                         <img src={Square} alt="square" loading="lazy" className='absolute opacity-[1] w-[40%] right-[5%] bottom-[-80px]' />
                         <div className='w-screen md:w-full text-center z-[3] relative hmax md:h-full flex flex-col justify-center text-white'>
-                            <h2 className='text-[30px] md:text-[68px] md:mt-[-30px] w-screen md:w-[90%] mx-auto font-normal'>Web Geoportal 2024 Koordinat Daerah Cirebon</h2>
-                            <p className='text-[13px] md:text-[18px] md:flex hidden leading-loose mt-6 w-[90vw] md:w-[80%] mx-auto x-[555]'>Firebase adalah platform pengembangan aplikasi yang membantu Anda mem-build serta mengembangkan aplikasi dan game favorit pengguna. Didukung oleh Google.</p>
+                            <h2 className='text-[30px] md:text-[68px] md:mt-[-30px] md:mb-4 w-screen md:w-[90%] mx-auto font-normal'>Web Geoportal : Peta Koordinat Daerah Cirebon</h2>
+                            <p className='text-[13px] md:text-[18px] md:flex hidden leading-loose mt-6 w-[90vw] md:w-[80%] mx-auto x-[555]'>"Di Geoportal Cirebon, Anda dapat menemukan berbagai informasi geospasial yang berguna, seperti batas administratif, lokasi penting, dan data lingkungan."</p>
                             <a href="#daftar">
                                 <div id='btn-hero' className='relative overflow-hidden mx-auto brightness-[90%] px-6 py-4 text-[14px] md:text-[17px] mt-12 md:mb-0 mb-3 bg-white rounded-[10px] shadow-lg text-blue-600 w-max flex items-center justify-center cursor-pointer hover:brightness-[90%] active:scale-[0.99] z-[9999]'>
                                     Cek Geospasial Sekarang

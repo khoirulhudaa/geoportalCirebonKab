@@ -13,6 +13,7 @@ import Square2 from './square2.svg'
 import APIImage from './api.jpg'
 import APIImage2 from './api2.jpg'
 import APIImage3 from './api3.jpg'
+import Loading from './loading.gif'
 
 export {
     Success,
@@ -29,5 +30,6 @@ export {
     Earth,
     APIImage,
     APIImage2,
-    APIImage3
+    APIImage3,
+    Loading
 }
