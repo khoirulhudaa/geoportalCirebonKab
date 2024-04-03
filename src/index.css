@@ -62,7 +62,7 @@ tbody tr:nth-child(odd) {
     z-index: -1;
     left: 0;
     top: 0;
-    background-color: rgb(174, 174, 255);
+    background-color: rgb(116, 116, 255);
     transition: transform 0.4s;
     display: block;
     transform: scaleX(0);

@@ -6,10 +6,13 @@ import markerShadowUrl from 'leaflet/dist/images/marker-shadow.png';
 import 'leaflet/dist/leaflet.css';
 import React, { useEffect, useRef, useState } from "react";
 import ReactDOMServer from 'react-dom/server';
-import { FaBuilding, FaCameraRetro, FaEye, FaEyeSlash, FaFileExport, FaGoogle, FaGripLines, FaIcons, FaTextHeight, FaVectorSquare } from 'react-icons/fa';
-import { MapContainer, Marker, Polygon, Polyline, Popup, TileLayer, Tooltip, useMapEvent } from "react-leaflet";
+import { FaBuilding, FaCameraRetro, FaChevronDown, FaEye, FaEyeSlash, FaFileExport, FaGoogle, FaGripLines, FaIcons, FaLayerGroup, FaMapMarkerAlt, FaPlus, FaRulerCombined, FaTextHeight, FaTimes, FaTrashAlt, FaVectorSquare } from 'react-icons/fa';
+import { GeoJSON, MapContainer, Marker, Polygon, Polyline, Popup, TileLayer, Tooltip, useMapEvent } from "react-leaflet";
 import { useDispatch, useSelector } from 'react-redux';
 import * as XLSX from 'xlsx';
+import geoJsonDataPantai from '../GeoJson/garisPantai.json';
+import geoJsonData from '../GeoJson/kecamatan.json';
+import geoJsonDataSungai from '../GeoJson/sungai.json';
 import { mapProps } from '../Models/componentInterface';
 import { getCoordinate } from '../Store/coordinateSlice';
 import kabupatenCirebonBoundary from '../file/cirebon';
@@ -25,14 +28,19 @@ const Map: React.FC<mapProps> = ({
   color,
   customData,
   searchLocation,
+  listGeoData
 }) => {
 
   const dispatch = useDispatch()
   
+  const [searchData, setSearchData] = useState<string>('')
+  const [activeDesa, setActiveDesa] = useState<boolean>(false)
+  const [activePantai, setActivePantai] = useState<boolean>(false)
+  const [activeSungai, setActiveSungai] = useState<boolean>(false)
+  const [activeMenuBatas, setActiveMenuBatas] = useState<boolean>(false)
   const [lines, setLines] = useState<any>([]);
   const [excelData, setExcelData] = useState<any>([]);
   const [nameFile, setNameFile] = useState<string>('')
-  // const [searchLocation, setSearchLocation] = useState<string>('')
   const [activeLineSub, setActiveLineSub] = useState<boolean>(false)
   const [activeLineMarker, setActiveLineMarker] = useState<boolean>(false)
   const [activeArea, setActiveArea] = useState<boolean>(false)
@@ -49,9 +57,38 @@ const Map: React.FC<mapProps> = ({
   const [activeClick2, setActiveClick2] = useState<any>(null)
   const [selectColor, setSelectColor] = useState<any>(null)
   const [status, setStatus] = useState<boolean>(false)
+  const [activeLayer, setActiveLayer] = useState<boolean>(false)
+  const [activeRange, setActiveRange] = useState<boolean>(false);
+  const [listLayer, setListLayer] = useState<any>([])
+  const [listID, setListID] = useState<any[]>([])
+  const [startPoint, setStartPoint] = useState<any>(null);
+  const [endPoint, setEndPoint] = useState<any>(null);
+  const [unit, setUnit] = useState('kilometer');
 
   const coorNew = useSelector((state: any) => state.Coordinate?.coordinate)
   
+  const onEachFeature = (feature: any, layer: any) => {
+    if (feature?.properties && feature?.properties?.NAMOBJ) {
+      layer.bindTooltip(feature?.properties?.NAMOBJ);
+    }
+  };
+
+  const geoJsonStyle = {
+    color: '#87A922',
+  };
+
+  const geoJsonStylePantai = {
+    color: '#008DDA',
+  };
+
+  const geoJsonStyleSungai = {
+    color: '#41C9E2',
+  };
+
+  const geoJsonData1: any = geoJsonData;
+  const geoJsonData2: any = geoJsonDataPantai;
+  const geoJsonData3: any = geoJsonDataSungai;
+
   useEffect(() => {
     setCoordinates(coorNew)
     if(activeClick) {
@@ -145,11 +182,11 @@ const Map: React.FC<mapProps> = ({
           type: 'Point',
           coordinates: [point.long, point.lat]
         }
-      }))
-    };
+    }))
+  };
 
     // Ubah objek GeoJSON menjadi string
-    const geoJSONString = JSON.stringify(geoJSON, null, 2);
+  const geoJSONString = JSON.stringify(geoJSON, null, 2);
 
     // Buat blob dari string GeoJSON
     const geoJSONBlob = new Blob([geoJSONString], { type: 'application/json' });
@@ -219,7 +256,6 @@ const Map: React.FC<mapProps> = ({
       })).filter((obj: any) => obj.name_location !== '' && obj.lat !== '' && obj.long !== '' && obj.name_location !== undefined && obj.lat !== undefined && obj.long !== undefined);
 
       // Menyimpan data yang sudah dikonversi
-      console.log('new data from excel:', convertedData)
       setExcelData(convertedData);
       setActiveUploadExcel(!activeUploadExcel)
     };
@@ -249,35 +285,198 @@ const Map: React.FC<mapProps> = ({
   const checkForDisaster = (conditions: any[]) => {
     for (let i = 0; i < conditions?.length; i++) {
       if (conditions[i].label === "Rawan bencana") {
-        console.log(i) 
         return true;
       }
     }
     return false; 
   }
 
+  const randomColor = '#' + (Math.random() * 0xFFFFFF << 0).toString(16).padStart(6, '0');
+
+  const handleAddLayer = (e: any) => {
+    const { title_id, coordinate } = e;
+    const newList = coordinate.map((item: any) => ({
+      ...item,
+      color: randomColor // Gunakan warna acak yang disimpan
+    }));
+    setListLayer((prevState: any) => ({
+      ...prevState,
+      coordinate: Array.isArray(prevState.coordinate) ? [...prevState.coordinate, ...newList] : [...newList]
+    }));
+    setListID((prevIDs: any) => [...prevIDs, title_id]);
+  };
+
+  const handleDeleteByTitleId = (titleIdToDelete: string) => {
+    setListLayer((prevState: any) => ({
+      ...prevState,
+      coordinate: prevState.coordinate.filter((coord: any) => coord.title_id !== titleIdToDelete)
+    }));
+  };
+
+  const formatDistance = (distance: any) => {
+    if (unit === 'kilometer') {
+      return (distance / 1000).toFixed(2);
+    } else {
+      return (Math.round(distance));
+    }
+  };
+
+  const calculateDistance = () => {
+    if (startPoint && endPoint && unit) {
+      
+      let point1 = L.latLng([filteredData[startPoint].lat, filteredData[startPoint].long]);
+      let point2 = L.latLng([filteredData[endPoint].lat, filteredData[endPoint].long]);
+      
+      let distance = point1.distanceTo(point2);
+      
+      return formatDistance(distance);
+    }
+  };
+
   return (
     <>
       <div className='relative w-full h-full'>
-        
-        {
-          activeUploadExcel ? (
-            <PopupUploadFile onChange={(e: any) => handleFileUpload(e)} />
-          ):
-            null
-        }
+      
+      {
+        activeUploadExcel ? (
+          <PopupUploadFile onChange={(e: any) => handleFileUpload(e)} />
+        ):
+          null
+      }
+
+      <div className={`absolute z-[3333] w-[42vw] h-screen ${activeLayer ? 'left-[0%]' : 'left-[-100%] duration-300'} top-[0px] bg-white shadow-lg rounded-[12px] p-4 duration-200`}>
+        <div className='w-full px-3 flex items-center justify-between'>
+          <input name="searchData" value={searchData} onChange={(e: any) => setSearchData(e.target.value)} type="text" className="w-[85%] rounded-[10px] bg-white my-2 px-3 py-3 text-slate-600 outline-0 border border-slate-300 text-[13px]" placeholder="Cari judul data..." />
+          <div onClick={() => setActiveLayer(false)} className='rounded-[8px] w-[46px] h-[46px] bg-red-500 ml-2 flex items-center justify-center text-white cursor-pointer hover:brightness-[90%] active:scale-[0.98]'>
+            <FaTimes />
+          </div>
+        </div>
+
+          <div className='w-full h-full pb-12 pt-3 overflow-y-auto'>
+            {
+              listGeoData && listGeoData?.length > 0 ? (
+                listGeoData
+                ?.filter((data: any) => {
+                  if(searchData !== '') {
+                    return (data?.title.toLowerCase()).includes(searchData.toLowerCase())
+                  }
+                  return true
+                })
+                ?.map((data: any, index: number) => {
+                const isAdded = listID.includes(data?.title_id);
+                return (
+                  <div key={index} className='w-full flex items-center justify-between px-3 mb-4 py-2'>
+                    <div className='w-[80%] h-[30px] rounded-full flex items-center p-2'>
+                      <FaMapMarkerAlt />
+                      <p className='ml-3 overflow-hidden w-[90%] overflow-ellipsis whitespace-nowrap'>{data?.title}</p>
+                    </div>
+                    <div onClick={() => {
+                      if(isAdded) {
+                        setListID((prevIDs: any) => prevIDs.filter((id: string) => id !== data?.title_id));
+                        handleDeleteByTitleId(data?.title_id)
+                      } else {
+                        handleAddLayer(data)
+                      }
+                    }} 
+                    className={`w-[10%] rounded-[4px] ${isAdded ? 'bg-red-500' : 'bg-blue-500'} flex justify-center text-white px-2 py-2 text-[12px] cursor-pointer active:scale-[0.98] hover:brightness-[90%]`}>
+                      {
+                        isAdded ? (
+                          <FaTrashAlt />
+                        ):
+                          <FaPlus />
+                      }
+                    </div>
+                  </div>
+                )})
+              ):
+                null
+            }
+          </div>
+      </div>
+     
+      <div className={`absolute z-[3333] w-[31vw] h-screen ${activeRange ? 'left-[0%]' : 'left-[-100%] duration-300'} top-[0px] bg-white shadow-lg rounded-[12px] p-4 duration-200`}>
+        <div className='w-full px-3 flex items-center justify-between'>
+          <h2 className='text-[16px] relative top-1'>Jarak Antar Titik</h2>
+          <div onClick={() => setActiveRange(false)} className='rounded-[8px] w-[46px] h-[46px] bg-red-500 ml-2 flex items-center justify-center text-white cursor-pointer hover:brightness-[90%] active:scale-[0.98]'>
+            <FaTimes />
+          </div>
+        </div>
+
+        <hr className='mt-5 w-[92%] mx-auto' />
+
+          <div className='w-full h-full pb-12 pt-6 px-2 overflow-y-auto'>
+            <div className='w-full h-max bg-white border pr-3 border-slate--200 rounded-[12px]'>
+              <select name="startPoint" onChange={(e: any) => setStartPoint(e.target.value)} id="startPoint" className='w-full outline-0 border-0 p-4 bg-transparent rounded-[12px]'>
+                <option value="">Pilih Koordinat Awal</option>
+                {
+                  filteredData && filteredData?.length > 0 ? (
+                    filteredData?.map((data: any, index: number) => (
+                      <option key={index} value={index}>{data?.name_location}</option>
+                    ))
+                  ):
+                    <option value="">Data tidak ada!</option>
+                }
+              </select>
+            </div>
+
+            <div className='w-full h-max bg-white border  mt-5 pr-3 border-slate--200 rounded-[12px]'>
+              <select name="endPoint" onChange={(e: any) => setEndPoint(e.target.value)} id="endPoint" className='w-full outline-0 border-0 p-4 bg-transparent rounded-[12px]'>
+              <option value="">Pilih Koordinat Akhir</option>
+              {
+                  filteredData && filteredData?.length > 0 ? (
+                    filteredData?.map((data: any, index: number) => (
+                      <option key={index} value={index}>{data?.name_location}</option>
+                    ))
+                  ):
+                    <option value="">Data tidak ada!</option>
+                }
+              </select>
+            </div>
+
+            <div className='w-full h-max bg-white border  mt-5 pr-3 border-slate--200 rounded-[12px]'>
+              <select name="unit" onChange={(e: any) => setUnit(e.target.value)} id="unit" className='w-full outline-0 border-0 p-4 bg-transparent rounded-[12px]'>
+                <option key={1} value="">Pilih Satuan Jarak</option>
+                <option key={3} value='kilometer'>kilometer</option>
+                <option key={2} value='meter'>meter</option>
+              </select>
+            </div>
+
+            <div className='w-full bg-white flex justify-center items-center h-max border mt-7 p-5 border-[2px] border-dashed border-blue-500 text-blue-600 text-center border-slate--200 rounded-[12px]'>
+              <p>{calculateDistance() ?? 0}</p><p className='ml-2'><b>{unit}</b></p>             
+            </div>
+          </div>
+      </div>
 
         {/* Tombol tambah koordinat dan pengaturan */}
         <div className="w-max z-[444] flex items-center h-[68px] py-[14px] pl-4 rounded-bl-[32px] absolute top-0 right-2">
           <div className={`w-max ${activeClick ? 'hidden' : 'flex'} items-center top-4 mr-3`}>
-            {/* <input type="text" name='searchLocation' value={searchLocation} onChange={(e: any) => setSearchLocation(e.target.value)} className='outline-0 border border-black rounded-full h-[42px] px-4 text-[14px] text-black mr-4' placeholder='Cari nama lokasi' /> */}
+
+            <div title='Jarak' onClick={() => setActiveRange(!activeRange)} className={`${activeRange ? 'bg-green-200' : 'bg-white'} mr-4 cursor-pointer hover:bg-green-200 z-[22222] w-max h-max px-4 py-2 flex items-center justify-center text-center rounded-full text-[16px] border border-slate-700 right-0 top-36`}>Jarak <FaRulerCombined className='ml-3' />
+            </div>
+            <div title='Multi layar' onClick={() => setActiveLayer(!activeLayer)} className={`${activeLayer ? 'bg-green-200' : 'bg-white'} mr-4 cursor-pointer hover:bg-green-200 z-[22222] w-max h-max px-4 py-2 flex items-center justify-center text-center rounded-full text-[16px] border border-slate-700 right-0 top-36`}>Layer <span className='relative top-[0.7px] ml-2'>+</span> <FaLayerGroup className='ml-3' />
+            </div>
             <div title='Kotak area koordinat' onClick={() => subdistrictDots ? null : setActiveArea(!activeArea)} className={`${activeArea ? 'bg-green-200' : 'bg-white'} ${subdistrictDots ? 'cursor-not-allowed bg-red-400 before:absolute before:h-[50px] before:w-[3px] before:rotate-[40deg] before:bg-red-400 text-slate-400' : 'cursor-pointer active:scale-[0.98] hover:bg-green-200'} z-[22222] w-max h-max px-4 py-2 flex items-center justify-center text-center rounded-full text-[16px] border border-slate-700 top-4 right-4`}>Area titik <FaVectorSquare className="ml-3" /></div>
             <div onClick={() => exportToGeoJSON()} className={`bg-white hover:bg-green-200 cursor-pointer active:scale-[0.98] z-[22222] w-max h-max px-4 ml-4 py-2 flex items-center justify-center text-center rounded-full text-[16px] border border-slate-700 top-4`}>GeoJSON <FaFileExport className="ml-3" /></div>
             <div title='Bukan google map' className="flex items-center top-4 mr-3">
               <div title='Lihat garis antar koordinat' onClick={() => setActiveLineMarker(!activeLineMarker)} className={`${activeLineMarker ? 'bg-green-200' : 'bg-white'} ml-4 cursor-pointer active:scale-[0.98] hover:bg-green-200 z-[22222] w-[45px] h-[45px] px-2 py-2 flex items-center justify-center text-center rounded-full text-[16px] border border-slate-700 right-0 top-36`}><FaGripLines /></div>
               <div title='Layar tinggi penuh' onClick={() => handleHeight()} className={`${height ? 'bg-green-200' : 'bg-white'} ml-4 cursor-pointer active:scale-[0.98] hover:bg-green-200 z-[22222] w-[45px] h-[45px] px-2 py-2 flex items-center justify-center text-center rounded-full text-[16px] border border-slate-700 right-0 top-36`}><FaTextHeight /></div>
             </div>
-            <div title='Area perbatasan kabupaten' onClick={() => setActiveLineSub(!activeLineSub)} className={`${activeLineSub ? 'bg-green-200' : 'bg-white'} hover:bg-green-200 cursor-pointer active:scale-[0.98] z-[22222] w-max h-max px-4 py-2 flex items-center justify-center text-center rounded-full text-[16px] border border-slate-700 top-4`}>Batas kabupaten <FaVectorSquare className="ml-3" /></div>
+            <div title='Area perbatasan kabupaten' onClick={() => setActiveMenuBatas(!activeMenuBatas)} className={`${activeMenuBatas ? 'bg-green-200' : 'bg-white'} hover:bg-green-200 cursor-pointer z-[22222] w-max h-max px-4 py-2 flex items-center justify-center text-center rounded-full text-[16px] border border-slate-700 top-4`}>Perbatasan <FaChevronDown className={`${activeMenuBatas ? 'rotate-[-180deg]' : 'rotate-[0deg]'} duration-300 text-[14px] ml-3`} />
+              <div className={`absolute h-max mr-10 justify-between z-[33] flex flex-col ${activeMenuBatas ? 'bottom-[-190px] opacity-[1] block' : 'bottom-[-160px] hidden opacity-[0]'} duration-100 text-left rounded-[14px] bg-white p-4 shadow-lg`}>
+                <div className='w-flex items-center mb-3 h-[30px]'>
+                  <input type="checkbox" name='kabupaten' onClick={() => setActiveLineSub(!activeLineSub)} className='mr-2 scale-[1.3] rounded-[10px]' /> Batas Kabupaten
+                </div>
+                <div className='w-flex items-center mb-3 h-[30px]'>
+                  <input type="checkbox" name='kabupaten' onClick={() => setActiveDesa(!activeDesa)} className='mr-2 scale-[1.3] rounded-[10px]' /> Batas Desa
+                </div>
+                <div className='w-flex items-center mb-3 h-[30px]'>
+                  <input type="checkbox" name='kabupaten' onClick={() => setActivePantai(!activePantai)} className='mr-2 scale-[1.3] rounded-[10px]' /> Garis Pantai
+                </div>
+                <div className='w-flex items-center h-[30px]'>
+                  <input type="checkbox" name='kabupaten' onClick={() => setActiveSungai(!activeSungai)} className='mr-2 scale-[1.3] rounded-[10px]' /> Jalur Sungai
+                </div>
+              </div>
+            </div>
             <div title='Ganti ikon marker' onClick={() => subdistrictDots ? null : setActieMenuIcon(!activeMenuIcon)} className={`overflow-hidden ${activeMenuIcon && !subdistrictDots ? 'bg-green-200' : 'bg-white'} ${subdistrictDots ? 'cursor-not-allowed bg-red-400 before:absolute before:h-[42px] before:w-[3px] before:rotate-[40deg] before:bg-red-400 text-slate-400' : 'cursor-pointer active:scale-[0.98] hover:bg-green-200'} ml-4 z-[22222] w-[45px] h-[45px] px-2 py-2 flex items-center justify-center text-center rounded-full text-[16px] border border-slate-700 right-0 top-52`}><FaIcons /></div>
             <div className={`w-[45px] absolute top-20 duration-200 ease ${activeMenuIcon && !subdistrictDots ? 'right-3' : 'right-[-55px]'} bg-white  overflow-hidden flex-col h-max border border-slate-700 rounded-full flex lfex-col items-center justify-center`}>
               <div onClick={() => setSelectIcon('🏢')} className='text-center flex justify-center items-center cursor-pointer active:scale-[0.98] hover:bg-green-200 border-b w-full py-5 min-h-[50px] border-slate-700 text-black'>
@@ -327,20 +526,90 @@ const Map: React.FC<mapProps> = ({
               attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             />
 
-            {
-              (subdistrictDots ? dataSubdistrict : filteredData)
-              .filter((con: any) => {
+          {
+            activeDesa ? (
+              <GeoJSON data={geoJsonData1} style={geoJsonStyle} onEachFeature={onEachFeature} />
+            ):
+              null
+          }
+          {
+            activePantai ? (
+              <GeoJSON data={geoJsonData2} style={geoJsonStylePantai} onEachFeature={onEachFeature} />
+            ):
+              null
+          }
+          {
+            activeSungai ? (
+              <GeoJSON data={geoJsonData3} style={geoJsonStyleSungai} onEachFeature={onEachFeature} />
+            ):
+              null
+          }
+
+          {
+            (subdistrictDots ? dataSubdistrict : filteredData)
+            .filter((con: any) => {
+              if (searchLocation && searchLocation !== '') {
+                return (con.name_location.toLowerCase()).includes(searchLocation.toLowerCase());
+              }
+              return true;
+            })
+            .map((marker: any, index: number) => (
+                <Marker 
+                  key={index} 
+                  position={[marker.lat, marker.long]} 
+                  icon={selectIcon !== '' ? myIcon : subdistrictDots ? myIcon : defaultIcon}
+                  >
+                    {
+                      subdistrictDots ? (
+                        null
+                      ):
+                      <Popup>
+                        <div className='flex flex-col'>
+                          <div className='relative overflow-hidden mb-2 rounded-[12px] w-full h-[160px]'>
+                            <img src={marker?.thumbnail} onClick={() => {window.location.href = marker?.thumbnail as string, '__blank' }} alt="thumbnail" className='cursor-pointer hover:scale-[1.2] duration-300 hover:brightness-[70%]' />
+                          </div>
+                          <small className='text-[12px] rounded-[8px] hover:brightness-[90%] duration-200 py-3 mb-4 mt-2 bg-blue-700 text-white text-center' onClick={() => {window.location.href = marker?.link as string, '__blank' }}>Lihat di google map</small>
+                          <div className='w-[300px] flex flex-wrap items-center'>
+                            {
+                              marker.condition && marker.condition.slice(0, 3)
+                              .map((con: any, index: number) => (
+                                <div className='w-max rounded-full bg-white border border-slate-300 h-[35px] mb-2 px-3 flex items-center'>
+                                  <p key={index}>{con.label} {con.icon}</p>
+                                  <div className='w-[6px] h-1'></div>
+                                </div>
+                              ))
+                            }
+                          </div>
+                        </div>
+                        <p className='text-center mt-[-10px]'>
+                          {marker?.name_location}
+                        </p>
+                        <hr />
+                        <p className='text-center mt-[-10px]'>
+                          {marker?.address ?? 'Alamat tidak tersedia'}
+                        </p>
+                      </Popup>
+                    }
+                  <Tooltip sticky>{(subdistrictDots ? marker.name_subdistrict : marker.name_location)}</Tooltip> {/* Label hanya muncul saat hover */}
+                </Marker>
+            ))
+          }
+
+          {
+            listLayer && setListID.length > 0 ? (
+              listLayer?.coordinate?.filter((con: any) => {
                 if (searchLocation && searchLocation !== '') {
                   return (con.name_location.toLowerCase()).includes(searchLocation.toLowerCase());
                 }
                 return true;
               })
-              .map((marker: any, index: number) => (
-                  <Marker 
-                    key={index} 
-                    position={[marker.lat, marker.long]} 
-                    icon={selectIcon !== '' ? myIcon : subdistrictDots ? myIcon : defaultIcon}
-                    >
+              ?.map((marker: any, index: number) => (
+                  <Marker key={index} position={[marker.lat, marker.long]} icon={L.divIcon({ 
+                    html: `
+                      <div class="w-6 h-6 rounded-full flex justify-center items-center" style="background-color: ${marker.color};">
+                      </div>
+                    ` 
+                  })}>
                       {
                         subdistrictDots ? (
                           null
@@ -375,80 +644,82 @@ const Map: React.FC<mapProps> = ({
                     <Tooltip sticky>{(subdistrictDots ? marker.name_subdistrict : marker.name_location)}</Tooltip> {/* Label hanya muncul saat hover */}
                   </Marker>
               ))
-            }
+            ):
+              null
+          }
 
-            {
-              activeClick ? (
-                coordinates?.filter((data: any) => {
-                  if(searchLocation !== '') {
-                    return (data?.name_location.toLowerCase()).includes(searchLocation?.toLowerCase())
-                  }
-                    return true
-                  })
-                  .map((data: any, index: number) => (
-                  <Marker 
-                    key={index} 
-                    position={[data?.[0], data[1]]} 
-                    icon={createCustomIcon(index + 1)}
-                    >
-                  </Marker>
-                ))
-              ):
-                null
-            }
+          {
+            activeClick ? (
+              coordinates?.filter((data: any) => {
+                if(searchLocation !== '') {
+                  return (data?.name_location.toLowerCase()).includes(searchLocation?.toLowerCase())
+                }
+                  return true
+                })
+                .map((data: any, index: number) => (
+                <Marker 
+                  key={index} 
+                  position={[data?.[0], data[1]]} 
+                  icon={createCustomIcon(index + 1)}
+                  >
+                </Marker>
+              ))
+            ):
+              null
+          }
 
             {/* Garis kabupaten perbatasan */}
-            {activeLineSub && lines && lines?.length > 1 && (
-              <Polygon positions={lines} color="#008ada" />
-            )}
+          {activeLineSub && lines && lines?.length > 1 && (
+            <Polygon positions={lines} color="#008ada" />
+          )}
 
-            {
-              activeClick && activeClick2 && coordinates && coordinates.length > 1 && (
-                <Polygon positions={coordinates} color={`${selectColor ? selectColor : '#00eada'}`} />
-                )
-              }
+          {
+            activeClick && activeClick2 && coordinates && coordinates.length > 1 && (
+              <Polygon positions={coordinates} color={`${selectColor ? selectColor : '#00eada'}`} />
+            )
+          }
 
-            {
-              customData && customData.length > 0 ? (
-                customData?.map((data: any, index: number) => (
-                  <Polygon key={index} positions={data?.coordinates} color={`${data?.color}`}>
-                    <Popup>
-                        <div className='flex mb-3 border-b border-slate-300 pb-2 items-center'>
-                        <b className='mr-2'>Nama :</b> {data?.name}
-                        </div>
-                        <div className='flex mb-3 border-b border-slate-300 pb-2 items-center'>
-                          <b className='mr-2'>Luas area :</b> {data?.wide ?? 0} {data?.typeWide ?? null}
-                        </div>
-                        <div className='flex mb-3 border-b border-slate-300 pb-2 items-center'>
-                          <b className='mr-2'>Tipe area :</b> {data?.type_area ?? '-'}
-                        </div>
-                        <div className='flex mb-3 border-b border-slate-300 pb-2 items-center'>
-                          <b className='mr-2'>Tipe kerawanan :</b> {data?.type_danger ?? '-'}
-                        </div>
-                        <div className='flex mb-3 border-b border-slate-300 pb-2 items-center'>
-                          <b className='mr-2'>Deskripsi :</b> {data?.description ?? ''} 
-                        </div>
-                      </Popup>
-                  </Polygon>
-                ))
-              ):
-                null
-            }
+          {
+            customData && customData.length > 0 ? (
+              customData?.map((data: any, index: number) => (
+                <Polygon key={index} positions={data?.coordinates} color={`${data?.color}`}>
+                  <Popup>
+                      <div className='flex mb-3 border-b border-slate-300 pb-2 items-center'>
+                      <b className='mr-2'>Nama :</b> {data?.name}
+                      </div>
+                      <div className='flex mb-3 border-b border-slate-300 pb-2 items-center'>
+                        <b className='mr-2'>Luas area :</b> {data?.wide ?? 0} {data?.typeWide ?? null}
+                      </div>
+                      <div className='flex mb-3 border-b border-slate-300 pb-2 items-center'>
+                        <b className='mr-2'>Tipe area :</b> {data?.type_area ?? '-'}
+                      </div>
+                      <div className='flex mb-3 border-b border-slate-300 pb-2 items-center'>
+                        <b className='mr-2'>Tipe kerawanan :</b> {data?.type_danger ?? '-'}
+                      </div>
+                      <div className='flex mb-3 border-b border-slate-300 pb-2 items-center'>
+                        <b className='mr-2'>Deskripsi :</b> {data?.description ?? ''} 
+                      </div>
+                    </Popup>
+                </Polygon>
+              ))
+            ):
+              null
+          }
             
-            {/* Blok area koordinat */}
-            {activeArea && areas.map((area: any, index: number) => (
-              <Polygon key={index} positions={area.coordinates} color={checkForDisaster(area?.condition) ? "red" : "blue"} fillColor={checkForDisaster(area?.condition) ? "red" : "green"} fillOpacity={0.4}>
-                <Tooltip>{area.name}</Tooltip>
-              </Polygon>
-            ))}
+          {/* Blok area koordinat */}
+          {activeArea && areas.map((area: any, index: number) => (
+            <Polygon key={index} positions={area.coordinates} color={checkForDisaster(area?.condition) ? "red" : "blue"} fillColor={checkForDisaster(area?.condition) ? "red" : "green"} fillOpacity={0.4}>
+              <Tooltip>{area.name}</Tooltip>
+            </Polygon>
+          ))}
 
-            {/* Garis antar marker */}
-            {
-              activeLineMarker ? (
-                <Polyline positions={lineMarkers} color="#008ada" />
-              ):
-                null
-            }
+          {/* Garis antar marker */}
+          {
+            activeLineMarker ? (
+              <Polyline positions={lineMarkers} color="#008ada" />
+            ):
+              null
+          }
 
           </MapContainer>
         </div>

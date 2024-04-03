@@ -45,6 +45,7 @@ export interface mapProps {
     showAll?: boolean;
     searchLocation?: string;
     dataSubdistrict?: any;
+    listGeoData?:any;
     name?: string;
     color?: string;
     description?: string;

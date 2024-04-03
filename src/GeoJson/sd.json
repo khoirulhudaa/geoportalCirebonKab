@@ -1,0 +1,3648 @@
+{
+    "type": "FeatureCollection",
+    "name": "SD GEOJSON",
+    "crs": {
+        "type": "name",
+        "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" }
+    },
+    "features": [
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP NEGERI 1 ARJAWINANGUN",
+                "LATITUDE": -6.6477153026686873,
+                "LONGITUDE": 108.40768391179705,
+                "NPSN": 20214867,
+                "KECATAMAN": "Arjawinangun",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Negeri",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.407683911797051, -6.647715302668687]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP NEGERI 1 BABAKAN",
+                "LATITUDE": -6.8601611486918541,
+                "LONGITUDE": 108.72263048296251,
+                "NPSN": 20214865,
+                "KECATAMAN": "Babakan",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Negeri",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.722630482962515, -6.860161148691854]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP NEGERI 1 CIWARINGIN",
+                "LATITUDE": -6.6864873644885572,
+                "LONGITUDE": 108.36760785227386,
+                "NPSN": 20214860,
+                "KECATAMAN": "Ciwaringin",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Negeri",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.367607852273864, -6.686487364488557]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP Negeri 2 Sumber",
+                "LATITUDE": -6.7691590204623084,
+                "LONGITUDE": 108.48654825412585,
+                "NPSN": 20214846,
+                "KECATAMAN": "Sumber",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Negeri",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.48654825412585, -6.769159020462308]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP NEGERI 2 PABEDILAN",
+                "LATITUDE": -6.8878273108060419,
+                "LONGITUDE": 108.76380437020947,
+                "NPSN": 20244634,
+                "KECATAMAN": "Pabedilan",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Negeri",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.763804370209471, -6.887827310806042]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP NEGERI 1 BEBER",
+                "LATITUDE": -6.8284255058824019,
+                "LONGITUDE": 108.52388550994607,
+                "NPSN": 20229242,
+                "KECATAMAN": "Beber",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Negeri",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.523885509946069, -6.828425505882402]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP NEGERI 1 SUSUKAN",
+                "LATITUDE": -6.6378396412742724,
+                "LONGITUDE": 108.37556284063302,
+                "NPSN": 20214858,
+                "KECATAMAN": "Susukan",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Negeri",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.375562840633023, -6.637839641274272]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP NEGERI 1 JAMBLANG",
+                "LATITUDE": -6.6752161663904834,
+                "LONGITUDE": 108.46485825227278,
+                "NPSN": 20214886,
+                "KECATAMAN": "Jamblang",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Negeri",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.464858252272776, -6.675216166390483]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP NEGERI 2 CIWARINGIN",
+                "LATITUDE": -6.6619920091608567,
+                "LONGITUDE": 108.39361893878089,
+                "NPSN": 20214830,
+                "KECATAMAN": "Ciwaringin",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Negeri",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.393618938780889, -6.661992009160857]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP NEGERI 2 BABAKAN",
+                "LATITUDE": -6.8774570153575878,
+                "LONGITUDE": 108.70079502529057,
+                "NPSN": 20214835,
+                "KECATAMAN": "Babakan",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Negeri",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.700795025290574, -6.877457015357588]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP NEGERI 1 DUKUPUNTANG",
+                "LATITUDE": -6.7747798552033336,
+                "LONGITUDE": 108.41175430123094,
+                "NPSN": 20214876,
+                "KECATAMAN": "Dukupuntang",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Negeri",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.411754301230943, -6.774779855203334]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP NEGERI 1 CILEDUG",
+                "LATITUDE": -6.9047914625488342,
+                "LONGITUDE": 108.74917325412686,
+                "NPSN": 20214864,
+                "KECATAMAN": "Ciledug",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Negeri",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.749173254126859, -6.904791462548834]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP NEGERI 2 LEMAHABANG",
+                "LATITUDE": -6.8353370247349998,
+                "LONGITUDE": 108.60702441545077,
+                "NPSN": 20252180,
+                "KECATAMAN": "Lemah Abang",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Negeri",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.607024415450766, -6.835337024735]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP NEGERI 1 LEMAHABANG",
+                "LATITUDE": -6.8296685051691339,
+                "LONGITUDE": 108.62062919432169,
+                "NPSN": 20214885,
+                "KECATAMAN": "Lemah Abang",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Negeri",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.620629194321694, -6.829668505169134]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP SATU ATAP NEGERI WALED",
+                "LATITUDE": -6.9105737682566764,
+                "LONGITUDE": 108.67839579704864,
+                "NPSN": 20269451,
+                "KECATAMAN": "Waled",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Negeri",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.678395797048637, -6.910573768256676]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP NEGERI 1 TENGAH TANI",
+                "LATITUDE": -6.7015378249293356,
+                "LONGITUDE": 108.52461895622211,
+                "NPSN": 20214832,
+                "KECATAMAN": "Tengah Tani",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Negeri",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.524618956222113, -6.701537824929336]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP NEGERI 2 GEBANG",
+                "LATITUDE": -6.8501288459896745,
+                "LONGITUDE": 108.71018418771386,
+                "NPSN": 20244633,
+                "KECATAMAN": "Gebang",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Negeri",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.710184187713864, -6.850128845989675]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP NEGERI 1 GEBANG",
+                "LATITUDE": -6.8180583944507767,
+                "LONGITUDE": 108.72110621107826,
+                "NPSN": 20254081,
+                "KECATAMAN": "Gebang",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Negeri",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.721106211078265, -6.818058394450777]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP NEGERI 3 GEGESIK",
+                "LATITUDE": -6.5860721838181977,
+                "LONGITUDE": 108.42955076329936,
+                "NPSN": 20214892,
+                "KECATAMAN": "Gegesik",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Negeri",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.42955076329936, -6.586072183818198]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP NEGERI 1 GEGESIK",
+                "LATITUDE": -6.597579990569395,
+                "LONGITUDE": 108.42396999091214,
+                "NPSN": 20244632,
+                "KECATAMAN": "Gegesik",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Negeri",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.423969990912141, -6.597579990569395]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP NEGERI 1 GEMPOL",
+                "LATITUDE": -6.7028099995721595,
+                "LONGITUDE": 108.41124924858509,
+                "NPSN": 20214856,
+                "KECATAMAN": "Gempol",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Negeri",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.411249248585094, -6.70280999957216]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP NEGERI 2 PLUMBON",
+                "LATITUDE": -6.7114533932842981,
+                "LONGITUDE": 108.47656211544989,
+                "NPSN": 20214831,
+                "KECATAMAN": "Plumbon",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Negeri",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.476562115449894, -6.711453393284298]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP NEGERI 2 GUNUNG JATI",
+                "LATITUDE": -6.6585144719029001,
+                "LONGITUDE": 108.53890076784083,
+                "NPSN": 20214849,
+                "KECATAMAN": "Gunung Jati",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Negeri",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.538900767840829, -6.6585144719029]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP NEGERI 2 GEGESIK",
+                "LATITUDE": -6.521480221817737,
+                "LONGITUDE": 108.43063294980711,
+                "NPSN": 20214833,
+                "KECATAMAN": "Gegesik",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Negeri",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.430632949807105, -6.521480221817737]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP NEGERI 2 CILEDUG",
+                "LATITUDE": -6.9131661501154023,
+                "LONGITUDE": 108.73382400655046,
+                "NPSN": 20270611,
+                "KECATAMAN": "Ciledug",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Negeri",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.733824006550464, -6.913166150115402]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP SATU ATAP NEGERI KARANGSEMBUNG",
+                "LATITUDE": -6.8469997514474645,
+                "LONGITUDE": 108.68644038020211,
+                "NPSN": 20214842,
+                "KECATAMAN": "Karang Sembung",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Negeri",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.686440380202114, -6.846999751447465]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP NEGERI 2 LOSARI",
+                "LATITUDE": -6.8183851627737111,
+                "LONGITUDE": 108.8095932424234,
+                "NPSN": 20253158,
+                "KECATAMAN": "Losari",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Negeri",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.809593242423404, -6.818385162773711]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP NEGERI 2 KALIWEDI",
+                "LATITUDE": -6.5887490281427183,
+                "LONGITUDE": 108.38214652252755,
+                "NPSN": 20246137,
+                "KECATAMAN": "Kaliwedi",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Negeri",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.382146522527549, -6.588749028142718]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP NEGERI 1 GREGED",
+                "LATITUDE": -6.8454073031588951,
+                "LONGITUDE": 108.54696838020206,
+                "NPSN": 20214866,
+                "KECATAMAN": "Greged",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Negeri",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.54696838020206, -6.845407303158895]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP NEGERI 1 ASTANAJAPURA",
+                "LATITUDE": -6.8373755832903162,
+                "LONGITUDE": 108.65232957557291,
+                "NPSN": 20214828,
+                "KECATAMAN": "Astana Japura",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Negeri",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.652329575572907, -6.837375583290316]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP NEGERI 1 KAPETAKAN",
+                "LATITUDE": -6.5641408988976977,
+                "LONGITUDE": 108.50539179553768,
+                "NPSN": 20214827,
+                "KECATAMAN": "Kapetakan",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Negeri",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.505391795537676, -6.564140898897698]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP NEGERI 2 KARANGSEMBUNG",
+                "LATITUDE": -6.8383863204430213,
+                "LONGITUDE": 108.66754032651048,
+                "NPSN": 20258099,
+                "KECATAMAN": "Karang Sembung",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Negeri",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.667540326510476, -6.838386320443021]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP NEGERI 2 SURANENGGALA",
+                "LATITUDE": -6.6298513945245041,
+                "LONGITUDE": 108.52586606485804,
+                "NPSN": 20214887,
+                "KECATAMAN": "Karang Sembung",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Negeri",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.525866064858036, -6.629851394524504]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP NEGERI 1 KARANGSEMBUNG",
+                "LATITUDE": -6.8452277670672617,
+                "LONGITUDE": 108.6401807812813,
+                "NPSN": 20214862,
+                "KECATAMAN": "Talun",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Negeri",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.640180781281302, -6.845227767067262]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP NEGERI 1 TALUN",
+                "LATITUDE": -6.7887878107494535,
+                "LONGITUDE": 108.49101894249308,
+                "NPSN": 20214875,
+                "KECATAMAN": "Depok",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Negeri",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.491018942493085, -6.788787810749453]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP NEGERI 1 DEPOK",
+                "LATITUDE": -6.7260246829819996,
+                "LONGITUDE": 108.45916898475016,
+                "NPSN": 20214857,
+                "KECATAMAN": "Palimanan",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Negeri",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.459168984750164, -6.726024682982]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP NEGERI 2 PALIMANAN",
+                "LATITUDE": -6.7381939932580854,
+                "LONGITUDE": 108.4274619081822,
+                "NPSN": 20214889,
+                "KECATAMAN": "Suranenggala",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Negeri",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.427461908182195, -6.738193993258085]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP NEGERI 1 SURANENGGALA",
+                "LATITUDE": -6.6424603341562634,
+                "LONGITUDE": 108.52957294907313,
+                "NPSN": 20254080,
+                "KECATAMAN": "Weru",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Negeri",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.529572949073128, -6.642460334156263]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP NEGERI 2 WERU",
+                "LATITUDE": -6.7256129349685683,
+                "LONGITUDE": 108.49082163372907,
+                "NPSN": 20214863,
+                "KECATAMAN": "Kedawung",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Negeri",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.49082163372907, -6.725612934968568]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP NEGERI 1 KEDAWUNG",
+                "LATITUDE": -6.7206858428714433,
+                "LONGITUDE": 108.53301377390709,
+                "NPSN": 20244638,
+                "KECATAMAN": "Klangenan",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Negeri",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.533013773907086, -6.720685842871443]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP NEGERI 1 KLANGENAN",
+                "LATITUDE": -6.6471028492916826,
+                "LONGITUDE": 108.45588187605665,
+                "NPSN": 20258353,
+                "KECATAMAN": "Talun",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Negeri",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.455881876056651, -6.647102849291683]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP SATU ATAP NEGERI TALUN",
+                "LATITUDE": -6.7895974846054621,
+                "LONGITUDE": 108.49009626560024,
+                "NPSN": 20253159,
+                "KECATAMAN": "Karangwareng",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Negeri",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.490096265600243, -6.789597484605462]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP NEGERI 1 KARANGWARENG",
+                "LATITUDE": -6.8720413131305023,
+                "LONGITUDE": 108.65690697976169,
+                "NPSN": 20214884,
+                "KECATAMAN": "Losari",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Negeri",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.656906979761686, -6.872041313130502]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP NEGERI 1 LOSARI",
+                "LATITUDE": -6.8432808468575166,
+                "LONGITUDE": 108.80850255488814,
+                "NPSN": 20214848,
+                "KECATAMAN": "Palimanan",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Negeri",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.808502554888136, -6.843280846857517]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP NEGERI 3 PALIMANAN",
+                "LATITUDE": -6.6883992953129843,
+                "LONGITUDE": 108.42985576441734,
+                "NPSN": 20214883,
+                "KECATAMAN": "Mundu",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Negeri",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.42985576441734, -6.688399295312984]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP NEGERI 1 MUNDU",
+                "LATITUDE": -6.7697239677447243,
+                "LONGITUDE": 108.59438422023672,
+                "NPSN": 20214861,
+                "KECATAMAN": "Gunung Jati",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Negeri",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.594384220236719, -6.769723967744724]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP NEGERI 1 GUNUNG JATI",
+                "LATITUDE": -6.6541800376852809,
+                "LONGITUDE": 108.53569490978381,
+                "NPSN": 20214882,
+                "KECATAMAN": "Pabedilan",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Negeri",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.535694909783814, -6.654180037685281]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP NEGERI 1 PABEDILAN",
+                "LATITUDE": -6.8489576409408794,
+                "LONGITUDE": 108.75510717790891,
+                "NPSN": 20252179,
+                "KECATAMAN": "Pabuaran",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Negeri",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.755107177908911, -6.848957640940879]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP NEGERI 1 PABUARAN",
+                "LATITUDE": -6.8967322000120772,
+                "LONGITUDE": 108.72297837580837,
+                "NPSN": 20214881,
+                "KECATAMAN": "Palimanan",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Negeri",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.722978375808367, -6.896732200012077]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP NEGERI 1 PALIMANAN",
+                "LATITUDE": -6.7148220003337018,
+                "LONGITUDE": 108.43608004557555,
+                "NPSN": 20214845,
+                "KECATAMAN": "Palimanan",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Negeri",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.436080045575551, -6.714822000333702]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP NEGERI 4 PALIMANAN",
+                "LATITUDE": -6.7141635781550093,
+                "LONGITUDE": 108.43490903688362,
+                "NPSN": 20258291,
+                "KECATAMAN": "Mundu",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Negeri",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.434909036883624, -6.714163578155009]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP NEGERI 2 MUNDU",
+                "LATITUDE": -6.7631725082559049,
+                "LONGITUDE": 108.56056348687989,
+                "NPSN": 20214880,
+                "KECATAMAN": "Pangenan",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Negeri",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.560563486879886, -6.763172508255905]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP NEGERI 1 PANGENAN",
+                "LATITUDE": -6.8138269363271542,
+                "LONGITUDE": 108.68118164663444,
+                "NPSN": 20254198,
+                "KECATAMAN": "Plered",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Negeri",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.681181646634442, -6.813826936327154]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP NEGERI 3 PLERED",
+                "LATITUDE": -6.6661856747855106,
+                "LONGITUDE": 108.49661146491319,
+                "NPSN": 20214879,
+                "KECATAMAN": "Panguragan",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Negeri",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.496611464913187, -6.666185674785511]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP NEGERI 1 PANGURAGAN",
+                "LATITUDE": -6.6278353279552968,
+                "LONGITUDE": 108.46436154744492,
+                "NPSN": 20214853,
+                "KECATAMAN": "Pasaleman",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Negeri",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.464361547444923, -6.627835327955297]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP NEGERI 1 PASALEMAN",
+                "LATITUDE": -6.9253502012989339,
+                "LONGITUDE": 108.73772637274926,
+                "NPSN": 20214841,
+                "KECATAMAN": "Susukan Lebak",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Negeri",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.737726372749265, -6.925350201298934]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP NEGERI 1 SUSUKANLEBAK",
+                "LATITUDE": -6.850881899250977,
+                "LONGITUDE": 108.59936047428552,
+                "NPSN": 20244637,
+                "KECATAMAN": "Kapetakan",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Negeri",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.599360474285518, -6.850881899250977]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP NEGERI 2 KAPETAKAN",
+                "LATITUDE": -6.5922306916785836,
+                "LONGITUDE": 108.51281036690908,
+                "NPSN": 20214851,
+                "KECATAMAN": "Sumber",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Negeri",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.512810366909079, -6.592230691678584]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP NEGERI 3 SUMBER",
+                "LATITUDE": -6.7447015712167575,
+                "LONGITUDE": 108.49932185088868,
+                "NPSN": 20258350,
+                "KECATAMAN": "Klangenan",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Negeri",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.499321850888677, -6.744701571216758]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP NEGERI 2 KLANGENAN",
+                "LATITUDE": -6.6843972914711696,
+                "LONGITUDE": 108.45471271259331,
+                "NPSN": 20254204,
+                "KECATAMAN": "Pangenan",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Negeri",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.454712712593306, -6.68439729147117]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP NEGERI 2 PANGENAN",
+                "LATITUDE": -6.7887110987045993,
+                "LONGITUDE": 108.64629623530017,
+                "NPSN": 20214878,
+                "KECATAMAN": "Plumbon",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Negeri",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.64629623530017, -6.788711098704599]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP NEGERI 1 PLUMBON",
+                "LATITUDE": -6.7041513703852287,
+                "LONGITUDE": 108.47330007794181,
+                "NPSN": 20214891,
+                "KECATAMAN": "Kaliwedi",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Negeri",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.473300077941815, -6.704151370385229]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP NEGERI 1 KALIWEDI",
+                "LATITUDE": -6.596905899207079,
+                "LONGITUDE": 108.3971631425615,
+                "NPSN": 20214877,
+                "KECATAMAN": "Sedong",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Negeri",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.397163142561496, -6.596905899207079]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP NEGERI 1 SEDONG",
+                "LATITUDE": -6.8601898283923255,
+                "LONGITUDE": 108.56402135618858,
+                "NPSN": 20214850,
+                "KECATAMAN": "Gunung Jati",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Negeri",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.564021356188576, -6.860189828392325]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP NEGERI 3 GUNUNGJATI",
+                "LATITUDE": -6.6530921609030456,
+                "LONGITUDE": 108.52050580001884,
+                "NPSN": 20258351,
+                "KECATAMAN": "Sedong",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Negeri",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.520505800018839, -6.653092160903046]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP NEGERI 2 SEDONG",
+                "LATITUDE": -6.8611123772496114,
+                "LONGITUDE": 108.58623083240118,
+                "NPSN": 20214837,
+                "KECATAMAN": "Arjawinangun",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Negeri",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.586230832401185, -6.861112377249611]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP NEGERI 2 ARJAWINANGUN",
+                "LATITUDE": -6.6610750495297042,
+                "LONGITUDE": 108.42132756297003,
+                "NPSN": 20214852,
+                "KECATAMAN": "Weru",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Negeri",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.421327562970035, -6.661075049529704]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP NEGERI 1 WERU",
+                "LATITUDE": -6.7090445226165834,
+                "LONGITUDE": 108.50086775912655,
+                "NPSN": 20214852,
+                "KECATAMAN": "Weru",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Negeri",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.50086775912655, -6.709044522616583]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP SATU ATAP NEGERI KARANGWARENG",
+                "LATITUDE": -6.8855208026174646,
+                "LONGITUDE": 108.63647996760486,
+                "NPSN": 20258352,
+                "KECATAMAN": "Karangwareng",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Negeri",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.636479967604856, -6.885520802617465]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP NEGERI 2 GREGED",
+                "LATITUDE": -6.8209743450149354,
+                "LONGITUDE": 108.55976817006024,
+                "NPSN": 20244636,
+                "KECATAMAN": "Greged",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Negeri",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.559768170060238, -6.820974345014935]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP NEGERI 2 JAMBLANG",
+                "LATITUDE": -6.7018075507179384,
+                "LONGITUDE": 108.45221594771422,
+                "NPSN": 20214826,
+                "KECATAMAN": "Jamblang",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Negeri",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.452215947714222, -6.701807550717938]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP NEGERI 1 SUMBER",
+                "LATITUDE": -6.7592932331477398,
+                "LONGITUDE": 108.47793419699987,
+                "NPSN": 20214855,
+                "KECATAMAN": "Sumber",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Negeri",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.477934196999868, -6.75929323314774]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP NEGERI 2 SUSUKANLEBAK",
+                "LATITUDE": -6.8665912290607736,
+                "LONGITUDE": 108.62890341632374,
+                "NPSN": 20214840,
+                "KECATAMAN": "Susukan Lebak",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Negeri",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.628903416323737, -6.866591229060774]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP SATU ATAP NEGERI LOSARI",
+                "LATITUDE": -6.7951284862587666,
+                "LONGITUDE": 108.82673483708828,
+                "NPSN": 20258349,
+                "KECATAMAN": "Losari",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Negeri",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.826734837088281, -6.795128486258767]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP NEGERI 2 PLERED",
+                "LATITUDE": -6.7024710598268333,
+                "LONGITUDE": 108.49959721010157,
+                "NPSN": 20244635,
+                "KECATAMAN": "Plered",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Negeri",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.49959721010157, -6.702471059826833]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP NEGERI 1 PLERED",
+                "LATITUDE": -6.7012570813344405,
+                "LONGITUDE": 108.51467778210777,
+                "NPSN": 20214838,
+                "KECATAMAN": "Plered",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Negeri",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.514677782107768, -6.701257081334441]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP NEGERI 2 SUSUKAN",
+                "LATITUDE": -6.6038781557201487,
+                "LONGITUDE": 108.34099980707433,
+                "NPSN": 20214854,
+                "KECATAMAN": "Susukan",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Negeri",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.340999807074326, -6.603878155720149]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP Negeri 2 Gempol",
+                "LATITUDE": -6.7139883959511026,
+                "LONGITUDE": 108.36295255310807,
+                "NPSN": 69892261,
+                "KECATAMAN": "Gempol",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Negeri",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.362952553108073, -6.713988395951103]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP NEGERI 1 WALED",
+                "LATITUDE": -6.914537739072073,
+                "LONGITUDE": 108.71638378126812,
+                "NPSN": 20214839,
+                "KECATAMAN": "Waled",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Negeri",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.716383781268121, -6.914537739072073]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP NEGERI 2 DEPOK",
+                "LATITUDE": -6.7411067591716831,
+                "LONGITUDE": 108.44380358249043,
+                "NPSN": 20254191,
+                "KECATAMAN": "Depok",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Negeri",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.443803582490432, -6.741106759171683]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP PERINTIS ARJAWINANGUN",
+                "LATITUDE": -6.6439682797832402,
+                "LONGITUDE": 108.40583782359377,
+                "NPSN": 20214757,
+                "KECATAMAN": "Arjawinangun",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Swasta",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.405837823593771, -6.64396827978324]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP PLUS DAR AL-TAUHID",
+                "LATITUDE": -6.6461616742901155,
+                "LONGITUDE": 108.4069714671466,
+                "NPSN": 20214765,
+                "KECATAMAN": "Arjawinangun",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Swasta",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.406971467146604, -6.646161674290116]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP DARUSSALAF",
+                "LATITUDE": -6.8484785958800813,
+                "LONGITUDE": 108.61941871945911,
+                "NPSN": 69760709,
+                "KECATAMAN": "Lemah Abang",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Swasta",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.619418719459105, -6.848478595880081]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMPIT AL MARWAT",
+                "LATITUDE": -6.8456078555506883,
+                "LONGITUDE": 108.62011225098999,
+                "NPSN": 69979645,
+                "KECATAMAN": "Lemah Abang",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Swasta",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.62011225098999, -6.845607855550688]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP ASY-SYUHADA",
+                "LATITUDE": -6.6871486069486581,
+                "LONGITUDE": 108.4761199306444,
+                "NPSN": 70010393,
+                "KECATAMAN": "Ciwaringin",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Swasta",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.476119930644401, -6.687148606948658]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP DAARUT TAZKIYAH",
+                "LATITUDE": -6.6894755820525766,
+                "LONGITUDE": 108.36907944133219,
+                "NPSN": 70008412,
+                "KECATAMAN": "Ciwaringin",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Swasta",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.36907944133219, -6.689475582052577]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP NU ASSALAFIE UNGGULAN",
+                "LATITUDE": -6.6878242717822909,
+                "LONGITUDE": 108.37234996257246,
+                "NPSN": 70040442,
+                "KECATAMAN": "Ciwaringin",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Swasta",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.372349962572457, -6.687824271782291]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP PESANTREN CIWARINGIN",
+                "LATITUDE": -6.6868634830147755,
+                "LONGITUDE": 108.36924869140746,
+                "NPSN": 20214756,
+                "KECATAMAN": "Ciwaringin",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Swasta",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.369248691407464, -6.686863483014776]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP PGRI BABAKAN",
+                "LATITUDE": -6.8600696757021487,
+                "LONGITUDE": 108.72210014907748,
+                "NPSN": 20214786,
+                "KECATAMAN": "Babakan",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Swasta",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.722100149077477, -6.860069675702149]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP Progresip Madinah Ar-Rasul",
+                "LATITUDE": -6.6757321776577552,
+                "LONGITUDE": 108.35224343112911,
+                "NPSN": 69928762,
+                "KECATAMAN": "Ciwaringin",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Swasta",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.352243431129111, -6.675732177657755]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP TUJUH LENTERA",
+                "LATITUDE": -6.688154883578008,
+                "LONGITUDE": 108.36948260674747,
+                "NPSN": 70001546,
+                "KECATAMAN": "Ciwaringin",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Swasta",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.369482606747468, -6.688154883578008]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP TUNAS PERTIWI",
+                "LATITUDE": -6.6920149524669101,
+                "LONGITUDE": 108.37004172208751,
+                "NPSN": 69851873,
+                "KECATAMAN": "Ciwaringin",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Swasta",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.370041722087507, -6.69201495246691]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP NU BABAKAN",
+                "LATITUDE": -6.8522012548532736,
+                "LONGITUDE": 108.72271048293982,
+                "NPSN": 20244623,
+                "KECATAMAN": "Babakan",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Swasta",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.722710482939817, -6.852201254853274]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP SUNAN GUNUNGJATI BABAKAN",
+                "LATITUDE": -6.7058682576112654,
+                "LONGITUDE": 108.51889296257245,
+                "NPSN": 20214871,
+                "KECATAMAN": "Babakan",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Swasta",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.518892962572451, -6.705868257611265]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP Pesantren Al Hikmah 2",
+                "LATITUDE": -6.7624383161579074,
+                "LONGITUDE": 108.42448933373744,
+                "NPSN": 69900232,
+                "KECATAMAN": "Dukupuntang",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Swasta",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.424489333737441, -6.762438316157907]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP DARUL FAQIH",
+                "LATITUDE": -6.7212845225946518,
+                "LONGITUDE": 108.41890145092252,
+                "NPSN": 69988468,
+                "KECATAMAN": "Palimanan",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Swasta",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.418901450922519, -6.721284522594652]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP YAPIDA PALIMANAN",
+                "LATITUDE": -6.7207365917510007,
+                "LONGITUDE": 108.42014685254684,
+                "NPSN": 20270485,
+                "KECATAMAN": "Palimanan",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Swasta",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.420146852546836, -6.720736591751001]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP TUNAS BANGSA",
+                "LATITUDE": -6.7816419740858978,
+                "LONGITUDE": 108.61895459815837,
+                "NPSN": 20247296,
+                "KECATAMAN": "Mundu",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Swasta",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.618954598158368, -6.781641974085898]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP SUNAN GUNUNG JATI TENGAH TANI",
+                "LATITUDE": -6.7058897994707198,
+                "LONGITUDE": 108.51897887866998,
+                "NPSN": 20244629,
+                "KECATAMAN": "Tengah Tani",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Swasta",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.518978878669984, -6.70588979947072]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP IIBS FAJAR HIDAYAH",
+                "LATITUDE": -6.8299837600225777,
+                "LONGITUDE": 108.52231688778903,
+                "NPSN": 70002470,
+                "KECATAMAN": "Beber",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Swasta",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.522316887789032, -6.829983760022578]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP PESANTREN AL HIKMAH DUKUPUNTANG",
+                "LATITUDE": -6.7624169311234876,
+                "LONGITUDE": 108.42452153545469,
+                "NPSN": 20255059,
+                "KECATAMAN": "Dukupuntang",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Swasta",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.424521535454687, -6.762416931123488]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP IT AL BURHANY",
+                "LATITUDE": -6.7156540770811173,
+                "LONGITUDE": 108.48952285927203,
+                "NPSN": 69848988,
+                "KECATAMAN": "Plumbon",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Swasta",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.489522859272029, -6.715654077081117]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP PGRI ASTANAJAPURA",
+                "LATITUDE": -6.7921662316757123,
+                "LONGITUDE": 108.61583877818722,
+                "NPSN": 20214787,
+                "KECATAMAN": "Astana Japura",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Swasta",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.615838778187225, -6.792166231675712]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP ISLAM QURANI AL BAHJAH 2",
+                "LATITUDE": -6.6501813349041612,
+                "LONGITUDE": 108.50798115115934,
+                "NPSN": 69899933,
+                "KECATAMAN": "Gunung Jati",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Swasta",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.507981151159342, -6.650181334904161]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP ASY-SYAHIDA DUKUPUNTANG",
+                "LATITUDE": -6.7633877936801525,
+                "LONGITUDE": 108.43055315297239,
+                "NPSN": 20214791,
+                "KECATAMAN": "Dukupuntang",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Swasta",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.430553152972394, -6.763387793680153]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP NU WALED",
+                "LATITUDE": -6.8901157805447593,
+                "LONGITUDE": 108.69586989270454,
+                "NPSN": 20214758,
+                "KECATAMAN": "Waled",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Swasta",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.695869892704536, -6.890115780544759]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP ISLAM TERPADU SALMAN",
+                "LATITUDE": -6.7765845621837473,
+                "LONGITUDE": 108.41534410599714,
+                "NPSN": 69964519,
+                "KECATAMAN": "Dukupuntang",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Swasta",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.415344105997136, -6.776584562183747]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP IT Ash Shiddiqy Al Munawar",
+                "LATITUDE": -6.7371358005049355,
+                "LONGITUDE": 108.4365774211814,
+                "NPSN": 69899888,
+                "KECATAMAN": "Depok",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Swasta",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.436577421181397, -6.737135800504936]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP NU CILEDUG",
+                "LATITUDE": -6.9055703493411391,
+                "LONGITUDE": 108.74433449296188,
+                "NPSN": 20214759,
+                "KECATAMAN": "Ciledug",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Swasta",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.744334492961883, -6.905570349341139]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP MUHAMMADIYAH CILEDUG",
+                "LATITUDE": -6.9059530731985124,
+                "LONGITUDE": 108.75018735060874,
+                "NPSN": 20214761,
+                "KECATAMAN": "Ciledug",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Swasta",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.750187350608741, -6.905953073198512]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP IT TUNAS NUSANTARA",
+                "LATITUDE": -6.8157476464643523,
+                "LONGITUDE": 108.51108223686717,
+                "NPSN": 70012410,
+                "KECATAMAN": "Beber",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Swasta",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.511082236867168, -6.815747646464352]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP IT BINA INSAN MULIA",
+                "LATITUDE": -6.7775643668506707,
+                "LONGITUDE": 108.43420385640817,
+                "NPSN": 69862443,
+                "KECATAMAN": "Dukupuntang",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Swasta",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.434203856408175, -6.777564366850671]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP UNGGULAN BINA INSAN MULIA",
+                "LATITUDE": -6.776713628433475,
+                "LONGITUDE": 108.4339495237508,
+                "NPSN": 70015960,
+                "KECATAMAN": "Dukupuntang",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Swasta",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.433949523750798, -6.776713628433475]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP PESANTREN KEBON CINTA",
+                "LATITUDE": -6.692374211533096,
+                "LONGITUDE": 108.3828809512557,
+                "NPSN": 69980616,
+                "KECATAMAN": "Ciwaringin",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Swasta",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.3828809512557, -6.692374211533096]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP PGRI CIWARINGIN",
+                "LATITUDE": -6.6928330132165756,
+                "LONGITUDE": 108.37920256474762,
+                "NPSN": 20214782,
+                "KECATAMAN": "Ciwaringin",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Swasta",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.379202564747615, -6.692833013216576]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMPS PLUS SAHABAT ABAH",
+                "LATITUDE": -6.6604685391677423,
+                "LONGITUDE": 108.38126426845149,
+                "NPSN": 69774884,
+                "KECATAMAN": "Ciwaringin",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Swasta",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.381264268451488, -6.660468539167742]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP PLUS ULIL ALBAB DEPOK",
+                "LATITUDE": -6.700708985187771,
+                "LONGITUDE": 108.46544474480073,
+                "NPSN": 20268710,
+                "KECATAMAN": "Depok",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Swasta",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.465444744800735, -6.700708985187771]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP BOARDING SCHOOL CAKRABUANA",
+                "LATITUDE": -6.7800986171633717,
+                "LONGITUDE": 108.44609478194516,
+                "NPSN": 20271758,
+                "KECATAMAN": "Dukupuntang",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Swasta",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.446094781945163, -6.780098617163372]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP TARBIYATUL BANIN",
+                "LATITUDE": -6.8315503452645574,
+                "LONGITUDE": 108.69658668194576,
+                "NPSN": 20271761,
+                "KECATAMAN": "Dukupuntang",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Swasta",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.69658668194576, -6.831550345264557]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP  Al-Alawiyah Pesantren Gedongan",
+                "LATITUDE": -6.8314864292834407,
+                "LONGITUDE": 108.69657595310973,
+                "NPSN": 69899625,
+                "KECATAMAN": "Pangenan",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Swasta",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.696575953109729, -6.831486429283441]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP ASH SHIGHOR",
+                "LATITUDE": -6.8297005661303789,
+                "LONGITUDE": 108.69420622242144,
+                "NPSN": 20258384,
+                "KECATAMAN": "Pangenan",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Swasta",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.694206222421442, -6.829700566130379]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP MUALLIMIN MUALLIMAT PANGENAN",
+                "LATITUDE": -6.8307522610075928,
+                "LONGITUDE": 108.69549175310976,
+                "NPSN": 69725673,
+                "KECATAMAN": "Pangenan",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Swasta",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.695491753109764, -6.830752261007593]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP IT AS SAODAH",
+                "LATITUDE": -6.8249876426410419,
+                "LONGITUDE": 108.70898219914191,
+                "NPSN": 70003117,
+                "KECATAMAN": "Gebang",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Swasta",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.708982199141914, -6.824987642641042]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP AL-MUFLIHIN",
+                "LATITUDE": -6.8242411631970699,
+                "LONGITUDE": 108.74297159889129,
+                "NPSN": 69809511,
+                "KECATAMAN": "Gebang",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Swasta",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.742971598891287, -6.82424116319707]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP MUHAMMADIYAH GEBANG",
+                "LATITUDE": -6.824528803072818,
+                "LONGITUDE": 108.7428643107817,
+                "NPSN": 20214760,
+                "KECATAMAN": "Gebang",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Swasta",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.742864310781698, -6.824528803072818]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP NU GEBANG",
+                "LATITUDE": -6.8217376264326299,
+                "LONGITUDE": 108.72501145882892,
+                "NPSN": 20244624,
+                "KECATAMAN": "Gebang",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Swasta",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.725011458828916, -6.82173762643263]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP PONPES BUSTANUL ARIFIN",
+                "LATITUDE": -6.7440846948428472,
+                "LONGITUDE": 108.4321081248622,
+                "NPSN": 70023637,
+                "KECATAMAN": "Depok",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Swasta",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.432108124862197, -6.744084694842847]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP ISLAM TERPADU UMAR BIN AL KHATTAB",
+                "LATITUDE": -6.7629637504359597,
+                "LONGITUDE": 108.47990973811484,
+                "NPSN": 69928764,
+                "KECATAMAN": "Gunung Jati",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Swasta",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.479909738114841, -6.76296375043596]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP GUNUNG SARI WALED",
+                "LATITUDE": -6.9100010750193936,
+                "LONGITUDE": 108.69934560893064,
+                "NPSN": 20214768,
+                "KECATAMAN": "Waled",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Swasta",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.699345608930642, -6.910001075019394]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMPS AL MUNAWAROH",
+                "LATITUDE": -6.5649240898139691,
+                "LONGITUDE": 108.3808699261223,
+                "NPSN": 69790734,
+                "KECATAMAN": "Kaliwedi",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Swasta",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.380869926122301, -6.564924089813969]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP DYAH PITHALOKA",
+                "LATITUDE": -6.8886327112842771,
+                "LONGITUDE": 108.72203166845469,
+                "NPSN": 20214769,
+                "KECATAMAN": "Pabuaran",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Swasta",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.72203166845469, -6.888632711284277]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP IT FATAHILLAH",
+                "LATITUDE": -6.6879253749701757,
+                "LONGITUDE": 108.54653070505636,
+                "NPSN": 69989736,
+                "KECATAMAN": "Gunung Jati",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Swasta",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.546530705056355, -6.687925374970176]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP IBS FATAHILAH JAGAPURA",
+                "LATITUDE": -6.5380936894664119,
+                "LONGITUDE": 108.43946413776155,
+                "NPSN": 69988958,
+                "KECATAMAN": "Gegesik",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Swasta",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.439464137761547, -6.538093689466412]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP PESANTREN HIDAYATUT THOLIBIN",
+                "LATITUDE": -6.5402558674450217,
+                "LONGITUDE": 108.42240472020642,
+                "NPSN": 70011841,
+                "KECATAMAN": "Gegesik",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Swasta",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.422404720206416, -6.540255867445022]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP NASYRUL ULUM GEGESIK",
+                "LATITUDE": -6.5356206701136577,
+                "LONGITUDE": 108.43167493419315,
+                "NPSN": 20244622,
+                "KECATAMAN": "Gegesik",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Swasta",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.431674934193154, -6.535620670113658]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP NU USWATUN HASANAH",
+                "LATITUDE": -6.5375269848365836,
+                "LONGITUDE": 108.43106799120866,
+                "NPSN": 20268932,
+                "KECATAMAN": "Gegesik",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Swasta",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.431067991208664, -6.537526984836584]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP SANTO THOMAS",
+                "LATITUDE": -6.9083663770698251,
+                "LONGITUDE": 108.73811444398326,
+                "NPSN": 20214874,
+                "KECATAMAN": "Ciledug",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Swasta",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.738114443983264, -6.908366377069825]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP IT ISHLAHUL MUTAALLIMIN",
+                "LATITUDE": -6.6522887201698744,
+                "LONGITUDE": 108.41342832334993,
+                "NPSN": 69902575,
+                "KECATAMAN": "Arjawinangun",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Swasta",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.413428323349933, -6.652288720169874]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP MUBTADIAT",
+                "LATITUDE": -6.6496268967218377,
+                "LONGITUDE": 108.41124053708673,
+                "NPSN": 20214763,
+                "KECATAMAN": "Arjawinangun",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Swasta",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.411240537086726, -6.649626896721838]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP IT BANI SUWARI",
+                "LATITUDE": -6.5399889725691871,
+                "LONGITUDE": 108.42813248778154,
+                "NPSN": 70040791,
+                "KECATAMAN": "Arjawinangun",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Swasta",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.428132487781539, -6.539988972569187]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP NU AN NASHUHA KALIMUKTI",
+                "LATITUDE": -6.8768541865222632,
+                "LONGITUDE": 108.79150045243202,
+                "NPSN": 69853605,
+                "KECATAMAN": "Pabedilan",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Swasta",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.791500452432018, -6.876854186522263]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP NU LOSARI",
+                "LATITUDE": -6.7511381322221045,
+                "LONGITUDE": 108.4522859524597,
+                "NPSN": 20258201,
+                "KECATAMAN": "Losari",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Swasta",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.452285952459704, -6.751138132222104]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP IT DARUL MAARIF",
+                "LATITUDE": -6.6866856554916971,
+                "LONGITUDE": 108.50174163711392,
+                "NPSN": 69988884,
+                "KECATAMAN": null,
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Swasta",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.501741637113923, -6.686685655491697]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP SYAH MAULANA",
+                "LATITUDE": -6.5434111619487707,
+                "LONGITUDE": 108.49718221541062,
+                "NPSN": 70039586,
+                "KECATAMAN": "Kapetakan",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Swasta",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.497182215410618, -6.543411161948771]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP AZZAHRA",
+                "LATITUDE": -6.6082756668242117,
+                "LONGITUDE": 108.38979279478518,
+                "NPSN": 20254083,
+                "KECATAMAN": "Arjawinangun",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Swasta",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.38979279478518, -6.608275666824212]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP PGRI KARANGSEMBUNG",
+                "LATITUDE": -6.830217652855044,
+                "LONGITUDE": 108.62347226211183,
+                "NPSN": 20244627,
+                "KECATAMAN": "Karang Sembung",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Swasta",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.623472262111832, -6.830217652855044]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP AL-FALAH",
+                "LATITUDE": -6.7512553310854386,
+                "LONGITUDE": 108.45215720642555,
+                "NPSN": 20214813,
+                "KECATAMAN": "Depok",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Swasta",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.452157206425554, -6.751255331085439]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP PARIPURNA",
+                "LATITUDE": -6.7223587758950547,
+                "LONGITUDE": 108.44607325060602,
+                "NPSN": 20254082,
+                "KECATAMAN": "Depok",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Swasta",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.44607325060602, -6.722358775895055]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMPIQU AL-BAHJAH DEPOK CIREBON",
+                "LATITUDE": -6.7151692642873861,
+                "LONGITUDE": 108.44983220181493,
+                "NPSN": 70024104,
+                "KECATAMAN": "Depok",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Swasta",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.449832201814928, -6.715169264287386]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMPIT AKMALA SABILA",
+                "LATITUDE": -6.7405413622349526,
+                "LONGITUDE": 108.51504309762075,
+                "NPSN": 69978921,
+                "KECATAMAN": "Talun",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Swasta",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.515043097620747, -6.740541362234953]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP MUHAMMADIYAH 2 CIREBON",
+                "LATITUDE": -6.7102918420247111,
+                "LONGITUDE": 108.53626441399022,
+                "NPSN": 20214762,
+                "KECATAMAN": "Kedawung",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Swasta",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.536264413990224, -6.710291842024711]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP AL WASHLIYAH",
+                "LATITUDE": -6.7595750020379963,
+                "LONGITUDE": 108.49198979698535,
+                "NPSN": 20214811,
+                "KECATAMAN": "Sumber",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Swasta",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.491989796985351, -6.759575002037996]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP PUI PALIMANAN",
+                "LATITUDE": -6.7631520261799674,
+                "LONGITUDE": 108.41664220040659,
+                "NPSN": 20214894,
+                "KECATAMAN": "Palimanan",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Swasta",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.416642200406585, -6.763152026179967]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP IT DARURROHMAH",
+                "LATITUDE": -6.6868544726456101,
+                "LONGITUDE": 108.50176023542821,
+                "NPSN": 70039035,
+                "KECATAMAN": "Weru",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Swasta",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.501760235428208, -6.68685447264561]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP NASIONAL KLANGENAN",
+                "LATITUDE": -6.705659025941368,
+                "LONGITUDE": 108.44080859475871,
+                "NPSN": 69725672,
+                "KECATAMAN": "Klangenan",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Swasta",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.440808594758707, -6.705659025941368]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP PGRI 1 KLANGENAN",
+                "LATITUDE": -6.7099403486334559,
+                "LONGITUDE": 108.44011163708738,
+                "NPSN": 20214771,
+                "KECATAMAN": "Klangenan",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Swasta",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.440111637087384, -6.709940348633456]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMPIT PERSATUAN ISLAM",
+                "LATITUDE": -6.6602884174639705,
+                "LONGITUDE": 108.47509664793395,
+                "NPSN": 69969348,
+                "KECATAMAN": "Gunung Jati",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Swasta",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.475096647933952, -6.66028841746397]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP Al-Islam Boarding School",
+                "LATITUDE": -6.797976127288238,
+                "LONGITUDE": 108.52616873684623,
+                "NPSN": 69896862,
+                "KECATAMAN": "Beber",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Swasta",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.52616873684623, -6.797976127288238]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP TERPADU AL MUTTAQIN",
+                "LATITUDE": -6.7908493110531927,
+                "LONGITUDE": 108.52122388833797,
+                "NPSN": 20214869,
+                "KECATAMAN": "Beber",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Swasta",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.521223888337971, -6.790849311053193]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP IT AL FATHONAH BABAKAN",
+                "LATITUDE": -6.8808613614246843,
+                "LONGITUDE": 108.72270018407085,
+                "NPSN": 20253892,
+                "KECATAMAN": "Babakan",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Swasta",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.722700184070845, -6.880861361424684]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMPIT HIDAYATULLAH",
+                "LATITUDE": -6.8782238430989162,
+                "LONGITUDE": 108.72151834567642,
+                "NPSN": 70045860,
+                "KECATAMAN": "Babakan",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Swasta",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.721518345676415, -6.878223843098916]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP PGRI GREGED",
+                "LATITUDE": -6.8084043931867688,
+                "LONGITUDE": 108.58192165335156,
+                "NPSN": 20258389,
+                "KECATAMAN": "Greged",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Swasta",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.581921653351557, -6.808404393186769]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP NU LEMAHABANG",
+                "LATITUDE": -6.8230599472706421,
+                "LONGITUDE": 108.63140709654803,
+                "NPSN": 20244625,
+                "KECATAMAN": "Lemah Abang",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Swasta",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.631407096548031, -6.823059947270642]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP MUHAMMADIYAH LEMAHABANG",
+                "LATITUDE": -6.8366390284696292,
+                "LONGITUDE": 108.63690111522573,
+                "NPSN": 20244621,
+                "KECATAMAN": "Lemah Abang",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Swasta",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.636901115225726, -6.836639028469629]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP ASSUNIYAH LOSARI",
+                "LATITUDE": -6.8423543527819612,
+                "LONGITUDE": 108.81357224791685,
+                "NPSN": 20214809,
+                "KECATAMAN": "Losari",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Swasta",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.813572247916852, -6.842354352781961]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP PLUS AL-KAROMAH",
+                "LATITUDE": -6.7720089667480146,
+                "LONGITUDE": 108.5955366140911,
+                "NPSN": 70015947,
+                "KECATAMAN": "Mundu",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Swasta",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.595536614091102, -6.772008966748015]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMPIT AL MUHSININ",
+                "LATITUDE": -6.7759106590779714,
+                "LONGITUDE": 108.42484589478835,
+                "NPSN": 69979221,
+                "KECATAMAN": "Dukupuntang",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Swasta",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.424845894788348, -6.775910659077971]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP IT Sirojul Munir",
+                "LATITUDE": -6.7958565699570119,
+                "LONGITUDE": 108.45900917691313,
+                "NPSN": 69921587,
+                "KECATAMAN": "Sumber",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Swasta",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.459009176913128, -6.795856569957012]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP ISLAM ATTAQWIYAH WERU",
+                "LATITUDE": -6.7266514655147391,
+                "LONGITUDE": 108.49895828858722,
+                "NPSN": 20214767,
+                "KECATAMAN": "Weru",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Swasta",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.498958288587218, -6.726651465514739]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP AL IKHLAS",
+                "LATITUDE": -6.7987224799661661,
+                "LONGITUDE": 108.60796877568124,
+                "NPSN": 20214812,
+                "KECATAMAN": "Astana Japura",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Swasta",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.607968775681243, -6.798722479966166]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP PLUS AL MA ARIF",
+                "LATITUDE": -6.7904213365707191,
+                "LONGITUDE": 108.61408311233085,
+                "NPSN": 20271763,
+                "KECATAMAN": "Astana Japura",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Swasta",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.614083112330846, -6.790421336570719]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP BINA CENDEKIA ASTANAJAPURA",
+                "LATITUDE": -6.813831038729834,
+                "LONGITUDE": 108.61740256471214,
+                "NPSN": 20258175,
+                "KECATAMAN": "Astana Japura",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Swasta",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.617402564712137, -6.813831038729834]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP NU SYEKH BRATA KELANA",
+                "LATITUDE": -6.7567191965686062,
+                "LONGITUDE": 108.59306320596673,
+                "NPSN": 20244626,
+                "KECATAMAN": "Mundu",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Swasta",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.593063205966729, -6.756719196568606]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP IT AN-NUR BUNTET",
+                "LATITUDE": -6.8084362438368027,
+                "LONGITUDE": 108.60487896476202,
+                "NPSN": 70041483,
+                "KECATAMAN": "Astana Japura",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Swasta",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.604878964762023, -6.808436243836803]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP BANI ALI PALIMANAN",
+                "LATITUDE": -6.7068185649554257,
+                "LONGITUDE": 108.43144129276217,
+                "NPSN": 20214790,
+                "KECATAMAN": "Gempol",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Swasta",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.431441292762173, -6.706818564955426]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP PGRI PALIMANAN",
+                "LATITUDE": -6.7096270213417801,
+                "LONGITUDE": 108.43191104811422,
+                "NPSN": 20214779,
+                "KECATAMAN": "Palimanan",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Swasta",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.431911048114216, -6.70962702134178]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP YAPPI PALIMANAN",
+                "LATITUDE": -6.7142093011520885,
+                "LONGITUDE": 108.43603288932844,
+                "NPSN": 20214868,
+                "KECATAMAN": "Palimanan",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Swasta",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.436032889328445, -6.714209301152088]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP BOARDING SCHOOL AL HUDA",
+                "LATITUDE": -6.732725135813463,
+                "LONGITUDE": 108.4712267748493,
+                "NPSN": 69992888,
+                "KECATAMAN": "Plumbon",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Swasta",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.471226774849299, -6.732725135813463]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMPIT IBNU KHALDUN",
+                "LATITUDE": -6.8333223919046766,
+                "LONGITUDE": 108.53925623103945,
+                "NPSN": 70008085,
+                "KECATAMAN": "Sedong",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Swasta",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.539256231039445, -6.833322391904677]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP AL WASHILAH",
+                "LATITUDE": -6.6222726542055073,
+                "LONGITUDE": 108.45422396536607,
+                "NPSN": 20244619,
+                "KECATAMAN": "Panguragan",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Swasta",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.454223965366069, -6.622272654205507]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP AL ANWAR",
+                "LATITUDE": -6.6214194233022674,
+                "LONGITUDE": 108.45861523406091,
+                "NPSN": 70011071,
+                "KECATAMAN": "Panguragan",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Swasta",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.458615234060915, -6.621419423302267]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP BABUS SALAM PANGURAGAN",
+                "LATITUDE": -6.6269784933027251,
+                "LONGITUDE": 108.46024819543496,
+                "NPSN": 20269340,
+                "KECATAMAN": "Panguragan",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Swasta",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.460248195434957, -6.626978493302725]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP IT AL MANSHURIYAH",
+                "LATITUDE": -6.6033461158756683,
+                "LONGITUDE": 108.45378308816214,
+                "NPSN": 69964863,
+                "KECATAMAN": "Panguragan",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Swasta",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.45378308816214, -6.603346115875668]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP PUI GEGESIK",
+                "LATITUDE": -6.5919657103182949,
+                "LONGITUDE": 108.43025929325337,
+                "NPSN": 20214755,
+                "KECATAMAN": "Gegesik",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Swasta",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.430259293253371, -6.591965710318295]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP BP AL-MUHIBBIN",
+                "LATITUDE": -6.7362020403143656,
+                "LONGITUDE": 108.49033496441734,
+                "NPSN": 70008685,
+                "KECATAMAN": "Sumber",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Swasta",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.490334964417343, -6.736202040314366]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP SYARIF HIDAYATULLAH",
+                "LATITUDE": -6.7389513528989404,
+                "LONGITUDE": 108.48806390674518,
+                "NPSN": 20244628,
+                "KECATAMAN": "Sumber",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Swasta",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.488063906745182, -6.73895135289894]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP AN-NUUR PASALEMAN",
+                "LATITUDE": -6.922057731736011,
+                "LONGITUDE": 108.73149972023683,
+                "NPSN": 20214810,
+                "KECATAMAN": "Pasaleman",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Swasta",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.731499720236826, -6.922057731736011]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP KHAS KEMPEK PALIMANAN",
+                "LATITUDE": -6.6970545688716268,
+                "LONGITUDE": 108.42239470135451,
+                "NPSN": 20258387,
+                "KECATAMAN": "Palimanan",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Swasta",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.422394701354506, -6.697054568871627]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP IT FATHATUL HIDAYAH",
+                "LATITUDE": -6.7525770030035108,
+                "LONGITUDE": 108.49011046071257,
+                "NPSN": 20258385,
+                "KECATAMAN": "Sumber",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Swasta",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.490110460712572, -6.752577003003511]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP PGRI PLUMBON",
+                "LATITUDE": -6.7120675940331216,
+                "LONGITUDE": 108.4708258202371,
+                "NPSN": 20214778,
+                "KECATAMAN": "Plumbon",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Swasta",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.470825820237096, -6.712067594033122]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP MAARIF PANGENAN",
+                "LATITUDE": -6.7957837912602015,
+                "LONGITUDE": 108.65562397976107,
+                "NPSN": 20214764,
+                "KECATAMAN": "Pangenan",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Swasta",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.655623979761074, -6.795783791260201]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP ISLAM QURANI AL BAHJAH",
+                "LATITUDE": -6.7550389759597405,
+                "LONGITUDE": 108.50368822023651,
+                "NPSN": 69893500,
+                "KECATAMAN": "Sumber",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Swasta",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.503688220236512, -6.75503897595974]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP AL ISHLAH SIDAMULYA",
+                "LATITUDE": -6.7276332314890075,
+                "LONGITUDE": 108.42569074174455,
+                "NPSN": 20214873,
+                "KECATAMAN": "Astana Japura",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Swasta",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.425690741744546, -6.727633231489007]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP MANBAUL ULUM",
+                "LATITUDE": -6.7622183742522095,
+                "LONGITUDE": 108.43532913507751,
+                "NPSN": 69990270,
+                "KECATAMAN": "Dukupuntang",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Swasta",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.435329135077509, -6.76221837425221]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP SINDANGJAWA",
+                "LATITUDE": -6.7640702666229968,
+                "LONGITUDE": 108.44775443866436,
+                "NPSN": 20214872,
+                "KECATAMAN": "Dukupuntang",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Swasta",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.447754438664361, -6.764070266622997]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMPIT BINTANG RAHMATULLAH",
+                "LATITUDE": -6.7613736805914222,
+                "LONGITUDE": 108.43868971594324,
+                "NPSN": 70041146,
+                "KECATAMAN": "Dukupuntang",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Swasta",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.438689715943241, -6.761373680591422]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP PGRI SUMBER",
+                "LATITUDE": -6.7594222233410468,
+                "LONGITUDE": 108.47462926626872,
+                "NPSN": 20214776,
+                "KECATAMAN": "Sumber",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Swasta",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.474629266268721, -6.759422223341047]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP SULTAN AGUNG SUMBER",
+                "LATITUDE": -6.7614931578633071,
+                "LONGITUDE": 108.48665400859738,
+                "NPSN": 20256575,
+                "KECATAMAN": "Sumber",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Swasta",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.486654008597384, -6.761493157863307]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP IT Tahsinul Akhlaq",
+                "LATITUDE": -6.6310655158460801,
+                "LONGITUDE": 108.37299602208914,
+                "NPSN": 69980379,
+                "KECATAMAN": "Susukan",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Swasta",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.37299602208914, -6.63106551584608]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP PLUS YAKPI SUSUKAN",
+                "LATITUDE": -6.6271117999394846,
+                "LONGITUDE": 108.37624079140042,
+                "NPSN": 20214773,
+                "KECATAMAN": "Susukan",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Swasta",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.37624079140042, -6.627111799939485]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP PGRI KEDAWUNG",
+                "LATITUDE": -6.7125054812323981,
+                "LONGITUDE": 108.54710622023698,
+                "NPSN": 20214784,
+                "KECATAMAN": "Kedawung",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Swasta",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.547106220236984, -6.712505481232398]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP DARUL KAWAKIB",
+                "LATITUDE": -6.6188656749116035,
+                "LONGITUDE": 108.38737379543483,
+                "NPSN": 20268937,
+                "KECATAMAN": "Arjawinangun",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Swasta",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.387373795434826, -6.618865674911603]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP PLUS AL ANWARIYAH",
+                "LATITUDE": -6.6183127386141196,
+                "LONGITUDE": 108.38779599325285,
+                "NPSN": 69881540,
+                "KECATAMAN": "Arjawinangun",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Swasta",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.387795993252851, -6.61831273861412]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP YASRI ARJAWINANGUN",
+                "LATITUDE": -6.6163486262099029,
+                "LONGITUDE": 108.39083093558099,
+                "NPSN": 69725671,
+                "KECATAMAN": "Arjawinangun",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Swasta",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.390830935580993, -6.616348626209903]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP ISLAM TERPADU BINA UMMAH",
+                "LATITUDE": -6.7631555528494793,
+                "LONGITUDE": 108.47985611217707,
+                "NPSN": 69853606,
+                "KECATAMAN": "Sumber",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Swasta",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.479856112177075, -6.763155552849479]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP IT Al Muqoddas",
+                "LATITUDE": -6.6239358890304212,
+                "LONGITUDE": 108.37640242705072,
+                "NPSN": 69901049,
+                "KECATAMAN": "Sumber",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Swasta",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.376402427050721, -6.623935889030421]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP Terpadu Patih Semi",
+                "LATITUDE": -6.5921378081635114,
+                "LONGITUDE": 108.39643143099559,
+                "NPSN": 69948093,
+                "KECATAMAN": "Kaliwedi",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Swasta",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.396431430995591, -6.592137808163511]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP PGRI WALED",
+                "LATITUDE": -6.9145506852934853,
+                "LONGITUDE": 108.71629692597811,
+                "NPSN": 20214774,
+                "KECATAMAN": "Waled",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Swasta",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.716296925978114, -6.914550685293485]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMPIT BADRUSSALAM",
+                "LATITUDE": -6.7753242487986931,
+                "LONGITUDE": 108.49247601542088,
+                "NPSN": 70007920,
+                "KECATAMAN": "Talun",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Swasta",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.492476015420877, -6.775324248798693]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMPIT TIHAMAH",
+                "LATITUDE": -6.7440201156757231,
+                "LONGITUDE": 108.49525339885032,
+                "NPSN": 69967995,
+                "KECATAMAN": "Sumber",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Swasta",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.495253398850323, -6.744020115675723]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMPIT TIHAMAH 2",
+                "LATITUDE": -6.7440201156757231,
+                "LONGITUDE": 108.49525339885032,
+                "NPSN": 69968064,
+                "KECATAMAN": "Sumber",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Swasta",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.495253398850323, -6.744020115675723]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP DARUL MUSYAWIRIN",
+                "LATITUDE": -6.7028410032880599,
+                "LONGITUDE": 108.50543975586086,
+                "NPSN": 20244620,
+                "KECATAMAN": "Weru",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Swasta",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.505439755860863, -6.70284100328806]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP ABU MANSHUR",
+                "LATITUDE": -6.7033554474827977,
+                "LONGITUDE": 108.5087612466223,
+                "NPSN": 20214814,
+                "KECATAMAN": "Weru",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Swasta",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.508761246622299, -6.703355447482798]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "NAMOBJ": "SMP ISLAMIYAH WERU",
+                "LATITUDE": -6.7039728182222804,
+                "LONGITUDE": 108.50817660248961,
+                "NPSN": 20214766,
+                "KECATAMAN": "Weru",
+                "SUMBER": "Dinas Pendidikan",
+                "STATUS": "Swasta",
+                "FCODE": "GE01050020"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.508176602489613, -6.70397281822228]
+            }
+        }
+    ]
+}
