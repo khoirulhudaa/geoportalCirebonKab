@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 
 import copy from "copy-to-clipboard";
 import jsPDF from 'jspdf';
-import { FaArrowLeft, FaArrowRight, FaBezierCurve, FaBuilding, FaCalendarAlt, FaChevronDown, FaCopy, FaDotCircle, FaDrawPolygon, FaEye, FaEyeSlash, FaFileExcel, FaFilePdf, FaMapMarkerAlt, FaMicrophone, FaSpinner, FaTimes } from 'react-icons/fa';
+import { FaArrowLeft, FaArrowRight, FaBezierCurve, FaBuilding, FaCalendarAlt, FaChevronDown, FaClosedCaptioning, FaCopy, FaDotCircle, FaDrawPolygon, FaEye, FaEyeSlash, FaFileExcel, FaFilePdf, FaMapMarkerAlt, FaMicrophone, FaRemoveFormat, FaSpinner, FaTimes, FaTimesCircle } from 'react-icons/fa';
 import * as XLSX from 'xlsx';
 import { Map, Subdistrict } from '../Components';
 import FormGroup from "../Components/FormGroup";
@@ -41,24 +41,18 @@ const Homepage = () => {
     const [searchDinas, setSearchDinas] = useState('');
     const [activeListDinas, setActiveListDinas] = useState(true);
     const [loading, setLoading] = useState(false);
-    const [transcript, setTranscript] = useState('');
     const [searchResult, setSearchResult] = useState('');
     const [activeMic, setActiveMic] = useState(false);
-    const [searchListening, setSearchListening] = useState(null);
 
     const recognition = new window.webkitSpeechRecognition();
 
     recognition.onresult = (event) => {
         const last = event.results.length - 1;
         const text = event.results[last][0].transcript;
-        setTranscript(text);
-        setSearchResult(text);
-        console.log('search result', text)
-        setSearchListening(text)
+        setSearch(text)
     };
   
     const startListening = () => {
-        setSearch('')
         recognition.start();
     };
   
@@ -68,7 +62,7 @@ const Homepage = () => {
     };
 
     useEffect(() => {
-    },[transcript, searchResult])
+    },[search])
 
 
 
@@ -684,7 +678,17 @@ const Homepage = () => {
                         <h2 className='text-[26px] w-full md:text-[36px] font-normal'>Daftar Data Geospasial 🗺️</h2>
                         <p className='md:block hidden text-slate-500 mt-2 mb-10'>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Numquam, perferendis.</p>
                         <div className="w-[60%] flex z-[444] items-center mx-auto mb-4">
-                            <input name="search" value={search} onChange={(e) => setSearch(e.target.value)} type="text" className="w-full rounded-[10px] bg-white my-2 px-3 py-3 text-slate-600 outline-0 border border-slate-400 text-[14px]" placeholder="Cari judul data..." />
+                            <div className='w-full rounded-[10px] bg-white text-slate-600 outline-0 border border-slate-400 text-[14px] flex items-center pr-2'>
+                                <input name="search" value={search} onChange={(e) => setSearch(e.target.value)} type="text" className="w-full rounded-[10px] bg-whit px-3 py-3 text-slate-600 outline-0 border-0 text-[14px]" placeholder="Cari judul data..." />
+                                {
+                                    search !== '' ? (
+                                        <div onClick={() => setSearch('')} className='w-[30px] h-[30px] cursor-pointer active:scale-[0.98] hover:brightness-[90%] bg-red-500 text-white rounded-lg flex items-center justify-center'>
+                                            <FaTimes />
+                                        </div>
+                                    ):
+                                        null
+                                }
+                            </div>
                             {
                                 activeMic ? (
                                     <div className='rounded-full w-[52px] h-[46px] z-[333] flex items-center justify-center bg-red-500 text-white ml-4 border border-green-700 cursor-pointer active:scale-[0.94] hover:brightness-[90%]' onClick={() => {setActiveMic(false), stopListening()}}><FaMicrophone /></div>
@@ -757,8 +761,8 @@ const Homepage = () => {
                                             (() => {
                                                 const filteredData = listGeoData.filter((data) => {
                                                     // Filter logic here
-                                                    if (search && search !== '' || searchListening && searchListening !== null) {
-                                                        return data?.title.toLowerCase().includes(search.toLowerCase() || searchListening.toLowerCase());
+                                                    if (search && search !== '') {
+                                                        return data?.title.toLowerCase().includes(search.toLowerCase());
                                                     }
                                                     if (Object.values(checkedDinas).every((val) => !val)) {
                                                         return true;
