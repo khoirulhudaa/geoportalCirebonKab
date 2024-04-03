@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 
 import copy from "copy-to-clipboard";
 import jsPDF from 'jspdf';
-import { FaArrowLeft, FaArrowRight, FaBezierCurve, FaBuilding, FaCalendarAlt, FaChevronDown, FaCopy, FaDotCircle, FaDrawPolygon, FaEye, FaEyeSlash, FaFileExcel, FaFilePdf, FaMapMarkerAlt, FaSpinner, FaTimes } from 'react-icons/fa';
+import { FaArrowLeft, FaArrowRight, FaBezierCurve, FaBuilding, FaCalendarAlt, FaChevronDown, FaCopy, FaDotCircle, FaDrawPolygon, FaEye, FaEyeSlash, FaFileExcel, FaFilePdf, FaMapMarkerAlt, FaMicrophone, FaSpinner, FaTimes } from 'react-icons/fa';
 import * as XLSX from 'xlsx';
 import { Map, Subdistrict } from '../Components';
 import FormGroup from "../Components/FormGroup";
@@ -43,27 +43,28 @@ const Homepage = () => {
     const [loading, setLoading] = useState(false);
     const [transcript, setTranscript] = useState('');
     const [searchResult, setSearchResult] = useState('');
+    const [activeMic, setActiveMic] = useState(false);
+    const [searchListening, setSearchListening] = useState(null);
 
     const recognition = new window.webkitSpeechRecognition();
 
     recognition.onresult = (event) => {
-      const last = event.results.length - 1;
-      const text = event.results[last][0].transcript;
-      setTranscript(text);
-      setSearchResult(text);
-      console.log('transcript:', text)
-      console.log('search result', text)
-      // Lakukan pencarian berdasarkan teks hasil suara di sini
+        const last = event.results.length - 1;
+        const text = event.results[last][0].transcript;
+        setTranscript(text);
+        setSearchResult(text);
+        console.log('search result', text)
+        setSearchListening(text)
     };
   
     const startListening = () => {
-      recognition.start();
+        setSearch('')
+        recognition.start();
     };
   
     const stopListening = () => {
-      recognition.stop();
-      console.log('transcript:', transcript)
-      console.log('search result', searchResult)
+        recognition.stop();
+        console.log('search result', searchResult)
     };
 
     useEffect(() => {
@@ -682,8 +683,15 @@ const Homepage = () => {
                         
                         <h2 className='text-[26px] w-full md:text-[36px] font-normal'>Daftar Data Geospasial 🗺️</h2>
                         <p className='md:block hidden text-slate-500 mt-2 mb-10'>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Numquam, perferendis.</p>
-                        <div onClick={() => startListening()}>klk suara</div>
-                        <div onClick={() => stopListening()}>stop suara</div>
+                        <div className="w-[60%] flex z-[444] items-center mx-auto mb-4">
+                            <input name="search" value={search} onChange={(e) => setSearch(e.target.value)} type="text" className="w-full rounded-[10px] bg-white my-2 px-3 py-3 text-slate-600 outline-0 border border-slate-400 text-[14px]" placeholder="Cari judul data..." />
+                            {
+                                activeMic ? (
+                                    <div className='rounded-full w-[52px] h-[46px] z-[333] flex items-center justify-center bg-red-500 text-white ml-4 border border-green-700 cursor-pointer active:scale-[0.94] hover:brightness-[90%]' onClick={() => {setActiveMic(false), stopListening()}}><FaMicrophone /></div>
+                                ):
+                                    <div className='rounded-full w-[52px] h-[46px] z-[333] flex items-center justify-center bg-green-500 text-white ml-4 border border-green-700 cursor-pointer active:scale-[0.94] hover:brightness-[90%]' onClick={() => {setActiveMic(true), startListening()}}><FaMicrophone /></div>
+                            }
+                        </div>
                         <div className='w-full flex h-max'>
                             <div className={`relative mt-3 w-[30%] pt-[24px] hidden md:block pb-1 px-7 ${activeListDinas ? 'min-h-full duration-200' : 'h-[80px] duration-200'} overflow-y-hidden rounded-[10px] text-left bg-white border border-blue-500 border-dashed`}>
                                 <div className="w-full flex items-center pb-4 justify-between">
@@ -749,8 +757,8 @@ const Homepage = () => {
                                             (() => {
                                                 const filteredData = listGeoData.filter((data) => {
                                                     // Filter logic here
-                                                    if (search && search !== '') {
-                                                        return data?.title.toLowerCase().includes(search.toLowerCase());
+                                                    if (search && search !== '' || searchListening && searchListening !== null) {
+                                                        return data?.title.toLowerCase().includes(search.toLowerCase() || searchListening.toLowerCase());
                                                     }
                                                     if (Object.values(checkedDinas).every((val) => !val)) {
                                                         return true;
