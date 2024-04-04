@@ -575,24 +575,24 @@ const Homepage = () => {
         <div className='w-screen h-max pb-0 bg-[#f1f2ff]'>
             {
                 dinasID !== '' && titleID !== '' ? (
-                    <div className={`w-[90%] mx-auto ${activeHeight ? 'mt-[-120px] opacity-0' : 'mt-0 opacity-1'} flex duration-200 ease py-8 items-center h-[100px] justify-between`}>
-                        <div className='w-[40%] flex items-center'>
+                    <div className={`w-[90%] mx-auto ${activeHeight ? 'mt-[-120px] opacity-0' : 'mt-0 opacity-1'} md:flex duration-200 ease py-8 items-center h-max md:h-[100px] justify-between`}>
+                        <div className='w-full md:w-[40%] flex items-center'>
                             <div onClick={() => handleClear()} className="w-[50px] h-[40px] bg-blue-600 text-white text-[20px] font-normal rounded-[10px] flex items-center justify-center cursor-pointer hover:brightness-[90%] active:scale-[0.98] mr-3">
                                 <FaArrowLeft />
                             </div>
-                            <h2 className='w-full overflow-hidden overflow-ellipsis whitespace-nowrap items-center text-[21px]' title={selectTitle !== '' ? selectTitle : 'Data Geospasial Kabupaten Cirebon 🗺️'}>{selectTitle !== '' ? selectTitle : 'Data Geospasial Kabupaten Cirebon 🗺️'}</h2>
+                            <h2 className='w-full overflow-hidden overflow-ellipsis whitespace-nowrap items-center text-[18px] md:text-[21px]' title={selectTitle !== '' ? selectTitle : 'Data Geospasial Kabupaten Cirebon 🗺️'}>{selectTitle !== '' ? selectTitle : 'Data Geospasial Kabupaten Cirebon 🗺️'}</h2>
                         </div>
                         {
                             activePage === '' || activePage === 'peta' ? (
-                                <div className="w-[60%] flex items-center justify-end space-y-4 md:space-y-0 dark:bg-gray-900">
+                                <div className="w-full md:w-[60%] flex items-center justify-end space-y-4 md:space-y-0 dark:bg-gray-900">
                                     <div className="relative flex mr-5 items-center">
                                         <div className="absolute inset-y-0 rtl:inset-r-0 start-0 flex items-center ps-3 pointer-events-none">
-                                            <svg className="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                                            <svg className="w-4 h-4 text-gray-500 dark:text-gray-400md:top-0 relative top-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
                                                 <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
                                             </svg>
                                         </div>
-                                        <div className='w-full rounded-[10px] bg-white text-slate-600 outline-0 border border-slate-400 text-[14px] flex items-center pr-2'>
-                                            <input type="text" name='searchSubdistrict' value={searchLocation} onChange={(e) => setSearchLocation(e.target.value)} id="search" className="outline-0 block px-2 py-3 ps-10 text-sm text-gray-900 border-0 rounded-lg w-full bg-white focus:ring-blue-500 focus:border-blue-500" placeholder="Cari kecamatan...." />
+                                        <div className='w-full rounded-[10px] md:mt-0 mt-6 bg-white text-slate-600 outline-0 border border-slate-400 text-[14px] flex items-center pr-2'>
+                                            <input type="text" name='searchSubdistrict' value={searchLocation} onChange={(e) => setSearchLocation(e.target.value)} id="search" className="outline-0 block px-2 py-3 ps-10 md:mt-0 text-sm text-gray-900 border-0 rounded-lg w-full bg-white focus:ring-blue-500 focus:border-blue-500" placeholder="Cari nama lokasi...." />
                                             {
                                                 searchLocation !== '' ? (
                                                     <div onClick={() => setSearchLocation('')} className='w-[30px] h-[30px] cursor-pointer active:scale-[0.98] hover:brightness-[90%] bg-red-500 text-white rounded-lg flex items-center justify-center'>
@@ -604,12 +604,12 @@ const Homepage = () => {
                                         </div>
                                         {
                                             activeMic ? (
-                                                <div className='rounded-full w-[54px] h-[46px] z-[333] flex items-center justify-center bg-red-500 text-white ml-4 border border-green-700 cursor-pointer active:scale-[0.94] hover:brightness-[90%]' onClick={() => {setActiveMic(false), stopListening()}}><FaMicrophone /></div>
+                                                <div className='rounded-full w-[54px] h-[46px] z-[333] md:flex hidden items-center justify-center bg-red-500 text-white ml-4 border border-green-700 cursor-pointer active:scale-[0.94] hover:brightness-[90%]' onClick={() => {setActiveMic(false), stopListening()}}><FaMicrophone /></div>
                                             ):
-                                                <div className='rounded-full w-[54px] h-[46px] z-[333] flex items-center justify-center bg-green-500 text-white ml-4 border border-green-700 cursor-pointer active:scale-[0.94] hover:brightness-[90%]' onClick={() => {setActiveMic(true), startListening()}}><FaMicrophone /></div>
+                                                <div className='rounded-full w-[54px] h-[46px] z-[333] md:flex hidden items-center justify-center bg-green-500 text-white ml-4 border border-green-700 cursor-pointer active:scale-[0.94] hover:brightness-[90%]' onClick={() => {setActiveMic(true), startListening()}}><FaMicrophone /></div>
                                         }
                                     </div>
-                                    <div className='w-max border-l-[1px] pl-6 border-slate-400 flex items-center'>
+                                    <div className='w-max border-l-[1px] pl-6 border-slate-400 hidden md:flex items-center'>
                                         <button onClick={() => setShowMap(!showMap)} className='border-0 outline-0 active:scale-[0.98] hover:brightness-[90%] rounded-[10px] flex w-[170px] text-center justify-center items-center bg-white cursor-pointer text-black px-6 py-3'>{showMap ? 'Tutup Peta' : 'Lihat Peta' } {showMap ? <FaEyeSlash className="ml-3" /> : <FaEye className="ml-3" />}</button>
                                     </div>
                                 </div>
@@ -619,7 +619,7 @@ const Homepage = () => {
                                     <button onClick={() => exportToPDFSub()} className='border-0 outline-0 active:scale-[0.98] hover:brightness-[90%] rounded-[8px] flex ml-4 items-center w-max px-6 flex items-center justify-center h-[47px] bg-red-500 text-white'><FaFilePdf className='mr-4' /> PDF</button>
                                 </div>
                             ):
-                                <p className='outline-0 rounded-[8px] flex items-center active:scale-[0.98] hover:brightness-[90%] w-max px-6 flex items-center justify-center h-[47px] bg-white border border-slate-400 text-black'>
+                                <p className='outline-0 rounded-[8px] hidden md:flex items-center active:scale-[0.98] hover:brightness-[90%] w-max px-6 flex items-center justify-center h-[47px] bg-white border border-slate-400 text-black'>
                                     Jumlah data : <b className='ml-2'>{allTitle?.filter((data) => data?.title_id === titleID)?.flatMap((entry) => entry?.coordinate)?.length}</b>
                                 </p>
                         }
@@ -637,7 +637,7 @@ const Homepage = () => {
                                 <Map listGeoData={listGeoData ??  []} showMap={showMap} searchLocation={searchLocation ?? ''} customData={custom} dataSubdistrict={allSubdistrict} handleShowAll={() => setShowAll(!showAll)} showAll={showAll} search={search} height={activeHeight} handleHeight={() => setActiveHeight(!activeHeight)} ref={mapRef} data={!showAll ? allTitle?.filter((data) => data?.title_id === titleID) : allTitle?.filter((data) => data?.dinas_id === dinasID) ?? []} line={line} />
                             </div>
 
-                            <div className="flex items-center justify-between flex-column mt-12 flex-wrap md:flex-row space-y-4 md:space-y-0 pb-4 dark:bg-gray-900">
+                            <div className="md:flex items-center justify-between flex-column mt-12 flex-wrap md:flex-row space-y-4 md:space-y-0 pb-4 dark:bg-gray-900">
                                 <div className="relative w-[30%]">
                                     <div className="absolute inset-y-0 rtl:inset-r-0 start-0 flex items-center ps-3 pointer-events-none">
                                         <svg className="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
@@ -646,23 +646,23 @@ const Homepage = () => {
                                     </div>
                                     <input type="text" name='search' value={search} onChange={(e) => setSearch(e.target.value)} id="table-search-users" className="block px-2 ps-10 py-3 text-sm text-gray-900 border border-slate-700 rounded-lg w-80 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-slate-700 dark:border-slate-700 dark:placeholder-slate-700 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Cari nama lokasi" />
                                 </div>
-                                <div className='w-[70%] flex items-center justify-end'>
-                                    <button title='Lihat pea' onClick={() => titleID === '' ? null : setActivePage('')} className={`w-max px-12 text-center mr-6 border py-3 border-black justify-center ${titleID === '' ? ' bg-slate-200 text-slate-400' : 'hover:brightness-[90%] active:scale-[0.99] duration-100'} duration-100 h-max ${(activePage === '' || activePage === 'peta') && titleID !== '' ? 'flex bg-blue-700 text-white border-blue-500 border' : 'bg-white text-black border-slate-400'} items-center rounded-[10px] text-[16px]`}>
+                                <div className='w-full md:w-[70%] flex items-center justify-between md:justify-end'>
+                                    <button title='Lihat pea' onClick={() => titleID === '' ? null : setActivePage('')} className={`md:w-max w-[45%] px-12 text-center mr-6 border py-3 border-black justify-center ${titleID === '' ? ' bg-slate-200 text-slate-400' : 'hover:brightness-[90%] active:scale-[0.99] duration-100'} duration-100 h-max ${(activePage === '' || activePage === 'peta') && titleID !== '' ? 'flex bg-blue-700 text-white border-blue-500 border' : 'bg-white text-black border-slate-400'} items-center rounded-[10px] text-[16px]`}>
                                         <p>
                                         Peta
                                         </p>
                                     </button>
-                                    <button title='LIhat daftar kecamatan' onClick={() => activePage === 'subdisdtrict' ? setActivePage('') : setActivePage('subdistrict')} className={`w-max px-12 text-center mr-6 py-3 justify-center ${activePage === 'subdistrict' ? 'flex bg-blue-700 text-white border-blue-500 border' : 'bg-white text-black border-slate-400'} border border-black hover:brightness-[90%] active:scale-[0.99] duration-100 h-max flex items-center rounded-[10px] text-[16px]`}>
+                                    <button title='LIhat daftar kecamatan' onClick={() => activePage === 'subdisdtrict' ? setActivePage('') : setActivePage('subdistrict')} className={`w-max px-12 text-center mr-6 py-3 justify-center ${activePage === 'subdistrict' ? 'flex bg-blue-700 text-white border-blue-500 border' : 'bg-white text-black border-slate-400'} border border-black hover:brightness-[90%] active:scale-[0.99] duration-100 h-max hidden md:flex items-center rounded-[10px] text-[16px]`}>
                                         <p>
                                         Kecamatan
                                         </p>
                                     </button>
-                                    <button title='LIhat daftar kecamatan' onClick={() => titleID === '' ? null : (activePage === 'grafik' ? setActivePage('') : setActivePage('grafik'))} className={`w-max px-12 text-center py-3 justify-center ${activePage === 'grafik' ? 'flex bg-blue-700 text-white border-blue-500 border' : 'bg-white text-black border-slate-400'} ${titleID === '' ? ' bg-slate-200 text-slate-400' : 'hover:brightness-[90%] active:scale-[0.99] duration-100'} border border-black h-max flex items-center rounded-[10px] text-[16px]`}>
-                                        <p>
-                                        Grafik data
+                                    <button title='LIhat daftar kecamatan' onClick={() => titleID === '' ? null : (activePage === 'grafik' ? setActivePage('') : setActivePage('grafik'))} className={`md:w-max w-[45%] px-12 text-center py-3 justify-center ${activePage === 'grafik' ? 'flex bg-blue-700 text-white border-blue-500 border' : 'bg-white text-black border-slate-400'} ${titleID === '' ? ' bg-slate-200 text-slate-400' : 'hover:brightness-[90%] active:scale-[0.99] duration-100'} border border-black h-max flex items-center rounded-[10px] text-[16px]`}>
+                                        <p className='flex items-center'>
+                                            Grafik <span className='md:flex hidden ml-2'>data</span>
                                         </p>
                                     </button>
-                                    <div className='w-max flex items-end ml-6'>
+                                    <div className='w-max hidden md:flex items-end ml-6'>
                                         <button onClick={() => exportToExcel()} className='border-0 outline-0 rounded-[8px] flex items-center active:scale-[0.98] hover:brightness-[90%] w-[47px] flex items-center justify-center h-[47px] bg-green-500 text-white'><FaFileExcel /></button>
                                         <button onClick={() => exportToPDF()} className='border-0 outline-0 active:scale-[0.98] hover:brightness-[90%] rounded-[8px] flex ml-4 items-center w-[47px] flex items-center justify-center h-[47px] bg-red-500 text-white'><FaFilePdf /></button>
                                     </div>
@@ -764,9 +764,9 @@ const Homepage = () => {
                         </div>
                     ):
                     <>
-                        <div className="flex items-center justify-between flex-column mt-12 px-[68px] flex-wrap md:flex-row space-y-4 md:space-y-0 dark:bg-gray-900">
-                            <div className='w-[20%] mx-auto flex items-center'>
-                                <div className='md:w-[100%] h-[50px] rounded-[8px] bg-white border border-blue-600 outline-0 p-2 shadow-md text-black'>
+                        <div className="md:flex items-center justify-between flex-column mt-12 px-4 md:px-[68px] flex-wrap md:flex-row space-y-4 md:space-y-0 dark:bg-gray-900">
+                            <div className='w-full md:w-[20%] mx-auto flex items-center'>
+                                <div className='md:w-[100%] w-full h-[50px] rounded-[8px] bg-white border border-blue-600 outline-0 p-2 shadow-md text-black'>
                                     <select name='selectTypeChart' value={selectTypeChart} onChange={(e) => setSelectTypeChart(e.target.value)} className='w-full bg-white h-full border-0 outline-0 text-black'>
                                         <option className='text-black' value="Pilih Tampilan Chart" disabled={true}>Pilih Tampilan Chart</option>   
                                         <option className='text-black' value="pie">PIE Chart</option>   
@@ -774,29 +774,29 @@ const Homepage = () => {
                                     </select>
                                 </div>
                             </div>
-                            <div className='w-[80%] justify-end flex items-center'>
+                            <div className='w-full md:w-[80% justify-between] md:justify-end flex items-center'>
                                 <div className="flex items-center flex-column flex-wrap md:flex-row space-y-4 md:space-y-0 dark:bg-gray-900">
-                                    <div className='w-[100%] flex items-center justify-end'>
-                                        <button title='Lihat pea' onClick={() => titleID === '' ? null : setActivePage('')} className={`w-max px-12 text-center mr-6 border py-3 border-black justify-center ${titleID === '' ? ' bg-slate-200 text-slate-400' : 'hover:brightness-[90%] active:scale-[0.99] duration-100'} duration-100 h-max ${(activePage === '' || activePage === 'peta') && titleID !== '' ? 'flex bg-blue-700 text-white border-blue-500 border' : 'bg-white text-black border-slate-400'} items-center rounded-[10px] text-[16px]`}>
+                                    <div className='w-[100%] flex items-center mt-1 md:mt-0 justify-between md:justify-end'>
+                                        <button title='Lihat pea' onClick={() => titleID === '' ? null : setActivePage('')} className={`w-[50%] md:w-max px-12 text-center mr-6 border py-3 border-black justify-center ${titleID === '' ? ' bg-slate-200 text-slate-400' : 'hover:brightness-[90%] active:scale-[0.99] duration-100'} duration-100 h-max ${(activePage === '' || activePage === 'peta') && titleID !== '' ? 'flex bg-blue-700 text-white border-blue-500 border' : 'bg-white text-black border-slate-400'} items-center rounded-[10px] text-[16px]`}>
                                             <p>
                                             Peta
                                             </p>
                                         </button>
-                                        <button title='LIhat daftar kecamatan' onClick={() => activePage === 'subdisdtrict' ? setActivePage('') : setActivePage('subdistrict')} className={`w-max px-12 text-center mr-6 py-3 justify-center ${activePage === 'subdistrict' ? 'flex bg-blue-700 text-white border-blue-500 border' : 'bg-white text-black border-slate-400'} border border-black hover:brightness-[90%] active:scale-[0.99] duration-100 h-max flex items-center rounded-[10px] text-[16px]`}>
+                                        <button title='LIhat daftar kecamatan' onClick={() => activePage === 'subdisdtrict' ? setActivePage('') : setActivePage('subdistrict')} className={`w-max px-12 text-center mr-6 py-3 justify-center ${activePage === 'subdistrict' ? 'flex bg-blue-700 text-white border-blue-500 border' : 'bg-white text-black border-slate-400'} border border-black hover:brightness-[90%] active:scale-[0.99] duration-100 h-max hidden md:flex items-center rounded-[10px] text-[16px]`}>
                                             <p>
                                             Kecamatan
                                             </p>
                                         </button>
-                                        <button title='LIhat daftar kecamatan' onClick={() => titleID === '' ? null : (activePage === 'grafik' ? setActivePage('') : setActivePage('grafik'))} className={`w-max px-12 text-center py-3 justify-center ${activePage === 'grafik' ? 'flex bg-blue-700 text-white border-blue-500 border' : 'bg-white text-black border-slate-400'} ${titleID === '' ? ' bg-slate-200 text-slate-400' : 'hover:brightness-[90%] active:scale-[0.99] duration-100'} border border-black h-max flex items-center rounded-[10px] text-[16px]`}>
-                                            <p>
-                                            Grafik data
+                                        <button title='LIhat daftar kecamatan' onClick={() => titleID === '' ? null : (activePage === 'grafik' ? setActivePage('') : setActivePage('grafik'))} className={`w-[50%] md:w-max px-12 text-center relative left-6 md:left-0 py-3 justify-center ${activePage === 'grafik' ? 'flex bg-blue-700 text-white border-blue-500 border' : 'bg-white text-black border-slate-400'} ${titleID === '' ? ' bg-slate-200 text-slate-400' : 'hover:brightness-[90%] active:scale-[0.99] duration-100'} border border-black h-max flex items-center rounded-[10px] text-[16px]`}>
+                                            <p className='flex items-center'>
+                                                Grafik <span className='md:flex hidden ml-2'>data</span>
                                             </p>
                                         </button>
                                     </div>
                                 </div>
                             </div>
                         </div>    
-                        <div className="pb-14 mt-[-8px]">
+                        <div className="pb-14 mt-[-12px] md:mt-[-8px]">
                             {
                                 selectTypeChart === 'pie' ? (
                                     <GrafikPie titleID={titleID ?? ''} />
@@ -836,9 +836,9 @@ const Homepage = () => {
                     <section id='daftar' className='relative overflow-hidden text-center w-screen bg-[#fbffff] h-max pt-8 md:pt-14 md:pb-14 pb-0 md:px-16'>
                         <img src={Square2} alt="square" loading="lazy" className='absolute opacity-[0.7] w-[40%] right-[-140px] rotate-[90deg] z-[1] top-[0px]' />
                         
-                        <h2 className='text-[26px] w-full md:text-[36px] font-normal'>Daftar Data Geospasial 🗺️</h2>
+                        <h2 className='text-[26px] w-full md:text-[36px] font-normal'>Daftar Peta 🗺️</h2>
                         <p className='md:block hidden text-slate-500 mt-2 mb-10'>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Numquam, perferendis.</p>
-                        <div className="w-[60%] flex z-[444] items-center mx-auto mb-4">
+                        <div className="w-[95%] md:w-[60%] flex z-[444] items-center mx-auto mb-4 md:mt-0 mt-4">
                             <div className='w-full rounded-[10px] bg-white text-slate-600 outline-0 border border-slate-400 text-[14px] flex items-center pr-2'>
                                 <input name="search" value={search} onChange={(e) => setSearch(e.target.value)} type="text" className="w-full rounded-[10px] bg-whit px-3 py-3 text-slate-600 outline-0 border-0 text-[14px]" placeholder="Cari judul data..." />
                                 {
@@ -852,9 +852,9 @@ const Homepage = () => {
                             </div>
                             {
                                 activeMic ? (
-                                    <div className='rounded-full w-[52px] h-[46px] z-[333] flex items-center justify-center bg-red-500 text-white ml-4 border border-green-700 cursor-pointer active:scale-[0.94] hover:brightness-[90%]' onClick={() => {setActiveMic(false), stopListening()}}><FaMicrophone /></div>
+                                    <div className='rounded-full w-[52px] h-[46px] z-[333] md:flex hidden items-center justify-center bg-red-500 text-white ml-4 border border-green-700 cursor-pointer active:scale-[0.94] hover:brightness-[90%]' onClick={() => {setActiveMic(false), stopListening()}}><FaMicrophone /></div>
                                 ):
-                                    <div className='rounded-full w-[52px] h-[46px] z-[333] flex items-center justify-center bg-green-500 text-white ml-4 border border-green-700 cursor-pointer active:scale-[0.94] hover:brightness-[90%]' onClick={() => {setActiveMic(true), startListening()}}><FaMicrophone /></div>
+                                    <div className='rounded-full w-[52px] h-[46px] z-[333] md:flex hidden items-center justify-center bg-green-500 text-white ml-4 border border-green-700 cursor-pointer active:scale-[0.94] hover:brightness-[90%]' onClick={() => {setActiveMic(true), startListening()}}><FaMicrophone /></div>
                             }
                         </div>
                         <div className='w-full flex h-max'>
@@ -1044,15 +1044,15 @@ const Homepage = () => {
 
                     <div className='border-t border-t-[2px] border-dashed border-blue-700 w-screen mx-auto relative'></div>
 
-                    <section id='API' className='relative overflow-hidden w-screen bg-blue-700 h-max pt-14 md:pt-20 pb-16 md:pb-28 px-6 md:px-16'>
+                    <section id='API' className='relative overflow-hidden w-screen bg-blue-700 h-max pt-14 md:pt-20 pb-16 md:pb-28 px-4 md:px-16'>
                         <img src={Square} alt="square" loading="lazy" className='absolute opacity-[1] w-[40%] left-0 top-[-260px]' />
                         <img src={Square} alt="square" loading="lazy" className='absolute opacity-[1] w-[40%] left-[30%] top-[-260px]' />
                         <img src={Square} alt="square" loading="lazy" className='absolute opacity-[1] w-[40%] left-[45%] bottom-[-100px]' />
                         <img src={Square} alt="square" loading="lazy" className='absolute opacity-[1] w-[40%] right-[-20%] top-[-260px]' />
                         <img src={Square} alt="square" loading="lazy" className='absolute opacity-[1] w-[40%] right-[5%] bottom-[-100x]' />
                         <h2 className='text-[26px] mb-8 md:mb-0 md:text-[36px] text-white font-normal text-center'>API Geospasial 💻</h2>
-                        <p className='text-slate-200 md:block hidden mt-4 mb-10 text-center'>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Numquam, perferendis.</p>    
-                        <div className='relative w-ful z-[444] px-4 md:px-12 pt-6 md:pt-14 pb-6 md:pb-20 flex mx-auto rounded-[16px] bg-white border-[2px] min-h-[680px] border-blue-500 border-dashed'>
+                        <p className='text-slate-200 md:block hidden mt-4 mb-10 text-center'>Dapatkan Data Geospasial Kabupaten Cirebon Secara Terbukan, Gratis dan Mudah.</p>    
+                        <div className='relative w-full z-[444] px-4 md:px-12 pt-6 md:pt-14 pb-6 md:pb-20 flex mx-auto rounded-[16px] bg-white border-[2px] min-h-[680px] border-blue-500 border-dashed'>
                             <div className='w-full md:w-1/2 h-[500px] flex justify-between flex-col'>
                                 <label htmlFor="api-dinas" className='font-[500] flex items-center'>&#123;&#123; BASE_URL &#125;&#125;</label>
                                 <div className='relative rounded-[10px] bg-blue-200 text-blue-700 w-[100%] p-4 flex items-center my-6'>
@@ -1162,7 +1162,7 @@ const Homepage = () => {
                             <p className='text-slate-500 w-full md:w-[70%] mx-auto md:flex hidden leading-loose mt-2 mb-10'>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ex saepe atque perferendis voluptate accusamus possimus? Atque aperiam aut provident iusto, similique iste fugit nisi qui..</p>
                         </div>
                         
-                        <div className="w-[70vw]">
+                        <div className="w-[92vw] md:w-[70vw]">
                             <FormGroup type="response" />
                         </div>
                         

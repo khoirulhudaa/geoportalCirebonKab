@@ -114,15 +114,15 @@ const Grafik: React.FC<GrafikProps> = ({ data, titleID }) => {
     }, [subdistrictNames, subdistrictValues]);
   
     return (
-        <div className='w-[90%] mx-auto bg-white border-[2px] border-blue-500 border-dashed rounded-[20px] mt-8 h-max flex justify-center'>
-            <div className='relative overflow-hidden w-[60%] flex py-7 justify-center items-center h-max'>
+        <div className='w-[90%] mx-auto bg-white border-[2px] border-blue-500 border-dashed rounded-[20px] mt-8 h-max md:flex justify-center'>
+            <div className='relative overflow-hiddenw-full md:w-[60%] flex py-7 justify-center items-center h-max'>
                 <div className='flex mx-auto items-center flex-col h-max w-full' ref={contentRef}>
                     <div className='flex flex-col w-[90%] items-center mx-auto h-max'>
                         <canvas ref={chartRef2}></canvas>
                     </div>
                 </div>
             </div>
-            <div className='w-[40%] p-8 min-h-[400px] border-l-[2px] border-l-slate-300'>
+            <div className='md:w-[40%] md:block hidden p-8 min-h-[400px] border-l-[2px] border-l-slate-300'>
                 <table className="w-full  rounded-[10px] overflow-hidden text-center text-sm rtl:text-right text-gray-500 dark:text-gray-400">
                     <thead className="text-xs text-gray-700 uppercase bg-gray-100 dark:text-gray-400">
                         <tr className='rounded-[20px]'>

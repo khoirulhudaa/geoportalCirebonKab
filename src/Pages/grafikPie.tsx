@@ -27,8 +27,8 @@ const GrafikPie: React.FC<{titleID: string}> = ({titleID}) => {
     }, [])
 
   return (
-     <div className='w-[90%] mx-auto bg-white border-[2px] border-blue-500 border-dashed rounded-[20px] mt-8 h-max flex'>
-        <div className='relative overflow-hidden w-[60%] flex justify-center items-center h-max left-[-20px]'>
+     <div className='w-[90%] mx-auto bg-white border-[2px] border-blue-500 border-dashed rounded-[20px] mt-8 h-max md:flex'>
+        <div className='relative overflow-hidden w-full h-max md:w-[60%] flex justify-center items-center h-max left-[-20px]'>
             {
                 dataChart && dataChart?.length > 0 ? (
                     <PieChart
@@ -70,7 +70,7 @@ const GrafikPie: React.FC<{titleID: string}> = ({titleID}) => {
                     <p className='text-slate-500 text-center mt-48'>Data Belum tersedia</p>
             }
         </div>
-        <div className='w-[40%] p-8 min-h-[400px] border-l-[2px] border-l-slate-300'>
+        <div className='w-full md:w-[40%] p-3 md:p-8 min-h-[400px] border-l-[2px] md:block hidden border-l-slate-300'>
             <table className="w-full  rounded-[10px] overflow-hidden text-center text-sm rtl:text-right text-gray-500 dark:text-gray-400">
                 <thead className="text-xs text-gray-700 uppercase bg-gray-100 dark:text-gray-400">
                     <tr className='rounded-[20px]'>
