@@ -41,8 +41,8 @@ const Homepage = () => {
     const [searchDinas, setSearchDinas] = useState('');
     const [activeListDinas, setActiveListDinas] = useState(true);
     const [loading, setLoading] = useState(false);
-    const [searchResult, setSearchResult] = useState('');
     const [activeMic, setActiveMic] = useState(false);
+    const [searchSubdistrict, setSearchSubdistrict] = useState('');
 
     const recognition = new window.webkitSpeechRecognition();
 
@@ -50,6 +50,7 @@ const Homepage = () => {
         const last = event.results.length - 1;
         const text = event.results[last][0].transcript;
         setSearch(text)
+        setSearchLocation(text)
     };
   
     const startListening = () => {
@@ -58,13 +59,10 @@ const Homepage = () => {
   
     const stopListening = () => {
         recognition.stop();
-        console.log('search result', searchResult)
     };
 
     useEffect(() => {
     },[search])
-
-
 
     const [currentPage, setCurrentPage] = useState(0);
 
@@ -459,6 +457,114 @@ const Homepage = () => {
       }
     };
 
+
+  const exportToExcelSub = () => {
+    
+    allSubdistrict.sort((a, b) => {
+        const kecamatanA = a.name_subdistrict.toUpperCase(); // Konversi kecamatam menjadi huruf besar untuk memastikan urutan yang konsisten
+        const kecamatanB = b.name_subdistrict.toUpperCase();
+      
+        if (kecamatanA < kecamatanB) {
+          return -1;
+        }
+        if (kecamatanA > kecamatanB) {
+          return 1;
+        }
+      
+        // Jika kedua kecamatan sama, tidak perlu melakukan perubahan pada urutan
+        return 0;
+    });
+
+    const filteredArray = allSubdistrict && allSubdistrict?.map((obj, index) => ({
+        No: (index + 1).toString(),
+        Kecamatan: obj?.name_subdistrict,
+        Latitude: obj?.lat,
+        Longitude: obj?.long,
+        Kabupaten: 'Cirebon',
+    }));
+  
+    if (filteredArray) {
+      const newTableData = convertArrayOfObjectsToArray(filteredArray);
+  
+      const wb = XLSX.utils.book_new();
+
+      // Add data to a new worksheet
+      const ws = XLSX.utils.aoa_to_sheet(newTableData);
+  
+      // Auto-adjust column widths based on content
+      const range = XLSX.utils.decode_range(ws['!ref']);
+      for (let C = range.s.c; C <= range.e.c; ++C) {
+        let max_width = 0;
+        for (let R = range.s.r; R <= range.e.r; ++R) {
+          const cell = ws[XLSX.utils.encode_cell({ c: C, r: R })];
+          if (!cell) continue;
+          const cell_width = cell.v.toString().length;
+          if (cell_width > max_width) max_width = cell_width;
+        }
+        ws['!cols'] = ws['!cols'] || [];
+        ws['!cols'][C] = { width: max_width + 2 }; // Tambahkan margin untuk keamanan
+      }
+  
+      // Append the worksheet to the workbook
+      XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
+  
+      // Save the workbook
+      XLSX.writeFile(wb, 'data-kecamatan.xlsx');
+    };
+  }
+
+  const exportToPDFSub = () => {
+    const doc = new jsPDF();
+    allSubdistrict.sort((a, b) => {
+        const kecamatanA = a.name_subdistrict.toUpperCase(); // Konversi kecamatam menjadi huruf besar untuk memastikan urutan yang konsisten
+        const kecamatanB = b.name_subdistrict.toUpperCase();
+      
+        if (kecamatanA < kecamatanB) {
+          return -1;
+        }
+        if (kecamatanA > kecamatanB) {
+          return 1;
+        }
+      
+        // Jika kedua kecamatan sama, tidak perlu melakukan perubahan pada urutan
+        return 0;
+    });
+  
+    const filteredArray = allSubdistrict && allSubdistrict?.map((obj, index) => ({
+        No: index + 1,
+        Kecamatan: obj?.name_subdistrict,
+        Latitude: obj?.lat,
+        Longitude: obj?.long,
+        Kabupaten: 'Cirebon',
+    }));
+
+
+    // Tambahkan judul
+    const titleText = "Data kecamatan";
+    const fontSize = 16;
+    const pageWidth = doc.internal.pageSize.getWidth();
+    const { w } = doc.getTextDimensions(titleText, { fontSize }); // Menggunakan properti 'w' bukan 'width'
+    const textX = (pageWidth - w) / 2;
+    doc.text(titleText, textX, 10);
+
+    // Get table data
+    const tableData = convertArrayOfObjectsToArray(filteredArray);
+
+    // Add table headers
+    const headers = Object.keys(tableData[0]);
+    const data = tableData.map(obj => headers.map(key => obj[key])).slice(1);
+  
+    // Add table to PDF
+    doc.autoTable({
+      head: [tableData[0]],
+      body: data,
+      startY: 20
+    });
+    
+    // Save PDF file
+    doc.save('data-kecamatan.pdf');
+  }
+
     return (
     <div className='w-screen h-max'>
         <input value="https://be-geospasial.vercel.app/v2/api" className='absolute opacity-0' disabled type="text" ref={textRefMain} />
@@ -469,26 +575,54 @@ const Homepage = () => {
         <div className='w-screen h-max pb-0 bg-[#f1f2ff]'>
             {
                 dinasID !== '' && titleID !== '' ? (
-                    <div className={`w-[90%] mx-auto ${activeHeight ? 'mt-[-120px] opacity-0' : 'mt-0 opacity-1'} flex duration-200 ease py-8 items-center justify-between`}>
+                    <div className={`w-[90%] mx-auto ${activeHeight ? 'mt-[-120px] opacity-0' : 'mt-0 opacity-1'} flex duration-200 ease py-8 items-center h-[100px] justify-between`}>
                         <div className='w-[40%] flex items-center'>
                             <div onClick={() => handleClear()} className="w-[50px] h-[40px] bg-blue-600 text-white text-[20px] font-normal rounded-[10px] flex items-center justify-center cursor-pointer hover:brightness-[90%] active:scale-[0.98] mr-3">
                                 <FaArrowLeft />
                             </div>
                             <h2 className='w-full overflow-hidden overflow-ellipsis whitespace-nowrap items-center text-[21px]' title={selectTitle !== '' ? selectTitle : 'Data Geospasial Kabupaten Cirebon 🗺️'}>{selectTitle !== '' ? selectTitle : 'Data Geospasial Kabupaten Cirebon 🗺️'}</h2>
                         </div>
-                        <div className="w-[60%] flex items-center justify-end space-y-4 md:space-y-0 dark:bg-gray-900">
-                            <div className="relative flex mr-5 items-center">
-                                <div className="absolute inset-y-0 rtl:inset-r-0 start-0 flex items-center ps-3 pointer-events-none">
-                                    <svg className="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                                        <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
-                                    </svg>
+                        {
+                            activePage === '' || activePage === 'peta' ? (
+                                <div className="w-[60%] flex items-center justify-end space-y-4 md:space-y-0 dark:bg-gray-900">
+                                    <div className="relative flex mr-5 items-center">
+                                        <div className="absolute inset-y-0 rtl:inset-r-0 start-0 flex items-center ps-3 pointer-events-none">
+                                            <svg className="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                                                <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
+                                            </svg>
+                                        </div>
+                                        <div className='w-full rounded-[10px] bg-white text-slate-600 outline-0 border border-slate-400 text-[14px] flex items-center pr-2'>
+                                            <input type="text" name='searchSubdistrict' value={searchLocation} onChange={(e) => setSearchLocation(e.target.value)} id="search" className="outline-0 block px-2 py-3 ps-10 text-sm text-gray-900 border-0 rounded-lg w-full bg-white focus:ring-blue-500 focus:border-blue-500" placeholder="Cari kecamatan...." />
+                                            {
+                                                searchLocation !== '' ? (
+                                                    <div onClick={() => setSearchLocation('')} className='w-[30px] h-[30px] cursor-pointer active:scale-[0.98] hover:brightness-[90%] bg-red-500 text-white rounded-lg flex items-center justify-center'>
+                                                        <FaTimes />
+                                                    </div>
+                                                ):
+                                                    null
+                                            }
+                                        </div>
+                                        {
+                                            activeMic ? (
+                                                <div className='rounded-full w-[54px] h-[46px] z-[333] flex items-center justify-center bg-red-500 text-white ml-4 border border-green-700 cursor-pointer active:scale-[0.94] hover:brightness-[90%]' onClick={() => {setActiveMic(false), stopListening()}}><FaMicrophone /></div>
+                                            ):
+                                                <div className='rounded-full w-[54px] h-[46px] z-[333] flex items-center justify-center bg-green-500 text-white ml-4 border border-green-700 cursor-pointer active:scale-[0.94] hover:brightness-[90%]' onClick={() => {setActiveMic(true), startListening()}}><FaMicrophone /></div>
+                                        }
+                                    </div>
+                                    <div className='w-max border-l-[1px] pl-6 border-slate-400 flex items-center'>
+                                        <button onClick={() => setShowMap(!showMap)} className='border-0 outline-0 active:scale-[0.98] hover:brightness-[90%] rounded-[10px] flex w-[170px] text-center justify-center items-center bg-white cursor-pointer text-black px-6 py-3'>{showMap ? 'Tutup Peta' : 'Lihat Peta' } {showMap ? <FaEyeSlash className="ml-3" /> : <FaEye className="ml-3" />}</button>
+                                    </div>
                                 </div>
-                                <input type="text" name='searchSubdistrict' value={searchLocation} onChange={(e) => setSearchLocation(e.target.value)} id="search" className="outline-0 block px-2 py-3 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-full bg-white focus:ring-blue-500 focus:border-blue-500" placeholder="Cari kecamatan...." />
-                            </div>
-                            <div className='w-max flex items-center'>
-                                <button onClick={() => setShowMap(!showMap)} className='border-0 outline-0 active:scale-[0.98] hover:brightness-[90%] rounded-[10px] flex w-[170px] text-center justify-center items-center bg-white cursor-pointer text-black px-6 py-3'>{showMap ? 'Tutup Peta' : 'Lihat Peta' } {showMap ? <FaEyeSlash className="ml-3" /> : <FaEye className="ml-3" />}</button>
-                            </div>
-                        </div>
+                            ): activePage === 'subdistrict' ? (
+                                <div className='w-max flex items-end ml-6'>
+                                    <button onClick={() => exportToExcelSub()} className='border-0 outline-0 rounded-[8px] flex items-center active:scale-[0.98] hover:brightness-[90%] w-max px-6 flex items-center justify-center h-[47px] bg-green-500 text-white'><FaFileExcel className='mr-4' /> Excel</button>
+                                    <button onClick={() => exportToPDFSub()} className='border-0 outline-0 active:scale-[0.98] hover:brightness-[90%] rounded-[8px] flex ml-4 items-center w-max px-6 flex items-center justify-center h-[47px] bg-red-500 text-white'><FaFilePdf className='mr-4' /> PDF</button>
+                                </div>
+                            ):
+                                <p className='outline-0 rounded-[8px] flex items-center active:scale-[0.98] hover:brightness-[90%] w-max px-6 flex items-center justify-center h-[47px] bg-white border border-slate-400 text-black'>
+                                    Jumlah data : <b className='ml-2'>{allTitle?.filter((data) => data?.title_id === titleID)?.flatMap((entry) => entry?.coordinate)?.length}</b>
+                                </p>
+                        }
                     </div>
                 ):
                     null
@@ -510,7 +644,7 @@ const Homepage = () => {
                                             <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
                                         </svg>
                                     </div>
-                                    <input type="text" name='search' value={search} onChange={(e) => setSearch(e.target.value)} id="table-search-users" className="block px-2 ps-10 py-3 text-sm text-gray-900 border border-slate-700 rounded-lg w-80 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-slate-700 dark:border-slate-700 dark:placeholder-slate-700 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search for users" />
+                                    <input type="text" name='search' value={search} onChange={(e) => setSearch(e.target.value)} id="table-search-users" className="block px-2 ps-10 py-3 text-sm text-gray-900 border border-slate-700 rounded-lg w-80 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-slate-700 dark:border-slate-700 dark:placeholder-slate-700 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Cari nama lokasi" />
                                 </div>
                                 <div className='w-[70%] flex items-center justify-end'>
                                     <button title='Lihat pea' onClick={() => titleID === '' ? null : setActivePage('')} className={`w-max px-12 text-center mr-6 border py-3 border-black justify-center ${titleID === '' ? ' bg-slate-200 text-slate-400' : 'hover:brightness-[90%] active:scale-[0.99] duration-100'} duration-100 h-max ${(activePage === '' || activePage === 'peta') && titleID !== '' ? 'flex bg-blue-700 text-white border-blue-500 border' : 'bg-white text-black border-slate-400'} items-center rounded-[10px] text-[16px]`}>
@@ -596,32 +730,43 @@ const Homepage = () => {
                         </div>
                     ): activePage === 'subdistrict' ? (
                         <div className='w-[90%] mx-auto mt-8'>
-                              <div className="mt-5 flex items-center justify-between md:justify-between space-y-4 md:space-y-0 dark:bg-gray-900">
-                                <div className="relative w-full flex items-center justify-between">
+                            <div className="flex items-center justify-between flex-column mt-12 flex-wrap md:flex-row space-y-4 md:space-y-0 pb-4 dark:bg-gray-900">
+                                <div className="relative w-[30%]">
                                     <div className="absolute inset-y-0 rtl:inset-r-0 start-0 flex items-center ps-3 pointer-events-none">
                                         <svg className="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
                                             <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
                                         </svg>
                                     </div>
-                                    <input type="text" name='searchSubdistrict' value={searchLocation} onChange={(e) => setSearchLocation(e.target.value)} id="search" className="outline-0 block px-2 py-3 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-[40%] bg-white focus:ring-blue-500 focus:border-blue-500" placeholder="Cari kecamatan...." />
+                                    <input type="text" name='searchSubdistrict' value={searchSubdistrict} onChange={(e) => setSearchSubdistrict(e.target.value)} id="table-search-users" className="block px-2 ps-10 py-3 text-sm text-gray-900 border border-slate-700 rounded-lg w-80 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-slate-700 dark:border-slate-700 dark:placeholder-slate-700 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Cari nama kecamatan" />
                                 </div>
-                                <div className='w-max flex items-center'>
-                                    <button onClick={() => setShowMap(!showMap)} className='border-0 outline-0 active:scale-[0.98] hover:brightness-[90%] rounded-[10px] flex w-[170px] text-center justify-center items-center bg-white cursor-pointer text-black px-6 py-3'>{showMap ? 'Tutup Peta' : 'Lihat Peta' } {showMap ? <FaEyeSlash className="ml-3" /> : <FaEye className="ml-3" />}</button>
+                                <div className='w-[70%] flex items-center justify-end'>
+                                    <button title='Lihat pea' onClick={() => titleID === '' ? null : setActivePage('')} className={`w-max px-12 text-center mr-6 border py-3 border-black justify-center ${titleID === '' ? ' bg-slate-200 text-slate-400' : 'hover:brightness-[90%] active:scale-[0.99] duration-100'} duration-100 h-max ${(activePage === '' || activePage === 'peta') && titleID !== '' ? 'flex bg-blue-700 text-white border-blue-500 border' : 'bg-white text-black border-slate-400'} items-center rounded-[10px] text-[16px]`}>
+                                        <p>
+                                        Peta
+                                        </p>
+                                    </button>
+                                    <button title='LIhat daftar kecamatan' onClick={() => activePage === 'subdisdtrict' ? setActivePage('') : setActivePage('subdistrict')} className={`w-max px-12 text-center mr-6 py-3 justify-center ${activePage === 'subdistrict' ? 'flex bg-blue-700 text-white border-blue-500 border' : 'bg-white text-black border-slate-400'} border border-black hover:brightness-[90%] active:scale-[0.99] duration-100 h-max flex items-center rounded-[10px] text-[16px]`}>
+                                        <p>
+                                        Kecamatan
+                                        </p>
+                                    </button>
+                                    <button title='LIhat daftar kecamatan' onClick={() => titleID === '' ? null : (activePage === 'grafik' ? setActivePage('') : setActivePage('grafik'))} className={`w-max px-12 text-center py-3 justify-center ${activePage === 'grafik' ? 'flex bg-blue-700 text-white border-blue-500 border' : 'bg-white text-black border-slate-400'} ${titleID === '' ? ' bg-slate-200 text-slate-400' : 'hover:brightness-[90%] active:scale-[0.99] duration-100'} border border-black h-max flex items-center rounded-[10px] text-[16px]`}>
+                                        <p>
+                                        Grafik data
+                                        </p>
+                                    </button>
                                 </div>
-                            </div>
-
-                            <div className={`w-full mt-8 duration-200 ${showMap ? 'h-max' : 'h-[0px]'} border-[1px] border-black ease duration-200 rounded-[16px] overflow-hidden mx-auto overflow-hidden`}>
-                                <Map showMap={showMap} searchLocation={searchLocation ?? ''} customData={custom} dataSubdistrict={allSubdistrict} handleShowAll={() => setShowAll(!showAll)} showAll={showAll} search={search} height={activeHeight} handleHeight={() => setActiveHeight(!activeHeight)} ref={mapRef} data={!showAll ? allTitle?.filter((data) => data?.title_id === titleID) : allTitle?.filter((data) => data?.dinas_id === dinasID) ?? []} line={line} />
                             </div>
                             <Subdistrict 
+                                searchSubdistrict={searchSubdistrict}
                                 dataSubdistrict={allSubdistrict && allSubdistrict.length > 0 ? allSubdistrict : []} 
                             />
                         </div>
                     ):
                     <>
-                        <div className='w-[90%] flex mx-auto items-center mt-8 justify-between'>
-                            <div className='w-[80%] mx-auto flex items-center'>
-                                <div className='md:w-[50%] h-[50px] rounded-[8px] bg-white border border-blue-600 outline-0 p-2 shadow-md text-black'>
+                        <div className="flex items-center justify-between flex-column mt-12 px-[68px] flex-wrap md:flex-row space-y-4 md:space-y-0 dark:bg-gray-900">
+                            <div className='w-[20%] mx-auto flex items-center'>
+                                <div className='md:w-[100%] h-[50px] rounded-[8px] bg-white border border-blue-600 outline-0 p-2 shadow-md text-black'>
                                     <select name='selectTypeChart' value={selectTypeChart} onChange={(e) => setSelectTypeChart(e.target.value)} className='w-full bg-white h-full border-0 outline-0 text-black'>
                                         <option className='text-black' value="Pilih Tampilan Chart" disabled={true}>Pilih Tampilan Chart</option>   
                                         <option className='text-black' value="pie">PIE Chart</option>   
@@ -629,13 +774,29 @@ const Homepage = () => {
                                     </select>
                                 </div>
                             </div>
-                            <div className='w-[20%] flex justify-end mr-1 items-center'>
-                                <p>
-                                    Jumlah data : <b>{allTitle?.filter((data) => data?.title_id === titleID)?.flatMap((entry) => entry?.coordinate)?.length}</b>
-                                </p>
+                            <div className='w-[80%] justify-end flex items-center'>
+                                <div className="flex items-center flex-column flex-wrap md:flex-row space-y-4 md:space-y-0 dark:bg-gray-900">
+                                    <div className='w-[100%] flex items-center justify-end'>
+                                        <button title='Lihat pea' onClick={() => titleID === '' ? null : setActivePage('')} className={`w-max px-12 text-center mr-6 border py-3 border-black justify-center ${titleID === '' ? ' bg-slate-200 text-slate-400' : 'hover:brightness-[90%] active:scale-[0.99] duration-100'} duration-100 h-max ${(activePage === '' || activePage === 'peta') && titleID !== '' ? 'flex bg-blue-700 text-white border-blue-500 border' : 'bg-white text-black border-slate-400'} items-center rounded-[10px] text-[16px]`}>
+                                            <p>
+                                            Peta
+                                            </p>
+                                        </button>
+                                        <button title='LIhat daftar kecamatan' onClick={() => activePage === 'subdisdtrict' ? setActivePage('') : setActivePage('subdistrict')} className={`w-max px-12 text-center mr-6 py-3 justify-center ${activePage === 'subdistrict' ? 'flex bg-blue-700 text-white border-blue-500 border' : 'bg-white text-black border-slate-400'} border border-black hover:brightness-[90%] active:scale-[0.99] duration-100 h-max flex items-center rounded-[10px] text-[16px]`}>
+                                            <p>
+                                            Kecamatan
+                                            </p>
+                                        </button>
+                                        <button title='LIhat daftar kecamatan' onClick={() => titleID === '' ? null : (activePage === 'grafik' ? setActivePage('') : setActivePage('grafik'))} className={`w-max px-12 text-center py-3 justify-center ${activePage === 'grafik' ? 'flex bg-blue-700 text-white border-blue-500 border' : 'bg-white text-black border-slate-400'} ${titleID === '' ? ' bg-slate-200 text-slate-400' : 'hover:brightness-[90%] active:scale-[0.99] duration-100'} border border-black h-max flex items-center rounded-[10px] text-[16px]`}>
+                                            <p>
+                                            Grafik data
+                                            </p>
+                                        </button>
+                                    </div>
+                                </div>
                             </div>
                         </div>    
-                        <div className="pb-14">
+                        <div className="pb-14 mt-[-8px]">
                             {
                                 selectTypeChart === 'pie' ? (
                                     <GrafikPie titleID={titleID ?? ''} />
@@ -798,7 +959,7 @@ const Homepage = () => {
                                                     .map((data, index) => (
                                                         <div key={index} className='w-full min-h-[180px] my-3 shadow-lg border border-blue-500 border-dashed rounded-[12px] bg-white show-lg p-5'>
                                                             <div className='w-full h-[50%] flex items-center justify-between overflow-hidden text-left rounded-[8px]'>
-                                                                <h3 onClick={() => {setDinasID(data?.dinas_id), setTitleID(data?.title_id), setSelectTitle(data?.title), window.scrollTo(0, 0)}} className='text-[18px] cursor-pointer hover:text-blue-600 active:scale-[0.99] underline font-[500]'>
+                                                                <h3 onClick={() => {setDinasID(data?.dinas_id), setTitleID(data?.title_id), setSelectTitle(data?.title), window.scrollTo(0, 0), setSearchLocation(''), setSearch('')}} className='text-[18px] cursor-pointer hover:text-blue-600 active:scale-[0.99] underline font-[500]'>
                                                                     {data?.title}
                                                                 </h3>
                                                                 <div className='rounded-[10px] text-[12px] w-max h-max px-4 py-2 hidden md:flex items-center justify-center bg-green-600 text-white mr-4'>
