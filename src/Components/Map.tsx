@@ -12,6 +12,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import * as XLSX from 'xlsx';
 import geoJsonDataPantai from '../GeoJson/garisPantai.json';
 import geoJsonData from '../GeoJson/kecamatan.json';
+import geoJsonKecamatan from '../GeoJson/desa.json';
 import geoJsonDataSungai from '../GeoJson/sungai.json';
 import { mapProps } from '../Models/componentInterface';
 import { getCoordinate } from '../Store/coordinateSlice';
@@ -58,6 +59,7 @@ const Map: React.FC<mapProps> = ({
   const [selectColor, setSelectColor] = useState<any>(null)
   const [status, setStatus] = useState<boolean>(false)
   const [activeLayer, setActiveLayer] = useState<boolean>(false)
+  const [activeKecamatan, setActiveKecamatan] = useState<boolean>(false)
   const [activeRange, setActiveRange] = useState<boolean>(false);
   const [listLayer, setListLayer] = useState<any>([])
   const [listID, setListID] = useState<any[]>([])
@@ -68,8 +70,9 @@ const Map: React.FC<mapProps> = ({
   const coorNew = useSelector((state: any) => state.Coordinate?.coordinate)
   
   const onEachFeature = (feature: any, layer: any) => {
-    if (feature?.properties && feature?.properties?.NAMOBJ) {
-      layer.bindTooltip(feature?.properties?.NAMOBJ);
+    console.log('feature', feature)
+    if (feature?.properties && (feature?.properties?.NAMOBJ || feature?.properties?.namobj)) {
+      layer.bindTooltip(feature?.properties?.NAMOBJ ?? feature?.properties?.namobj);
     }
   };
 
@@ -85,9 +88,14 @@ const Map: React.FC<mapProps> = ({
     color: '#41C9E2',
   };
 
+  const geoJsonStyleKecamatan = {
+    color: '#FBC740',
+  };
+
   const geoJsonData1: any = geoJsonData;
   const geoJsonData2: any = geoJsonDataPantai;
   const geoJsonData3: any = geoJsonDataSungai;
+  const geoJsonData4: any = geoJsonKecamatan;
 
   useEffect(() => {
     setCoordinates(coorNew)
@@ -462,9 +470,12 @@ const Map: React.FC<mapProps> = ({
               <div title='Layar tinggi penuh' onClick={() => handleHeight()} className={`${height ? 'bg-green-200' : 'bg-white'} ml-4 cursor-pointer active:scale-[0.98] hover:bg-green-200 z-[22222] w-[45px] h-[45px] px-2 py-2 flex items-center justify-center text-center rounded-full text-[16px] border border-slate-700 right-0 top-36`}><FaTextHeight /></div>
             </div>
             <div title='Area perbatasan kabupaten' onClick={() => setActiveMenuBatas(!activeMenuBatas)} className={`${activeMenuBatas ? 'bg-green-200' : 'bg-white'} hover:bg-green-200 cursor-pointer z-[22222] w-max h-max px-4 py-2 flex items-center justify-center text-center rounded-full text-[16px] border border-slate-700 top-4`}>Perbatasan <FaChevronDown className={`${activeMenuBatas ? 'rotate-[-180deg]' : 'rotate-[0deg]'} duration-300 text-[14px] ml-3`} />
-              <div className={`absolute h-max mr-10 justify-between z-[33] flex flex-col ${activeMenuBatas ? 'bottom-[-190px] opacity-[1] block' : 'bottom-[-160px] hidden opacity-[0]'} duration-100 text-left rounded-[14px] bg-white p-4 shadow-lg`}>
+              <div className={`absolute h-max mr-10 justify-between z-[33] flex flex-col ${activeMenuBatas ? 'bottom-[-230px] opacity-[1] block' : 'bottom-[-160px] hidden opacity-[0]'} duration-100 text-left rounded-[14px] bg-white p-4 shadow-lg`}>
                 <div className='w-flex items-center mb-3 h-[30px]'>
                   <input type="checkbox" name='kabupaten' onClick={() => setActiveLineSub(!activeLineSub)} className='mr-2 scale-[1.3] rounded-[10px]' /> Batas Kabupaten
+                </div>
+                <div className='w-flex items-center mb-3 h-[30px]'>
+                  <input type="checkbox" name='kecamatan' onClick={() => setActiveKecamatan(!activeKecamatan)} className='mr-2 scale-[1.3] rounded-[10px]' /> Batas Kecamatan
                 </div>
                 <div className='w-flex items-center mb-3 h-[30px]'>
                   <input type="checkbox" name='kabupaten' onClick={() => setActiveDesa(!activeDesa)} className='mr-2 scale-[1.3] rounded-[10px]' /> Batas Desa
@@ -541,6 +552,12 @@ const Map: React.FC<mapProps> = ({
           {
             activeSungai ? (
               <GeoJSON data={geoJsonData3} style={geoJsonStyleSungai} onEachFeature={onEachFeature} />
+            ):
+              null
+          }
+          {
+            activeKecamatan ? (
+              <GeoJSON data={geoJsonData4} style={geoJsonStyleKecamatan} onEachFeature={onEachFeature} />
             ):
               null
           }
