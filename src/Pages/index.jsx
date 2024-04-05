@@ -878,7 +878,7 @@ const Homepage = () => {
                         <img src={Square2} alt="square" loading="lazy" className='absolute opacity-[0.7] w-[40%] right-[-140px] rotate-[90deg] z-[1] top-[0px]' />
                         
                         <h2 className='text-[26px] w-full md:text-[36px] font-normal'>Daftar Peta 🗺️</h2>
-                        <p className='md:block hidden text-slate-500 mt-2 mb-10'>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Numquam, perferendis.</p>
+                        <p className='md:block hidden text-slate-500 mt-2 mb-10'>Data sebaran lokasi berdasarkan kategori dan kelompok dinas.</p>
                         <div className="w-[95%] md:w-[60%] flex z-[444] items-center mx-auto mb-4 md:mt-0 mt-4">
                             <div className='w-full rounded-[10px] bg-white text-slate-600 outline-0 border border-slate-400 text-[14px] flex items-center pr-2'>
                                 <input name="search" value={search} onChange={(e) => setSearch(e.target.value)} type="text" className="w-full rounded-[10px] bg-whit px-3 py-3 text-slate-600 outline-0 border-0 text-[14px]" placeholder="Cari judul data..." />
@@ -1200,7 +1200,7 @@ const Homepage = () => {
                     <section id="masukan" className='w-screen h-max bg-[#fbffff] flex flex-col items-center pt-10 md:pt-20 md:px-16 pb-6'>
                         <div className='w-full text-center h-max py-2 md:mb-0 mb-8'>
                             <h2 className='text-[23px] md:text-[36px] font-normal'>Masukan Untuk Kami 📮</h2>
-                            <p className='text-slate-500 w-full md:w-[70%] mx-auto md:flex hidden leading-loose mt-2 mb-10'>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ex saepe atque perferendis voluptate accusamus possimus? Atque aperiam aut provident iusto, similique iste fugit nisi qui..</p>
+                            <p className='text-slate-500 w-full md:w-[70%] mx-auto text-[15px] md:flex hidden leading-loose mt-2 mb-10'>Kami menerima saran dan kritik masyarakat demi kamajuan dan terciptanya dampa positif dari segi manfaat serta kemudahan bagi pengguna</p>
                         </div>
                         
                         <div className="w-[92vw] md:w-[70vw]">
