@@ -67,7 +67,7 @@ const GrafikPie: React.FC<{titleID: string}> = ({titleID}) => {
                         }}
                     />
                 ):  
-                    <p className='text-slate-500 text-center mt-48'>Data Belum tersedia</p>
+                    <p className='text-slate-500 text-center md:left-0 left-[20px] relative my-24 md:mt-48'>Data Belum tersedia</p>
             }
         </div>
         <div className='w-full md:w-[40%] p-3 md:p-8 min-h-[400px] border-l-[2px] md:block hidden border-l-slate-300'>

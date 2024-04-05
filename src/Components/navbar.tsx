@@ -11,7 +11,7 @@ const Navbar: React.FC<NavbarProps> = ({ handleClear }) => {
   const [sidebar, setSideber] = useState<boolean>(false)
 
   return (
-    <div className='w-screen h-[60px] bg-white z-[99999] relative flex items-center justify-between shadow-lg shadow-blue-100 px-8 jsutify-between'>
+    <div className='w-screen h-[60px] bg-white z-[99999] relative flex items-center justify-between md:shadow-lg md:shadow-blue-100 px-8 justify-between'>
       <div>
         <img onClick={() => handleClear()} src={Diskominfo} alt="logo-diskominfo" className='w-[35%] relative left-[-14px] md:left-6' />
       </div>

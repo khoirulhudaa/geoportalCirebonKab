@@ -24,7 +24,7 @@ const Homepage = () => {
     const [activeHeight, setActiveHeight] = useState(false)
     const [showAll, setShowAll] = useState(false)
     const [showMap, setShowMap] = useState(true)
-    const [activePage, setActivePage] = useState('' || null)
+    const [activePage, setActivePage] = useState('peta')
     const [dinasID, setDinasID] = useState('')
     const [titleID, setTitleID] = useState('')
     const [search, setSearch] = useState('')
@@ -567,6 +567,57 @@ const Homepage = () => {
 
     return (
     <div className='w-screen h-max'>
+
+    <div id="accordion-collapse" data-accordion="collapse">
+    <h2 id="accordion-collapse-heading-1">
+        <button type="button" class="flex items-center justify-between w-full p-5 font-medium rtl:text-right text-gray-500 border border-b-0 border-gray-200 rounded-t-xl focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-800 dark:border-gray-700 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 gap-3" data-accordion-target="#accordion-collapse-body-1" aria-expanded="true" aria-controls="accordion-collapse-body-1">
+        <span>What is Flowbite?</span>
+        <svg data-accordion-icon class="w-3 h-3 rotate-180 shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5 5 1 1 5"/>
+        </svg>
+        </button>
+    </h2>
+    <div id="accordion-collapse-body-1" class="hidden" aria-labelledby="accordion-collapse-heading-1">
+        <div class="p-5 border border-b-0 border-gray-200 dark:border-gray-700 dark:bg-gray-900">
+        <p class="mb-2 text-gray-500 dark:text-gray-400">Flowbite is an open-source library of interactive components built on top of Tailwind CSS including buttons, dropdowns, modals, navbars, and more.</p>
+        <p class="text-gray-500 dark:text-gray-400">Check out this guide to learn how to <a href="/docs/getting-started/introduction/" class="text-blue-600 dark:text-blue-500 hover:underline">get started</a> and start developing websites even faster with components on top of Tailwind CSS.</p>
+        </div>
+    </div>
+    <h2 id="accordion-collapse-heading-2">
+        <button type="button" class="flex items-center justify-between w-full p-5 font-medium rtl:text-right text-gray-500 border border-b-0 border-gray-200 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-800 dark:border-gray-700 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 gap-3" data-accordion-target="#accordion-collapse-body-2" aria-expanded="false" aria-controls="accordion-collapse-body-2">
+        <span>Is there a Figma file available?</span>
+        <svg data-accordion-icon class="w-3 h-3 rotate-180 shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5 5 1 1 5"/>
+        </svg>
+        </button>
+    </h2>
+    <div id="accordion-collapse-body-2" class="hidden" aria-labelledby="accordion-collapse-heading-2">
+        <div class="p-5 border border-b-0 border-gray-200 dark:border-gray-700">
+        <p class="mb-2 text-gray-500 dark:text-gray-400">Flowbite is first conceptualized and designed using the Figma software so everything you see in the library has a design equivalent in our Figma file.</p>
+        <p class="text-gray-500 dark:text-gray-400">Check out the <a href="https://flowbite.com/figma/" class="text-blue-600 dark:text-blue-500 hover:underline">Figma design system</a> based on the utility classes from Tailwind CSS and components from Flowbite.</p>
+        </div>
+    </div>
+    <h2 id="accordion-collapse-heading-3">
+        <button type="button" class="flex items-center justify-between w-full p-5 font-medium rtl:text-right text-gray-500 border border-gray-200 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-800 dark:border-gray-700 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 gap-3" data-accordion-target="#accordion-collapse-body-3" aria-expanded="false" aria-controls="accordion-collapse-body-3">
+        <span>What are the differences between Flowbite and Tailwind UI?</span>
+        <svg data-accordion-icon class="w-3 h-3 rotate-180 shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5 5 1 1 5"/>
+        </svg>
+        </button>
+    </h2>
+    <div id="accordion-collapse-body-3" class="hidden" aria-labelledby="accordion-collapse-heading-3">
+        <div class="p-5 border border-t-0 border-gray-200 dark:border-gray-700">
+        <p class="mb-2 text-gray-500 dark:text-gray-400">The main difference is that the core components from Flowbite are open source under the MIT license, whereas Tailwind UI is a paid product. Another difference is that Flowbite relies on smaller and standalone components, whereas Tailwind UI offers sections of pages.</p>
+        <p class="mb-2 text-gray-500 dark:text-gray-400">However, we actually recommend using both Flowbite, Flowbite Pro, and even Tailwind UI as there is no technical reason stopping you from using the best of two worlds.</p>
+        <p class="mb-2 text-gray-500 dark:text-gray-400">Learn more about these technologies:</p>
+        <ul class="ps-5 text-gray-500 list-disc dark:text-gray-400">
+            <li><a href="https://flowbite.com/pro/" class="text-blue-600 dark:text-blue-500 hover:underline">Flowbite Pro</a></li>
+            <li><a href="https://tailwindui.com/" rel="nofollow" class="text-blue-600 dark:text-blue-500 hover:underline">Tailwind UI</a></li>
+        </ul>
+        </div>
+    </div>
+    </div>
+
         <input value="https://be-geospasial.vercel.app/v2/api" className='absolute opacity-0' disabled type="text" ref={textRefMain} />
         <input value="https://be-geospasial.vercel.app/v2/api/dinas" className='absolute opacity-0' disabled type="text" ref={textRef} />
         <input value="https://be-geospasial.vercel.app/v2/api/title" className='absolute opacity-0' disabled type="text" ref={textRef2} />
@@ -669,20 +720,70 @@ const Homepage = () => {
                                 </div>
                             </div>
                             <div className="relative w-full mt-2 border-[1px] border-black overflow-x-auto shadow-md sm:rounded-lg">
-                                <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                                <div className='md:inline hidden'>
+                                    <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                                        <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                                            <tr>
+                                                <th scope="col" className="w-[40%] pl-6 py-6">
+                                                    Lokasi
+                                                </th>
+                                                <th scope="col" className="py-6">
+                                                    Latitude
+                                                </th>
+                                                <th scope="col" className="py-6">
+                                                    Longitude
+                                                </th>
+                                                <th scope="col" className="py-6">
+                                                    Kecamatan
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        {
+                                            allTitle && allTitle.length > 0 ? (
+                                            allTitle
+                                            .filter((data) => data?.title_id === titleID)
+                                            .map((data) => (
+                                                data.coordinate
+                                                .filter((sub) => {
+                                                // Jika pencarian tidak kosong, filter data berdasarkan label yang cocok dengan pencarian
+                                                if (search && search !== '') {
+                                                    return sub.name_location.toLowerCase().includes(search.toLowerCase());
+                                                }
+                                                // Jika pencarian kosong, tampilkan semua data
+                                                return true;
+                                                })
+                                                .map((data, index) => (
+                                                    <tr key={index} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                                                    <div className="relative w-[350px] overflow-hidden pl-6 py-4">
+                                                        <div className='w-full overflow-hidden'>
+                                                            <div className={`text-base font-semibold overflow-hidden overflow-ellipsis max-w-[95%] whitespace-nowrap`}>{data?.name_location}</div>
+                                                            <div className="font-normal text-gray-500 overflow-hidden overflow-ellipsis max-w-[95%] whitespace-nowrap">Kabupaten cirebon</div>
+                                                        </div>  
+                                                    </div>
+                                                    <td className="py-4">
+                                                        {parseFloat(data.lat).toFixed(8)}
+                                                    </td>
+                                                    <td className="py-4">
+                                                        {parseFloat(data.long).toFixed(6)}
+                                                    </td>
+                                                    <td className="py-4">
+                                                        {data.subdistrict}
+                                                    </td>
+                                                </tr>
+                                                ))
+                                            ))    
+                                            ):
+                                            null
+                                        }
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <table className="w-full text-sm text-left md:hidden rtl:text-right text-gray-500 dark:text-gray-400">
                                     <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                                         <tr>
                                             <th scope="col" className="w-[40%] pl-6 py-6">
                                                 Lokasi
-                                            </th>
-                                            <th scope="col" className="py-6">
-                                                Latitude
-                                            </th>
-                                            <th scope="col" className="py-6">
-                                                Longitude
-                                            </th>
-                                            <th scope="col" className="py-6">
-                                                Kecamatan
                                             </th>
                                         </tr>
                                     </thead>
@@ -709,15 +810,6 @@ const Homepage = () => {
                                                         <div className="font-normal text-gray-500 overflow-hidden overflow-ellipsis max-w-[95%] whitespace-nowrap">Kabupaten cirebon</div>
                                                     </div>  
                                                 </div>
-                                                <td className="py-4">
-                                                    {parseFloat(data.lat).toFixed(8)}
-                                                </td>
-                                                <td className="py-4">
-                                                    {parseFloat(data.long).toFixed(6)}
-                                                </td>
-                                                <td className="py-4">
-                                                    {data.subdistrict}
-                                                </td>
                                             </tr>
                                             ))
                                         ))    
@@ -774,7 +866,7 @@ const Homepage = () => {
                                     </select>
                                 </div>
                             </div>
-                            <div className='w-full md:w-[80% justify-between] md:justify-end flex items-center'>
+                            <div className='w-full md:w-[80%] justify-between md:justify-end flex items-center'>
                                 <div className="flex items-center flex-column flex-wrap md:flex-row space-y-4 md:space-y-0 dark:bg-gray-900">
                                     <div className='w-[100%] flex items-center mt-1 md:mt-0 justify-between md:justify-end'>
                                         <button title='Lihat pea' onClick={() => titleID === '' ? null : setActivePage('')} className={`w-[50%] md:w-max px-12 text-center mr-6 border py-3 border-black justify-center ${titleID === '' ? ' bg-slate-200 text-slate-400' : 'hover:brightness-[90%] active:scale-[0.99] duration-100'} duration-100 h-max ${(activePage === '' || activePage === 'peta') && titleID !== '' ? 'flex bg-blue-700 text-white border-blue-500 border' : 'bg-white text-black border-slate-400'} items-center rounded-[10px] text-[16px]`}>
@@ -1158,7 +1250,7 @@ const Homepage = () => {
                     
                     <section id="masukan" className='w-screen h-max bg-[#fbffff] flex flex-col items-center pt-10 md:pt-20 md:px-16 pb-6'>
                         <div className='w-full text-center h-max py-2 md:mb-0 mb-8'>
-                            <h2 className='text-[26px] md:text-[36px] font-normal'>Masukan Untuk Kami 📮</h2>
+                            <h2 className='text-[23px] md:text-[36px] font-normal'>Masukan Untuk Kami 📮</h2>
                             <p className='text-slate-500 w-full md:w-[70%] mx-auto md:flex hidden leading-loose mt-2 mb-10'>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ex saepe atque perferendis voluptate accusamus possimus? Atque aperiam aut provident iusto, similique iste fugit nisi qui..</p>
                         </div>
                         

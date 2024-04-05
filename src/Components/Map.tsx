@@ -6,7 +6,7 @@ import markerShadowUrl from 'leaflet/dist/images/marker-shadow.png';
 import 'leaflet/dist/leaflet.css';
 import React, { useEffect, useRef, useState } from "react";
 import ReactDOMServer from 'react-dom/server';
-import { FaBuilding, FaCameraRetro, FaChevronDown, FaEye, FaEyeSlash, FaFileExport, FaGoogle, FaGripLines, FaIcons, FaLayerGroup, FaMapMarkerAlt, FaPlus, FaRulerCombined, FaTextHeight, FaTimes, FaTrashAlt, FaVectorSquare } from 'react-icons/fa';
+import { FaBuilding, FaCameraRetro, FaChevronDown, FaExpand, FaCompress, FaEye, FaEyeSlash, FaFileExport, FaGoogle, FaGripLines, FaIcons, FaLayerGroup, FaMapMarkerAlt, FaPlus, FaRulerCombined, FaTextHeight, FaTimes, FaTrashAlt, FaVectorSquare } from 'react-icons/fa';
 import { GeoJSON, MapContainer, Marker, Polygon, Polyline, Popup, TileLayer, Tooltip, useMapEvent } from "react-leaflet";
 import { useDispatch, useSelector } from 'react-redux';
 import * as XLSX from 'xlsx';
@@ -65,7 +65,11 @@ const Map: React.FC<mapProps> = ({
   const [listID, setListID] = useState<any[]>([])
   const [startPoint, setStartPoint] = useState<any>(null);
   const [endPoint, setEndPoint] = useState<any>(null);
+  const [startPointPoly, setStartPointPoly] = useState<any>(null);
+  const [endPointPoly, setEndPointPoly] = useState<any>(null);
   const [unit, setUnit] = useState('kilometer');
+  const [fullScreen, setFullScreen] = useState(false);
+  const [activeRangeCustomIcon, setActiveRangeCustomIcon] = useState(false);
 
   const coorNew = useSelector((state: any) => state.Coordinate?.coordinate)
   
@@ -329,9 +333,19 @@ const Map: React.FC<mapProps> = ({
     }
   };
 
+  useEffect(() => {
+    if (startPoint !== null && endPoint !== null) {
+      setActiveRangeCustomIcon(true);
+      setStartPointPoly([filteredData[startPoint].lat, filteredData[startPoint].long]);
+      setEndPointPoly([filteredData[endPoint].lat, filteredData[endPoint].long]);
+
+      console.log('startPOintPOly', [filteredData[startPoint].lat, filteredData[startPoint].long])
+      console.log('endPOintPOly', [filteredData[endPoint].lat, filteredData[endPoint].long])
+    }
+  }, [startPoint, endPoint]);
+
   const calculateDistance = () => {
     if (startPoint && endPoint && unit) {
-      
       let point1 = L.latLng([filteredData[startPoint].lat, filteredData[startPoint].long]);
       let point2 = L.latLng([filteredData[endPoint].lat, filteredData[endPoint].long]);
       
@@ -352,10 +366,10 @@ const Map: React.FC<mapProps> = ({
           null
       }
 
-      <div className={`absolute z-[3333] w-[42vw] h-screen ${activeLayer ? 'left-[0%]' : 'left-[-100%] duration-300'} top-[0px] bg-white shadow-lg rounded-[12px] p-4 duration-200`}>
+      <div className={`absolute z-[3333] w-full md:w-[42vw] h-screen ${activeLayer ? 'left-[0%]' : 'left-[-100%] duration-300'} top-[0px] bg-white shadow-lg rounded-[12px] p-2 md:p-4 duration-200`}>
         <div className='w-full px-3 flex items-center justify-between'>
           <input name="searchData" value={searchData} onChange={(e: any) => setSearchData(e.target.value)} type="text" className="w-[85%] rounded-[10px] bg-white my-2 px-3 py-3 text-slate-600 outline-0 border border-slate-300 text-[13px]" placeholder="Cari judul data..." />
-          <div onClick={() => setActiveLayer(false)} className='rounded-[8px] w-[46px] h-[46px] bg-red-500 ml-2 flex items-center justify-center text-white cursor-pointer hover:brightness-[90%] active:scale-[0.98]'>
+          <div onClick={() => setActiveLayer(false)} className='rounded-full md:rounded-[8px] md:text-[16px] text-[12px] md:p-0 p-2 md:w-[46px] md:h-[46px] bg-red-500 ml-2 flex items-center justify-center text-white cursor-pointer hover:brightness-[90%] active:scale-[0.98]'>
             <FaTimes />
           </div>
         </div>
@@ -376,7 +390,7 @@ const Map: React.FC<mapProps> = ({
                   <div key={index} className='w-full flex items-center justify-between px-3 mb-4 py-2'>
                     <div className='w-[80%] h-[30px] rounded-full flex items-center p-2'>
                       <FaMapMarkerAlt />
-                      <p className='ml-3 overflow-hidden w-[90%] overflow-ellipsis whitespace-nowrap'>{data?.title}</p>
+                      <p className='ml-3 overflow-hidden w-full md:w-[90%] overflow-ellipsis whitespace-nowrap'>{data?.title}</p>
                     </div>
                     <div onClick={() => {
                       if(isAdded) {
@@ -405,7 +419,7 @@ const Map: React.FC<mapProps> = ({
       <div className={`absolute z-[3333] w-[31vw] h-screen ${activeRange ? 'left-[0%]' : 'left-[-100%] duration-300'} top-[0px] bg-white shadow-lg rounded-[12px] p-4 duration-200`}>
         <div className='w-full px-3 flex items-center justify-between'>
           <h2 className='text-[16px] relative top-1'>Jarak Antar Titik</h2>
-          <div onClick={() => setActiveRange(false)} className='rounded-[8px] w-[46px] h-[46px] bg-red-500 ml-2 flex items-center justify-center text-white cursor-pointer hover:brightness-[90%] active:scale-[0.98]'>
+          <div onClick={() => {setActiveRange(false), setActiveRangeCustomIcon(false)}} className='rounded-[8px] w-[46px] h-[46px] bg-red-500 ml-2 flex items-center justify-center text-white cursor-pointer hover:brightness-[90%] active:scale-[0.98]'>
             <FaTimes />
           </div>
         </div>
@@ -458,10 +472,11 @@ const Map: React.FC<mapProps> = ({
         {/* Tombol tambah koordinat dan pengaturan */}
         <div className="w-max z-[444] flex items-center h-[68px] py-[14px] pl-4 rounded-bl-[32px] absolute top-0 right-2">
           <div className={`w-max ${activeClick ? 'hidden' : 'flex'} items-center top-4 mr-3`}>
-
+            <div title='FullScreen' onClick={() => setFullScreen(!fullScreen)} className={`${fullScreen ? 'bg-green-200 fixed bottom-6 right-4' : 'bg-white bottom-36 w-[40px] h-[40px]'} mr-4 cursor-pointer hover:bg-green-200 z-[22222223] md:px-2 md:py-2 flex items-center justify-center text-center rounded-full text-[16px] border border-slate-700`}>{fullScreen ? <FaCompress /> : <FaExpand />}
+            </div>
             <div title='Jarak' onClick={() => setActiveRange(!activeRange)} className={`${activeRange ? 'bg-green-200' : 'bg-white'} mr-4 cursor-pointer hover:bg-green-200 z-[22222] w-max h-max px-4 py-2 hidden md:flex items-center justify-center text-center rounded-full text-[16px] border border-slate-700 right-0 top-36`}>Jarak <FaRulerCombined className='ml-3' />
             </div>
-            <div title='Multi layar' onClick={() => setActiveLayer(!activeLayer)} className={`${activeLayer ? 'bg-green-200' : 'bg-white'} mr-4 cursor-pointer hover:bg-green-200 z-[22222] w-[45px] h-[45px] md:w-max md:h-max md:px-4 md:py-2 flex items-center justify-center text-center rounded-full text-[16px] border border-slate-700 right-0 top-36`}><span className='hidden md:flex mr-2'>Layer</span> <span className='relative top-[0.7px] ml-2 hidden md:flex'>+</span> <FaLayerGroup className='md:ml-3' />
+            <div title='Multi layar' onClick={() => setActiveLayer(!activeLayer)} className={`${activeLayer ? 'bg-green-200' : 'bg-white'} mr-4 cursor-pointer hover:bg-green-200 z-[22222] w-[45px] h-[45px] md:w-max md:h-max md:px-4 md:py-2 flex items-center justify-center text-center rounded-full text-[16px] border border-slate-700 right-0 top-36`}><span className='hidden md:flex mr-2'>Layer</span> <FaLayerGroup />
             </div>
             <div title='Kotak area koordinat' onClick={() => subdistrictDots ? null : setActiveArea(!activeArea)} className={`${activeArea ? 'bg-green-200' : 'bg-white'} ${subdistrictDots ? 'cursor-not-allowed bg-red-400 before:absolute before:h-[50px] before:w-[3px] before:rotate-[40deg] before:bg-red-400 text-slate-400' : 'cursor-pointer active:scale-[0.98] hover:bg-green-200'} z-[22222] w-max h-max px-4 py-2 hidden md:flex items-center justify-center text-center rounded-full text-[16px] border border-slate-700 top-4 right-4`}>Area titik <FaVectorSquare className="ml-3" /></div>
             <div onClick={() => exportToGeoJSON()} className={`bg-white hover:bg-green-200 cursor-pointer active:scale-[0.98] z-[22222] w-max h-max px-4 ml-4 py-2 hidden md:flex items-center justify-center text-center rounded-full text-[16px] border border-slate-700 top-4`}>GeoJSON <FaFileExport className="ml-3" /></div>
@@ -470,7 +485,7 @@ const Map: React.FC<mapProps> = ({
               <div title='Layar tinggi penuh' onClick={() => handleHeight()} className={`${height ? 'bg-green-200' : 'bg-white'} ml-4 cursor-pointer active:scale-[0.98] hover:bg-green-200 z-[22222] w-[45px] h-[45px] px-2 py-2 flex items-center justify-center text-center rounded-full text-[16px] border border-slate-700 right-0 top-36`}><FaTextHeight /></div>
             </div>
             <div title='Area perbatasan kabupaten' onClick={() => setActiveMenuBatas(!activeMenuBatas)} className={`${activeMenuBatas ? 'bg-green-200' : 'bg-white'} hover:bg-green-200 cursor-pointer z-[22222] w-max h-max px-4 py-2 flex items-center justify-center text-center rounded-full text-[16px] border border-slate-700 top-4`}>Perbatasan <FaChevronDown className={`${activeMenuBatas ? 'rotate-[-180deg]' : 'rotate-[0deg]'} duration-300 text-[14px] ml-3`} />
-              <div className={`absolute h-max mr-10 justify-between z-[33] flex flex-col ${activeMenuBatas ? 'bottom-[-230px] opacity-[1] block' : 'bottom-[-160px] hidden opacity-[0]'} duration-100 text-left rounded-[14px] bg-white p-4 shadow-lg`}>
+              <div className={`absolute h-max w-max mr-10 justify-between z-[33] flex flex-col ${activeMenuBatas ? 'bottom-[-230px] opacity-[1] block' : 'bottom-[-160px] hidden opacity-[0]'} duration-100 text-left rounded-[14px] bg-white p-4 shadow-lg`}>
                 <div className='w-flex items-center mb-3 h-[30px]'>
                   <input type="checkbox" name='kabupaten' onClick={() => setActiveLineSub(!activeLineSub)} className='mr-2 scale-[1.3] rounded-[10px]' /> Batas Kabupaten
                 </div>
@@ -513,15 +528,18 @@ const Map: React.FC<mapProps> = ({
           <div className='w-max flex items-center'>
             <div className={`z-[552] ml-0 w-max h-max px-4 py-2 flex items-center justify-center text-center bg-white rounded-full text-[16px] border border-slate-700 bottom-4`}>{ currentPosition?.[0].toFixed(6) + `  |  ` + currentPosition?.[1].toFixed(6) ?? 0 }</div>
           </div>
+          <div title='FullScreen' onClick={() => setFullScreen(!fullScreen)} className={`${fullScreen ? 'bg-green-200 fixed bottom-6 right-4 w-[50px] h-[50px]' : 'bg-white bottom-36 w-[40px] h-[40px]'} mr-4 cursor-pointer hover:bg-green-200 z-[22222223] md:px-2 md:py-2 flex md:hidden items-center justify-center text-center rounded-full text-[16px] border border-slate-700 ml-4`}>{fullScreen ? <FaCompress /> : <FaExpand />}
+          </div>
           <div className={`w-max ${activeClick ? 'hidden' : 'hidden md:flex'} items-center`}>
+            <div title='FullScreen' onClick={() => setFullScreen(!fullScreen)} className={`${fullScreen ? 'bg-white fixed top-3 right-0' : 'hidden'} mr-4 cursor-pointer hover:bg-green-200 z-[22222223] w-[50px] h-[50px] text-[22px] flex items-center justify-center text-center rounded-full text-[16px] border border-slate-700`}>{fullScreen ? <FaCompress /> : <FaExpand />}
+            </div>
             <div title='Kantor kecataman' onClick={() => setSubdistrictDots(!subdistrictDots)} className={`${subdistrictDots ? 'bg-green-200' : 'bg-white'} mr-3 hover:bg-green-200 cursor-pointer active:scale-[0.98] z-[22222] w-[40px] h-[40px] py-2 flex items-center justify-center text-center rounded-full text-[16px] border border-slate-700 top-4`}><FaBuilding /></div>
             <div title='Lihat semua koordinat' onClick={() => handleShowAll()} className={`${showAll ? 'bg-green-200' : 'bg-white'} mr-3 hover:bg-green-200 cursor-pointer active:scale-[0.98] z-[22222] w-[40px] h-[40px] py-2 flex items-center justify-center text-center rounded-full text-[16px] border border-slate-700 top-4`}>{showAll ? <FaEyeSlash /> : <FaEye />}</div>
             <div title='Ambil gambar peta' onClick={() => window.location.href = 'https://www.google.com/maps/place/Cirebon,+Kota+Cirebon,+Jawa+Barat/@-6.7428609,108.5128389,13z/data=!3m1!4b1!4m15!1m8!3m7!1s0x2e6f1d0f69dbc5d5:0x301e8f1fc28ba20!2sKabupaten+Cirebon,+Jawa+Barat!3b1!8m2!3d-6.6898876!4d108.4750846!16zL20vMGdjN3h6!3m5!1s0x2e6ee2649e6e5bbb:0x70a07638a7fe12fe!8m2!3d-6.7320229!4d108.5523164!16s%2Fg%2F11bc5j9s76?entry=ttu'} className={`z-[33333] active:bg-green-200 bg-white mr-3 hover:brightness-[90%] cursor-pointer active:scale-[0.98] z-[22222] w-[40px] h-[40px] py-2 flex items-center justify-center text-center rounded-full text-[16px] border border-slate-700 top-4`}><FaGoogle /></div>
             <div title='Ambil gambar peta' onClick={() => downloadImage()} className={`z-[33333] active:bg-green-200 bg-white mr-3 hover:brightness-[90%] cursor-pointer active:scale-[0.98] z-[22222] w-[40px] h-[40px] py-2 flex items-center justify-center text-center rounded-full text-[16px] border border-slate-700 top-4`}><FaCameraRetro /></div>
           </div>
         </div>
-        
-        <div className='w-full md:h-max h-[340px]' ref={captureRef}>
+        <div className={`${fullScreen ? 'fixed top-0 left-0 w-screen h-screen z-[2222222] overflow-hidden' : 'md:h-max h-[340px] w-full'}`} ref={captureRef}>
           <MapContainer 
             className="w-full" 
             center={center} 
@@ -736,6 +754,14 @@ const Map: React.FC<mapProps> = ({
           {
             activeLineMarker ? (
               <Polyline positions={lineMarkers} color="#008ada" />
+            ):
+              null
+          }
+          {
+            activeRangeCustomIcon ? (
+              <Polyline positions={[startPointPoly, endPointPoly]} color="black">
+                <Tooltip>{calculateDistance()} {unit}</Tooltip>
+              </Polyline>
             ):
               null
           }
