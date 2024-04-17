@@ -11,7 +11,7 @@ const Navbar: React.FC<NavbarProps> = ({ handleClear }) => {
   const [sidebar, setSideber] = useState<boolean>(false)
 
   return (
-    <div className='w-screen h-[60px] bg-white z-[99999] relative flex items-center justify-between md:shadow-lg md:shadow-blue-100 px-8 justify-between'>
+    <div className='w-screen h-[60px] bg-white z-[999999999999999999999999] relative flex items-center justify-between md:shadow-lg md:shadow-blue-100 px-8 justify-between'>
       <div>
         <img onClick={() => handleClear()} src={Diskominfo} alt="logo-diskominfo" className='w-[35%] relative left-[-14px] md:left-6' />
       </div>
@@ -20,7 +20,7 @@ const Navbar: React.FC<NavbarProps> = ({ handleClear }) => {
         <div className='w-[80%] h-[3px] my-2 bg-slate-400 rounded-full'></div>
         <div className='w-[80%] h-[3px] bg-slate-400 rounded-full'></div>
       </div>
-      <div className={`md:hidden flex bg-white z-[999999] flex-col fixed ${sidebar ? 'left-0' : 'left-[-100%]'} top-0 duration-300 ease-in w-screen min-h-screen p-6 overflow-y-auto`}>
+      <div className={`md:hidden flex bg-white z-[999999] flex-col fixed ${sidebar ? 'left-0' : 'left-[-100%]'} top-0 duration-300 ease-in w-[90vw] border-r-[2px] border-dashed border-r-blue-500 min-h-screen p-6 overflow-y-auto`}>
         <div onClick={() => setSideber(!sidebar)} className='absolute top-6 right-6 shadow-md  flex items-center justify-center w-[40px] h-[40px] bg-red-500 text-white rounded-[10px] cursor-pointer hover:brightnes-[90%] active:scale-[0.9]'>
           <FaTimes />
         </div>

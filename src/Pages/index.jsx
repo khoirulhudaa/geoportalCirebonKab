@@ -125,8 +125,8 @@ const Homepage = () => {
             const resultSubdistrict = await API.getAllSubdistrict()
             const resultDinas = await API.getAllDinas()
             const resultTitle = await API.getAllTitle()
-            setAllSubdistrict(resultSubdistrict.data.data)
             setAllTitle(resultTitle.data.data)
+            setAllSubdistrict(resultSubdistrict.data.data)
             setAllDinas(resultDinas.data.data)
             setStatus(false)
             setLoading(false)
@@ -584,10 +584,10 @@ const Homepage = () => {
                         </div>
                         {
                             activePage === '' || activePage === 'peta' ? (
-                                <div className="w-full md:w-[60%] flex items-center justify-end space-y-4 md:space-y-0 dark:bg-gray-900">
+                                <div className="w-full md:w-[60%] flex items-center justify-end space-y-4 md:space-y-0">
                                     <div className="relative flex mr-5 items-center">
                                         <div className="absolute inset-y-0 rtl:inset-r-0 start-0 flex items-center ps-3 pointer-events-none">
-                                            <svg className="w-4 h-4 text-gray-500 dark:text-gray-400md:top-0 relative top-3 md:top-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                                            <svg className="w-4 h-4 text-gray-500 md:top-0 relative top-3 md:top-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
                                                 <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
                                             </svg>
                                         </div>
@@ -637,14 +637,14 @@ const Homepage = () => {
                                 <Map listGeoData={listGeoData ??  []} showMap={showMap} searchLocation={searchLocation ?? ''} customData={custom} dataSubdistrict={allSubdistrict} handleShowAll={() => setShowAll(!showAll)} showAll={showAll} search={search} height={activeHeight} handleHeight={() => setActiveHeight(!activeHeight)} ref={mapRef} data={!showAll ? allTitle?.filter((data) => data?.title_id === titleID) : allTitle?.filter((data) => data?.dinas_id === dinasID) ?? []} line={line} />
                             </div>
 
-                            <div className="md:flex items-center justify-between flex-column mt-12 flex-wrap md:flex-row space-y-4 md:space-y-0 pb-4 dark:bg-gray-900">
-                                <div className="relative w-[30%]">
+                            <div className="md:flex items-center justify-between flex-column mt-12 flex-wrap md:flex-row space-y-4 md:space-y-0 pb-4">
+                                <div className="relative w-full md:w-[30%]">
                                     <div className="absolute inset-y-0 rtl:inset-r-0 start-0 flex items-center ps-3 pointer-events-none">
-                                        <svg className="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                                        <svg className="w-4 h-4 text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
                                             <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
                                         </svg>
                                     </div>
-                                    <input type="text" name='search' value={search} onChange={(e) => setSearch(e.target.value)} id="table-search-users" className="block px-2 ps-10 py-3 text-sm text-gray-900 border border-slate-700 rounded-lg w-80 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-slate-700 dark:border-slate-700 dark:placeholder-slate-700 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Cari nama lokasi" />
+                                    <input type="text" name='search' value={search} onChange={(e) => setSearch(e.target.value)} id="table-search-users" className="relative w-full block px-2 ps-10 py-3 text-sm text-gray-900 border border-slate-700 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500" placeholder="Cari nama lokasi" />
                                 </div>
                                 <div className='w-full md:w-[70%] flex items-center justify-between md:justify-end'>
                                     <button title='Lihat pea' onClick={() => titleID === '' ? null : setActivePage('')} className={`md:w-max w-[45%] px-12 text-center mr-6 border py-3 border-black justify-center ${titleID === '' ? ' bg-slate-200 text-slate-400' : 'hover:brightness-[90%] active:scale-[0.99] duration-100'} duration-100 h-max ${(activePage === '' || activePage === 'peta') && titleID !== '' ? 'flex bg-blue-700 text-white border-blue-500 border' : 'bg-white text-black border-slate-400'} items-center rounded-[10px] text-[16px]`}>
@@ -670,8 +670,8 @@ const Homepage = () => {
                             </div>
                             <div className="relative w-full mt-2 border-[1px] border-black overflow-x-auto shadow-md sm:rounded-lg">
                                 <div className='md:inline hidden'>
-                                    <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                                        <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                                    <table className="w-full text-sm text-left rtl:text-right text-gray-500">
+                                        <thead className="text-xs text-gray-700 uppercase bg-gray-50">
                                             <tr>
                                                 <th scope="col" className="w-[40%] pl-6 py-6">
                                                     Lokasi
@@ -703,7 +703,7 @@ const Homepage = () => {
                                                 return true;
                                                 })
                                                 .map((data, index) => (
-                                                    <tr key={index} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                                                    <tr key={index} className="bg-white border-b hover:bg-gray-50">
                                                     <div className="relative w-[350px] overflow-hidden pl-6 py-4">
                                                         <div className='w-full overflow-hidden'>
                                                             <div className={`text-base font-semibold overflow-hidden overflow-ellipsis max-w-[95%] whitespace-nowrap`}>{data?.name_location}</div>
@@ -728,8 +728,8 @@ const Homepage = () => {
                                         </tbody>
                                     </table>
                                 </div>
-                                <table className="w-full text-sm text-left md:hidden rtl:text-right text-gray-500 dark:text-gray-400">
-                                    <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                                <table className="w-full text-sm text-left md:hidden rtl:text-right text-gray-500">
+                                    <thead className="text-xs text-gray-700 uppercase bg-gray-50">
                                         <tr>
                                             <th scope="col" className="w-[40%] pl-6 py-6">
                                                 Lokasi
@@ -752,7 +752,7 @@ const Homepage = () => {
                                             return true;
                                             })
                                             .map((data, index) => (
-                                                <tr key={index} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                                                <tr key={index} className="bg-white border-b hover:bg-gray-50">
                                                 <div className="relative w-[350px] overflow-hidden pl-6 py-4">
                                                     <div className='w-full overflow-hidden'>
                                                         <div className={`text-base font-semibold overflow-hidden overflow-ellipsis max-w-[95%] whitespace-nowrap`}>{data?.name_location}</div>
@@ -771,14 +771,14 @@ const Homepage = () => {
                         </div>
                     ): activePage === 'subdistrict' ? (
                         <div className='w-[90%] mx-auto mt-8'>
-                            <div className="flex items-center justify-between flex-column mt-12 flex-wrap md:flex-row space-y-4 md:space-y-0 pb-4 dark:bg-gray-900">
+                            <div className="flex items-center justify-between flex-column mt-12 flex-wrap md:flex-row space-y-4 md:space-y-0 pb-4">
                                 <div className="relative w-[30%]">
                                     <div className="absolute inset-y-0 rtl:inset-r-0 start-0 flex items-center ps-3 pointer-events-none">
-                                        <svg className="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                                        <svg className="w-4 h-4 text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
                                             <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
                                         </svg>
                                     </div>
-                                    <input type="text" name='searchSubdistrict' value={searchSubdistrict} onChange={(e) => setSearchSubdistrict(e.target.value)} id="table-search-users" className="block px-2 ps-10 py-3 text-sm text-gray-900 border border-slate-700 rounded-lg w-80 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-slate-700 dark:border-slate-700 dark:placeholder-slate-700 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Cari nama kecamatan" />
+                                    <input type="text" name='searchSubdistrict' value={searchSubdistrict} onChange={(e) => setSearchSubdistrict(e.target.value)} id="table-search-users" className="block px-2 ps-10 py-3 text-sm text-gray-900 border border-slate-700 rounded-lg w-80 bg-gray-50 focus:ring-blue-500 focus:border-blue-500" placeholder="Cari nama kecamatan" />
                                 </div>
                                 <div className='w-[70%] flex items-center justify-end'>
                                     <button title='Lihat pea' onClick={() => titleID === '' ? null : setActivePage('')} className={`w-max px-12 text-center mr-6 border py-3 border-black justify-center ${titleID === '' ? ' bg-slate-200 text-slate-400' : 'hover:brightness-[90%] active:scale-[0.99] duration-100'} duration-100 h-max ${(activePage === '' || activePage === 'peta') && titleID !== '' ? 'flex bg-blue-700 text-white border-blue-500 border' : 'bg-white text-black border-slate-400'} items-center rounded-[10px] text-[16px]`}>
@@ -805,7 +805,7 @@ const Homepage = () => {
                         </div>
                     ):
                     <>
-                        <div className="md:flex items-center justify-between flex-column mt-12 px-4 md:px-[68px] flex-wrap md:flex-row space-y-4 md:space-y-0 dark:bg-gray-900">
+                        <div className="md:flex items-center justify-between flex-column mt-12 px-4 md:px-[68px] flex-wrap md:flex-row space-y-4 md:space-y-0">
                             <div className='w-full md:w-[20%] mx-auto flex items-center'>
                                 <div className='md:w-[100%] w-full h-[50px] rounded-[8px] bg-white border border-blue-600 outline-0 p-2 shadow-md text-black'>
                                     <select name='selectTypeChart' value={selectTypeChart} onChange={(e) => setSelectTypeChart(e.target.value)} className='w-full bg-white h-full border-0 outline-0 text-black'>
@@ -816,7 +816,7 @@ const Homepage = () => {
                                 </div>
                             </div>
                             <div className='w-full md:w-[80%] justify-between md:justify-end flex items-center'>
-                                <div className="flex items-center flex-column flex-wrap md:flex-row space-y-4 md:space-y-0 dark:bg-gray-900">
+                                <div className="flex items-center flex-column flex-wrap md:flex-row space-y-4 md:space-y-0">
                                     <div className='w-[100%] flex items-center mt-1 md:mt-0 justify-between md:justify-end'>
                                         <button title='Lihat pea' onClick={() => titleID === '' ? null : setActivePage('')} className={`w-[50%] md:w-max px-12 text-center mr-6 border py-3 border-black justify-center ${titleID === '' ? ' bg-slate-200 text-slate-400' : 'hover:brightness-[90%] active:scale-[0.99] duration-100'} duration-100 h-max ${(activePage === '' || activePage === 'peta') && titleID !== '' ? 'flex bg-blue-700 text-white border-blue-500 border' : 'bg-white text-black border-slate-400'} items-center rounded-[10px] text-[16px]`}>
                                             <p>
@@ -879,8 +879,8 @@ const Homepage = () => {
                         
                         <h2 className='text-[26px] w-full md:text-[36px] font-normal'>Daftar Peta 🗺️</h2>
                         <p className='md:block hidden text-slate-500 mt-2 mb-10'>Data sebaran lokasi berdasarkan kategori dan kelompok dinas.</p>
-                        <div className="w-[95%] md:w-[60%] flex z-[444] items-center mx-auto mb-4 md:mt-0 mt-4">
-                            <div className='w-full rounded-[10px] bg-white text-slate-600 outline-0 border border-slate-400 text-[14px] flex items-center pr-2'>
+                        <div className="relative w-[95%] md:w-[60%] flex z-[4944] items-center mx-auto mb-4 md:mt-0 mt-4">
+                            <div className='relative w-full Z-[555555] rounded-[10px] bg-white text-slate-600 outline-0 border border-slate-400 text-[14px] flex items-center pr-2'>
                                 <input name="search" value={search} onChange={(e) => setSearch(e.target.value)} type="text" className="w-full rounded-[10px] bg-whit px-3 py-3 text-slate-600 outline-0 border-0 text-[14px]" placeholder="Cari judul data..." />
                                 {
                                     search !== '' ? (
@@ -1166,17 +1166,17 @@ const Homepage = () => {
                                         <FaCopy />
                                     </div>
                                 </div>
-                                <div className={`fixed top-0 ${activeAPI ? 'left-[0%]' : 'left-[-100%] duration-300'} ease-in-out duration-300 w-max rounded-tr-[20px] shadow-lg h-screen z-[99999999] bg-white text-blue-700 flex items-center justify-center`}>
+                                <div className={`fixed top-0 ${activeAPI ? 'left-[0%]' : 'left-[-100%] duration-300'} ease-in-out duration-300 w-screen md:w-max md:rounded-tr-[20px] shadow-lg h-screen z-[99999999] bg-white text-blue-700 flex items-center justify-center md:px-0 px-2`}>
                                 <div className='relative w-full h-screen overflow-y-auto pb-10 rounded-[12px]'>
                                     <code>
-                                        <div className='relative mx-auto mt-8 w-[88%] flex items-center'>
-                                            <div className='w-max bg-slate-400 px-5 py-2 w-max h-max ml-2 text-[14px] rounded-lg text-white'>{selectAPI ?? ''}</div>
+                                        <div className='relative md:mx-auto mt-8 w-full md:w-[88%] flex items-center'>
+                                            <div className='w-max bg-slate-400 px-5 py-2 w-max h-max ml-2 text-[14px] rounded-lg text-white md:flex hidden'>{selectAPI ?? ''}</div>
                                             <div className='w-max bg-blue-500 px-5 py-2 w-max h-max ml-2 text-[14px] rounded-lg text-white'>Response</div>
                                             <div className='w-max bg-green-500 px-5 py-2 w-max h-max ml-2 text-[14px] rounded-lg text-white'>200</div>
-                                            <div onClick={() => setActiveAPI(false)} className='ml-auto bg-red-500 flex items-center justify-center cursor-pointer hover:brightness-[90%] active:scale-[0.98] w-[40px] h-[40px] ml-2 text-[14px] rounded-lg text-white'><FaTimes /></div>
+                                            <div onClick={() => setActiveAPI(false)} className='ml-auto bg-red-500 flex items-center justify-center cursor-pointer hover:brightness-[90%] active:scale-[0.98] w-[40px] h-[40px] md:mr-0 mr-2 md:ml-2 text-[14px] rounded-lg text-white'><FaTimes /></div>
                                         </div>
-                                        <div className='w-[42vw] mx-auto pt-10'>
-                                            <pre className='w-max mx-auto p-6 rounded-[20px] border border-blue-200 h-max'>
+                                        <div className='w-[90vw] md:w-[42vw] mx-auto pt-10'>
+                                            <pre className='w-full md:w-max mx-auto p-4 md:p-6 rounded-[20px] border border-blue-200 h-max md:text-[16px] text-[10.5px]'>
                                                 {
                                                     selectAPI === 'Dinas' ? (
                                                         JSON.stringify(yourJsonObjectDinas, null, 2)

@@ -539,7 +539,7 @@ const Map: React.FC<mapProps> = ({
             <div title='Ambil gambar peta' onClick={() => downloadImage()} className={`z-[33333] active:bg-green-200 bg-white mr-3 hover:brightness-[90%] cursor-pointer active:scale-[0.98] z-[22222] w-[40px] h-[40px] py-2 flex items-center justify-center text-center rounded-full text-[16px] border border-slate-700 top-4`}><FaCameraRetro /></div>
           </div>
         </div>
-        <div className={`${fullScreen ? 'fixed top-0 left-0 w-screen h-screen z-[2222222] overflow-hidden' : 'md:h-max h-[340px] w-full'}`} ref={captureRef}>
+        <div className={`${fullScreen ? 'fixed top-0 left-0 w-screen h-screen z-[2222222] overflow-hidden' : 'md:h-max h-[440px] w-full'}`} ref={captureRef}>
           <MapContainer 
             className="w-full" 
             center={center} 

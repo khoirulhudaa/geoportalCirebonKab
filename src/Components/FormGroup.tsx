@@ -2,7 +2,7 @@ import axios from 'axios'
 import { debounce } from 'lodash'
 import React, { useEffect, useState } from 'react'
 import { ChromePicker } from 'react-color'
-import { FaCheckCircle, FaTelegram, FaTimesCircle, FaTrashAlt } from 'react-icons/fa'
+import { FaCheckCircle, FaSpinner, FaTelegram, FaTimesCircle, FaTrashAlt } from 'react-icons/fa'
 import { useDispatch, useSelector } from 'react-redux'
 import { formProps } from '../Models/componentInterface'
 import { removeCoordinateById } from '../Store/coordinateSlice'
@@ -39,6 +39,7 @@ const FormGroup: React.FC<formProps> = ({
     const dispatch = useDispatch()
 
     const [error, setError] = useState<string>('')
+    const [loading, setLoading] = useState<boolean>(false)
     const [check, setCheck] = useState<number>(0)
     const [inputValue, setInputValue] = useState<string>('')
     const [condition, setCondition] = useState<any[]>([])
@@ -140,6 +141,7 @@ const FormGroup: React.FC<formProps> = ({
     }
    
     const handleResponseCustom = (response: number) => {
+        setLoading(false)
         if(response === 200) {
             clearAllForm()
             SweetAlert({
@@ -152,6 +154,7 @@ const FormGroup: React.FC<formProps> = ({
     }
 
     const handleResponseCoordinate = (response: number) => {
+        setLoading(false)
         if(response === 200) {
             setCondition([])
             clearAllForm()
@@ -162,11 +165,13 @@ const FormGroup: React.FC<formProps> = ({
     }
 
     const handleResponseUP = () => {
+        setLoading(false)
         setError('')
         handleSign()
     }
     
     const handleErrorMessage = (error: string) => {
+        setLoading(false)
         setError(error)
         setCondition([])
     }
@@ -324,6 +329,11 @@ const FormGroup: React.FC<formProps> = ({
         onResponse: handleResponseCustom,
     })
 
+    const handleSubmitClick = () => {
+        setLoading(true)
+        createResponse.handleSubmit()
+    }
+
     switch(type) {
         case "signup" :
             return (
@@ -372,7 +382,7 @@ const FormGroup: React.FC<formProps> = ({
             )
         case "response":
             return (
-                <form onSubmit={createResponse.handleSubmit} className='w-[100%] h-max pt-2 pb-8 md:pb-6 md:pt-6 md:py-6 px-6 md:px-12 border-[2px] border-blue-500 border-dashed bg-white shadow-lg rounded-[12px]'>
+                <form className='w-[100%] h-max pt-2 pb-8 md:pb-6 md:pt-6 md:py-6 px-6 md:px-12 border-[2px] border-blue-500 border-dashed bg-white shadow-lg rounded-[12px]'>
                     <div className='flex flex-col my-5'>
                         <label className='mb-3 font-normal' htmlFor="username">Nama anda</label>
                         <input type="text" name='username' value={createResponse.values.username} onChange={createResponse.handleChange} onBlur={createResponse.handleBlur} placeholder='Muhammad Khoirulhuda' className='bg-white rounded-[10px] w-full px-3 py-3 outline-0 border border-blue-700' />
@@ -390,7 +400,7 @@ const FormGroup: React.FC<formProps> = ({
                         {
                             createResponse.errors.email && createResponse.touched.email ? (
                                 <small className='text-[red] text-[12px] font-normal my-2'>
-                                    {createResponse.errors.username ? (createResponse.errors.username as React.ReactNode) : null}
+                                    {createResponse.errors.email ? (createResponse.errors.email as React.ReactNode) : null}
                                 </small>
                             ): null
                         }
@@ -401,13 +411,13 @@ const FormGroup: React.FC<formProps> = ({
                         {
                             createResponse.errors.response && createResponse.touched.response ? (
                                 <small className='text-[red] text-[12px] font-normal my-2'>
-                                    {createResponse.errors.username ? (createResponse.errors.username as React.ReactNode) : null}
+                                    {createResponse.errors.response ? (createResponse.errors.response as React.ReactNode) : null}
                                 </small>
                             ): null
                         }
                     </div>
-                    <button type='submit' className='w-[100%] h-[55px] flex items-center justify-center cursor-pointer hover:brightness-[90%] active:scale-[0.99] bg-blue-700 text-white rounded-[8px] border-0 outline-0 mt-6 mx-auto'>
-                        Kirim sekarang <FaTelegram className='ml-2 relative top-[0.8px]' />
+                    <button type='submit' onClick={() => loading ? null : handleSubmitClick} className={`w-[100%] h-[55px] flex items-center justify-center ${loading ? 'bg-slate-300 text-slate-400 cursor-not-allowed' : 'bg-blue-700 text-white cursor-pointer hover:brightness-[90%] active:scale-[0.99]'} rounded-[8px] border-0 outline-0 mt-6 mx-auto`}>
+                       {loading ? <FaSpinner className='mr-2 animate-spin duration-200' /> : null} Kirim sekarang <FaTelegram className='ml-2 relative top-[0.8px]' />
                     </button>
                 </form>
             )
