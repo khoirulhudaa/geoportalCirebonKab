@@ -856,7 +856,7 @@ const Homepage = () => {
                         <iframe ref={iframeRef} className="absolute scale-[2] left-0 top-0 w-screen h-full" width="560" height="315" src="https://www.youtube.com/embed/MNFpoSCCf8E?si=c1ciZEPdqbHwDtMZ?start=27&autoplay=1&controls=0&loop=1&mute=1" frameBorder="0" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen />
                         <div className='absolute w-screen h-full bg-blue-800 bg-opacity-[0.8]'></div>
                         <div className='w-screen md:w-full text-center z-[3] relative hmax md:h-full flex flex-col justify-center text-white'>
-                            <h2 className='text-[30px] md:text-[64px] md:mt-[-20px] md:mb-4 w-screen md:w-[90%] mx-auto font-normal'>Web Geoportal : Peta Koordinat Daerah Cirebon</h2>
+                            <h2 className='text-[30px] md:text-[64px] md:mt-[-20px] md:mb-4 w-screen md:w-[90%] mx-auto font-normal'>Web Geoportal : Peta Digital Kabupaten Cirebon</h2>
                             <p className='text-[13px] md:text-[18px] md:flex hidden leading-loose mt-6 w-[90vw] md:w-[76%] mx-auto x-[555]'>"Di Geoportal Cirebon, Anda dapat menemukan berbagai informasi geospasial yang berguna, seperti batas administratif, lokasi penting, dan data lingkungan."</p>
                             <a href="#daftar">
                                 <div id='btn-hero' className='relative overflow-hidden mx-auto brightness-[90%] px-6 py-4 text-[14px] md:text-[17px] mt-12 md:mb-0 mb-3 bg-white rounded-[10px] shadow-lg text-blue-600 w-max flex items-center justify-center cursor-pointer hover:brightness-[90%] active:scale-[0.99] z-[9999]'>
@@ -864,20 +864,12 @@ const Homepage = () => {
                                 </div>
                             </a>
                         </div>
-                        {/* <div className='absolute w-[350px] h-[650px] border-[4px] border-white left-[20px] border-opacity-[0.3] border-dashed'>
-                        </div>
-                        <div className='absolute w-screen h-[5px] border-[4px] border-white left-[20px] mb-24 border-opacity-[0.2] border-dashed'>
-                        </div>
-                        <div className='absolute h-[650px] w-[5px] border-[4px] border-white left-[50%] border-opacity-[0.2] border-dashed'>
-                        </div>
-                        <div className='absolute w-[350px] h-[650px] border-[4px] border-white right-[20px] border-opacity-[0.3] border-dashed'>
-                        </div> */}
                     </section>
 
                     <section id='daftar' className='relative overflow-hidden text-center w-screen bg-[#fbffff] h-max pt-8 md:pt-14 md:pb-14 pb-0 md:px-16'>
                         <img src={Square2} alt="square" loading="lazy" className='absolute opacity-[0.7] w-[40%] right-[-140px] rotate-[90deg] z-[1] top-[0px]' />
                         
-                        <h2 className='text-[26px] w-full md:text-[36px] font-normal'>Daftar Peta 🗺️</h2>
+                        <h2 className='text-[26px] w-full md:text-[30px] font-normal'>Daftar Peta 🗺️</h2>
                         <p className='md:block hidden text-slate-500 mt-2 mb-10'>Data sebaran lokasi berdasarkan kategori dan kelompok dinas.</p>
                         <div className="relative w-[95%] md:w-[60%] flex z-[4944] items-center mx-auto mb-4 md:mt-0 mt-4">
                             <div className='relative w-full Z-[555555] rounded-[10px] bg-white text-slate-600 outline-0 border border-slate-400 text-[14px] flex items-center pr-2'>
@@ -1091,7 +1083,7 @@ const Homepage = () => {
                         <img src={Square} alt="square" loading="lazy" className='absolute opacity-[1] w-[40%] left-[45%] bottom-[-100px]' />
                         <img src={Square} alt="square" loading="lazy" className='absolute opacity-[1] w-[40%] right-[-20%] top-[-260px]' />
                         <img src={Square} alt="square" loading="lazy" className='absolute opacity-[1] w-[40%] right-[5%] bottom-[-100x]' />
-                        <h2 className='text-[26px] mb-8 md:mb-0 md:text-[36px] text-white font-normal text-center'>API Geospasial 💻</h2>
+                        <h2 className='text-[26px] mb-8 md:mb-0 md:text-[30px] text-white font-normal text-center'>API Geospasial 💻</h2>
                         <p className='text-slate-200 md:block hidden mt-4 mb-10 text-center'>Dapatkan Data Geospasial Kabupaten Cirebon Secara Terbukan, Gratis dan Mudah.</p>    
                         <div className='relative w-full z-[444] px-4 md:px-12 pt-6 md:pt-14 pb-6 md:pb-20 flex mx-auto rounded-[16px] bg-white border-[2px] min-h-[680px] border-blue-500 border-dashed'>
                             <div className='w-full md:w-1/2 h-[500px] flex justify-between flex-col'>
@@ -1199,7 +1191,7 @@ const Homepage = () => {
                     
                     <section id="masukan" className='w-screen h-max bg-[#fbffff] flex flex-col items-center pt-10 md:pt-20 md:px-16 pb-6'>
                         <div className='w-full text-center h-max py-2 md:mb-0 mb-8'>
-                            <h2 className='text-[23px] md:text-[36px] font-normal'>Masukan Untuk Kami 📮</h2>
+                            <h2 className='text-[23px] md:text-[30px] font-normal'>Masukan Untuk Kami 📮</h2>
                             <p className='text-slate-500 w-full md:w-[70%] mx-auto text-[15px] md:flex hidden leading-loose mt-2 mb-10'>Kami menerima saran dan kritik masyarakat demi kamajuan dan terciptanya dampa positif dari segi manfaat serta kemudahan bagi pengguna</p>
                         </div>
                         

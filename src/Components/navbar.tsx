@@ -26,7 +26,7 @@ const Navbar: React.FC<NavbarProps> = ({ handleClear }) => {
         </div>
         <ul className='mt-12'>
             <a href="#home" onClick={() => handleClear()}>
-              <li className='mb-10 border-b border-slate-500 pb-5 font-medium text-slate-500 hover:text-blue-500 cursor-pointer active:scale-[0.98] text-[15px]'>Homepage</li>
+              <li className='mb-10 border-b border-slate-500 pb-5 font-medium text-slate-500 hover:text-blue-500 cursor-pointer active:scale-[0.98] text-[15px]'>Beranda</li>
             </a>
             <a href="#daftar" onClick={() => handleClear()}>
               <li className='mb-10 border-b border-slate-500 pb-5 font-medium text-slate-500 hover:text-blue-500 cursor-pointer active:scale-[0.98] text-[15px]'>Daftar geospasial</li>
@@ -45,7 +45,7 @@ const Navbar: React.FC<NavbarProps> = ({ handleClear }) => {
       <div className='w-[80%] md:flex hidden'>
         <ul className='flex items-center ml-auto justify-end'>
             <a href="#home" onClick={() => handleClear()}>
-              <li className='md:mr-12 font-medium text-slate-500 hover:text-blue-500 cursor-pointer active:scale-[0.98] text-[15px]'>Homepage</li>
+              <li className='md:mr-12 font-medium text-slate-500 hover:text-blue-500 cursor-pointer active:scale-[0.98] text-[15px]'>Beranda</li>
             </a>
             <a href="#daftar" onClick={() => handleClear()}>
               <li className='md:mr-12 font-medium text-slate-500 hover:text-blue-500 cursor-pointer active:scale-[0.98] text-[15px]'>Daftar geospasial</li>

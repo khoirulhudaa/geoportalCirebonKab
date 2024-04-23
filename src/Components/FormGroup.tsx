@@ -329,11 +329,6 @@ const FormGroup: React.FC<formProps> = ({
         onResponse: handleResponseCustom,
     })
 
-    const handleSubmitClick = () => {
-        setLoading(true)
-        createResponse.handleSubmit()
-    }
-
     switch(type) {
         case "signup" :
             return (
@@ -382,7 +377,7 @@ const FormGroup: React.FC<formProps> = ({
             )
         case "response":
             return (
-                <form className='w-[100%] h-max pt-2 pb-8 md:pb-6 md:pt-6 md:py-6 px-6 md:px-12 border-[2px] border-blue-500 border-dashed bg-white shadow-lg rounded-[12px]'>
+                <form className='w-[100%] h-max pt-2 pb-8 md:pb-6 md:pt-6 md:py-6 px-6 md:px-12 border-[2px] border-blue-500 border-dashed bg-white shadow-lg rounded-[12px]' onSubmit={createResponse.handleSubmit}>
                     <div className='flex flex-col my-5'>
                         <label className='mb-3 font-normal' htmlFor="username">Nama anda</label>
                         <input type="text" name='username' value={createResponse.values.username} onChange={createResponse.handleChange} onBlur={createResponse.handleBlur} placeholder='Muhammad Khoirulhuda' className='bg-white rounded-[10px] w-full px-3 py-3 outline-0 border border-blue-700' />
@@ -416,7 +411,7 @@ const FormGroup: React.FC<formProps> = ({
                             ): null
                         }
                     </div>
-                    <button type='submit' onClick={() => loading ? null : handleSubmitClick} className={`w-[100%] h-[55px] flex items-center justify-center ${loading ? 'bg-slate-300 text-slate-400 cursor-not-allowed' : 'bg-blue-700 text-white cursor-pointer hover:brightness-[90%] active:scale-[0.99]'} rounded-[8px] border-0 outline-0 mt-6 mx-auto`}>
+                    <button type={loading ? 'button' : 'submit'} className={`w-[100%] h-[55px] flex items-center justify-center ${loading ? 'bg-slate-300 text-slate-400 cursor-not-allowed' : 'bg-blue-700 text-white cursor-pointer hover:brightness-[90%] active:scale-[0.99]'} rounded-[8px] border-0 outline-0 mt-6 mx-auto`}>
                        {loading ? <FaSpinner className='mr-2 animate-spin duration-200' /> : null} Kirim sekarang <FaTelegram className='ml-2 relative top-[0.8px]' />
                     </button>
                 </form>
