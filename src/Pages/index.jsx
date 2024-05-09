@@ -856,7 +856,7 @@ const Homepage = () => {
                         <iframe ref={iframeRef} className="absolute scale-[2] left-0 top-0 w-screen h-full" width="560" height="315" src="https://www.youtube.com/embed/MNFpoSCCf8E?si=c1ciZEPdqbHwDtMZ?start=27&autoplay=1&controls=0&loop=1&mute=1" frameBorder="0" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen />
                         <div className='absolute w-screen h-full bg-blue-800 bg-opacity-[0.8]'></div>
                         <div className='w-screen md:w-full text-center z-[3] relative hmax md:h-full flex flex-col justify-center text-white'>
-                            <h2 className='text-[30px] md:text-[64px] md:mt-[-20px] md:mb-4 w-screen md:w-[90%] mx-auto font-normal'>Web Geoportal : Peta Digital Kabupaten Cirebon</h2>
+                            <h2 className='text-[30px] lg:text-[54px] md:mt-[-23px] md:mb-4 w-screen md:w-[80%] mx-auto font-normal'>Web Geoportal : Peta Digital Kabupaten Cirebon</h2>
                             <p className='text-[13px] md:text-[18px] md:flex hidden leading-loose mt-6 w-[90vw] md:w-[76%] mx-auto x-[555]'>"Di Geoportal Cirebon, Anda dapat menemukan berbagai informasi geospasial yang berguna, seperti batas administratif, lokasi penting, dan data lingkungan."</p>
                             <a href="#daftar">
                                 <div id='btn-hero' className='relative overflow-hidden mx-auto brightness-[90%] px-6 py-4 text-[14px] md:text-[17px] mt-12 md:mb-0 mb-3 bg-white rounded-[10px] shadow-lg text-blue-600 w-max flex items-center justify-center cursor-pointer hover:brightness-[90%] active:scale-[0.99] z-[9999]'>
