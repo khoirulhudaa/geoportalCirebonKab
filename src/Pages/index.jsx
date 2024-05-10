@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 
 import copy from "copy-to-clipboard";
 import jsPDF from 'jspdf';
-import { FaArrowLeft, FaArrowRight, FaBezierCurve, FaBuilding, FaCalendarAlt, FaChevronDown, FaClosedCaptioning, FaCopy, FaDotCircle, FaDrawPolygon, FaEye, FaEyeSlash, FaFileExcel, FaFilePdf, FaMapMarkerAlt, FaMicrophone, FaRemoveFormat, FaSpinner, FaTimes, FaTimesCircle } from 'react-icons/fa';
+import { FaArrowLeft, FaArrowRight, FaBezierCurve, FaBuilding, FaCalendarAlt, FaChevronDown, FaClosedCaptioning, FaCopy, FaDotCircle, FaDrawPolygon, FaEye, FaEyeSlash, FaFileExcel, FaFilePdf, FaInfoCircle, FaMapMarkerAlt, FaMicrophone, FaRegEye, FaRemoveFormat, FaSpinner, FaTimes, FaTimesCircle } from 'react-icons/fa';
 import * as XLSX from 'xlsx';
 import { Map, Subdistrict } from '../Components';
 import FormGroup from "../Components/FormGroup";
@@ -43,6 +43,8 @@ const Homepage = () => {
     const [loading, setLoading] = useState(false);
     const [activeMic, setActiveMic] = useState(false);
     const [searchSubdistrict, setSearchSubdistrict] = useState('');
+    const [activeDetail, setActiveDetail] = useState(false);
+    const [dataMarker, setDataMarker] = useState(null);
 
     const recognition = new window.webkitSpeechRecognition();
 
@@ -565,6 +567,10 @@ const Homepage = () => {
     doc.save('data-kecamatan.pdf');
   }
 
+  const closeActiveDetail = () => {
+    setActiveDetail(false)
+  }
+
     return (
     <div className='w-screen h-max'>
         <input value="https://be-geospasial.vercel.app/v2/api" className='absolute opacity-0' disabled type="text" ref={textRefMain} />
@@ -634,7 +640,7 @@ const Homepage = () => {
                         <div className='w-[90%] mx-auto mb-14 h-max'>
 
                             <div className={`w-full mt-8 duration-200 ${showMap ? 'h-max' : 'h-[0px]'} border-[1px] border-black ease duration-200 rounded-[16px] overflow-hidden mx-auto overflow-hidden`}>
-                                <Map listGeoData={listGeoData ??  []} showMap={showMap} searchLocation={searchLocation ?? ''} customData={custom} dataSubdistrict={allSubdistrict} handleShowAll={() => setShowAll(!showAll)} showAll={showAll} search={search} height={activeHeight} handleHeight={() => setActiveHeight(!activeHeight)} ref={mapRef} data={!showAll ? allTitle?.filter((data) => data?.title_id === titleID) : allTitle?.filter((data) => data?.dinas_id === dinasID) ?? []} line={line} />
+                                <Map closeActiveDetail={() => closeActiveDetail()} dataMarker={dataMarker} activeDetail={activeDetail} listGeoData={listGeoData ??  []} showMap={showMap} searchLocation={searchLocation ?? ''} customData={custom} dataSubdistrict={allSubdistrict} handleShowAll={() => setShowAll(!showAll)} showAll={showAll} search={search} height={activeHeight} handleHeight={() => setActiveHeight(!activeHeight)} ref={mapRef} data={!showAll ? allTitle?.filter((data) => data?.title_id === titleID) : allTitle?.filter((data) => data?.dinas_id === dinasID) ?? []} line={line} />
                             </div>
 
                             <div className="md:flex items-center justify-between flex-column mt-12 flex-wrap md:flex-row space-y-4 md:space-y-0 pb-4">
@@ -685,6 +691,9 @@ const Homepage = () => {
                                                 <th scope="col" className="py-6">
                                                     Kecamatan
                                                 </th>
+                                                <th scope="col" className="py-6">
+                                                    AKSI
+                                                </th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -703,7 +712,7 @@ const Homepage = () => {
                                                 return true;
                                                 })
                                                 .map((data, index) => (
-                                                    <tr key={index} className="bg-white border-b hover:bg-gray-50">
+                                                    <tr key={index} className="bg-white border-b">
                                                     <div className="relative w-[350px] overflow-hidden pl-6 py-4">
                                                         <div className='w-full overflow-hidden'>
                                                             <div className={`text-base font-semibold overflow-hidden overflow-ellipsis max-w-[95%] whitespace-nowrap`}>{data?.name_location}</div>
@@ -718,6 +727,11 @@ const Homepage = () => {
                                                     </td>
                                                     <td className="py-4">
                                                         {data.subdistrict}
+                                                    </td>
+                                                    <td className="py-4">
+                                                        <div onClick={() => {setActiveDetail(!activeDetail), setDataMarker(data)}} className='w-[40px] h-[40px] rounded-[10px] flex items-center justify-center'>
+                                                            <FaEye className='text-[20px] relative left-[-4px] cursor-pointer ' />
+                                                        </div>
                                                     </td>
                                                 </tr>
                                                 ))

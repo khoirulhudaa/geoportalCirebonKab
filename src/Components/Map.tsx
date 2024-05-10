@@ -29,7 +29,10 @@ const Map: React.FC<mapProps> = ({
   color,
   customData,
   searchLocation,
-  listGeoData
+  listGeoData,
+  activeDetail,
+  dataMarker,
+  closeActiveDetail
 }) => {
 
   const dispatch = useDispatch()
@@ -81,6 +84,15 @@ const Map: React.FC<mapProps> = ({
       layer.bindTooltip(feature?.properties?.NAMOBJ ?? feature?.properties?.namobj);
     }
   };
+
+  useEffect(() => {
+    (async () => {
+      if(activeDetail) {
+        setActiveDetailMarker(true)
+        setSelectCoordinateID(dataMarker)
+      }
+    })()
+  }, [activeDetail])
 
   const geoJsonStyle = {
     color: '#87A922',
@@ -363,8 +375,8 @@ const Map: React.FC<mapProps> = ({
 
       {
         activeDetailMarker ? (
-          <div className='fixed left-0 top-0 flex w-[100vw] h-screen overflow-y-auto bg-white shadow-lg p-6 z-[99999999999]'>
-            <div className='w-[30%] pr-6 bg-white h-full'>
+          <div className='fixed left-0 top-0 lg:flex w-[100vw] h-screen overflow-y-auto bg-white shadow-lg p-6 z-[99999999999]'>
+            <div className='lw-full g:w-[30%] pr-6 bg-white h-full'>
               <h2 className='font-bold text-[24px]'>Gambar Lokasi</h2>
               <p className='border-b text-[12px] border-b-slate-300 pb-[26px] w-full'>Referensi dari google map</p>
               {
@@ -382,103 +394,103 @@ const Map: React.FC<mapProps> = ({
                 <p className='text-blue-600 mt-4 flex items-center cursor-pointer underline'>Lihat di google map <FaArrowRight className='ml-2' /></p>
               </a>
             </div>
-            <div className='w-[70%] border-l border-l-slate-300 px-6 h-max'>
-              <div onClick={() => setActiveDetailMarker(false)} className='absolute right-6 w-[50px] h-[50px] bg-red-500 text-white cursor-pointer hover:brightness-[90%] active:scale-[0.98] p-2 flex items-center justify-center shadow-md ml-auto rounded-[6px]'>
+            <div className='w-full lg:w-[70%] border-l-0 lg:border-l lg:border-l-slate-300 lg:px-6 h-max'>
+              <div onClick={() => {setActiveDetailMarker(false), closeActiveDetail()}} className='absolute right-6 w-[50px] h-[50px] bg-red-500 text-white cursor-pointer hover:brightness-[90%] active:scale-[0.98] p-2 flex items-center justify-center shadow-md ml-auto rounded-[6px]'>
                 <FaTimes />
               </div>
               <h2 className='font-bold text-[24px]'>Detail Data</h2>
               <small>Menampilkan sumber data yang terperinci</small>
               <div className='w-[100%] pb-5 border-b border-b-slate-300'></div>
               <div className='w-full flex flex-wrap justify-between h-max'>
-                <p className='mb-4 h-max w-[50%] pb-2 pt-4 border-b border-b-slate-300 pb-4'>
+                <p className='mb-4 h-max w-full lg:w-[50%] pb-2 pt-4 border-b border-b-slate-300 pb-4'>
                   <div className='font-bold flex items-center w-full'>NAMOBJ <span className='ml-2 text-[12px] text-slate-500 font-normal'>(Nama lokasi)</span></div> 
                   <br />
-                  {!selectCoordinateID?.name_location || selectCoordinateID?.name_location === '-' ? '-' : selectCoordinateID?.name_location}
+                  <p className='text-[12px] lg:text-[16px]'>{!selectCoordinateID?.name_location || selectCoordinateID?.name_location === '-' ? '-' : selectCoordinateID?.name_location}</p>
                 </p>
-                <p className='mb-4 h-max w-[50%] pb-2 pt-4 border-l border-l-slate-300 pl-4 border-b border-b-slate-300 pb-4'>
+                <p className='mb-4 h-max w-full lg:w-[50%] pb-2 pt-4 border-l-0 lg:border-l lg:border-l-slate-300 lg:pl-4 border-b border-b-slate-300 pb-4'>
                   <div className='font-bold flex items-center w-full'>FCODE <span className='ml-2 text-[12px] text-slate-500 font-normal'>(Kode Unsur - KUGI)</span></div> 
                   <br />
-                  {!selectCoordinateID?.code || selectCoordinateID?.code === '-' ? '-' : selectCoordinateID?.code}
+                  <p className='text-[12px] lg:text-[16px]'>{!selectCoordinateID?.code || selectCoordinateID?.code === '-' ? '-' : selectCoordinateID?.code}</p>
                 </p>
-                <p className='mb-4 h-max w-[50%] py-2 border-y border-y-slate-300 pb-4'>
+                <p className='mb-4 h-max w-full lg:w-[50%] py-2 border-y border-y-slate-300 pb-4'>
                   <div className='font-bold flex items-center w-full'>LAT <span className='ml-2 text-[12px] text-slate-500 font-normal'>(Latitude)</span></div> 
                   <br />
-                  {!selectCoordinateID?.lat || selectCoordinateID?.lat === '-' ? '-' : selectCoordinateID?.lat}
+                  <p className='text-[12px] lg:text-[16px]'>{!selectCoordinateID?.lat || selectCoordinateID?.lat === '-' ? '-' : selectCoordinateID?.lat}</p>
                 </p>
-                <p className='mb-4 h-max w-[50%] py-2 border-l border-l-slate-300 pl-4 border-y border-y-slate-300 pb-4'>
+                <p className='mb-4 h-max w-full lg:w-[50%] py-2 border-l-0 lg:border-l lg:border-l-slate-300 lg:pl-4 border-y border-y-slate-300 pb-4'>
                   <div className='font-bold flex items-center w-full'>LONG <span className='ml-2 text-[12px] text-slate-500 font-normal'>(Longitude)</span></div> 
                   <br />
-                  {!selectCoordinateID?.long || selectCoordinateID?.long === '-' ? '-' : selectCoordinateID?.long}
+                  <p className='text-[12px] lg:text-[16px]'>{!selectCoordinateID?.long || selectCoordinateID?.long === '-' ? '-' : selectCoordinateID?.long}</p>
                 </p>
-                <p className='mb-4 h-max w-[50%] py-2 border-y border-y-slate-300 pb-4'>
+                <p className='mb-4 h-max w-full lg:w-[50%] py-2 border-y border-y-slate-300 pb-4'>
                   <div className='font-bold flex items-center w-full'>WADMKC <span className='ml-2 text-[12px] text-slate-500 font-normal'>(Nama Kecamatan)</span></div> 
                   <br />
-                  {!selectCoordinateID?.subdistrict || selectCoordinateID?.subdistrict === '-' ? '-' : selectCoordinateID?.subdistrict}
+                  <p className='text-[12px] lg:text-[16px]'>{!selectCoordinateID?.subdistrict || selectCoordinateID?.subdistrict === '-' ? '-' : selectCoordinateID?.subdistrict}</p>
                 </p>
-                <p className='mb-4 h-max w-[50%] py-2 border-l border-l-slate-300 pl-4 border-y border-y-slate-300 pb-4'>
+                <p className='mb-4 h-max w-full lg:w-[50%] py-2 border-l-0 lg:border-l lg:border-l-slate-300 lg:pl-4 border-y border-y-slate-300 pb-4'>
                   <div className='font-bold flex items-center w-full'>REMARK <span className='ml-2 text-[12px] text-slate-500 font-normal'>(Tanda)</span></div> 
                   <br />
-                  {!selectCoordinateID?.remark || selectCoordinateID?.remark === '-' ? '-' : selectCoordinateID?.remark}
+                  <p className='text-[12px] lg:text-[16px]'>{!selectCoordinateID?.remark || selectCoordinateID?.remark === '-' ? '-' : selectCoordinateID?.remark}</p>
                 </p>
-                <div className='mb-4 h-max w-[50%] py-2 border-y border-y-slate-300 pb-4'>
+                <div className='mb-4 h-max w-full lg:w-[50%] py-2 border-y border-y-slate-300 pb-4'>
                   <div className='font-bold flex items-center w-full'>SRS_ID <span className='ml-2 text-[12px] text-slate-500 font-normal'>(Skala)</span></div> 
                   <br />
-                  {!selectCoordinateID?.scale || selectCoordinateID?.scale === '-' ? '-' : selectCoordinateID?.scale}
+                  <p className='text-[12px] lg:text-[16px]'>{!selectCoordinateID?.scale || selectCoordinateID?.scale === '-' ? '-' : selectCoordinateID?.scale}</p>
                 </div>
-                <p className='mb-4 h-max w-[50%] py-2 border-l border-l-slate-300 pl-4 border-y border-y-slate-300 pb-4'>
+                <p className='mb-4 h-max w-full lg:w-[50%] py-2 border-l-0 lg:border-l lg:border-l-slate-300 lg:pl-4 border-y border-y-slate-300 pb-4'>
                   <div className='font-bold flex items-center w-full'>ADMIN <span className='ml-2 text-[12px] text-slate-500 font-normal'>(Kode PUM)</span></div> 
                   <br />
-                  {!selectCoordinateID?.pum || selectCoordinateID?.pum === '-' ? '-' : selectCoordinateID?.pum}
+                  <p className='text-[12px] lg:text-[16px]'>{!selectCoordinateID?.pum || selectCoordinateID?.pum === '-' ? '-' : selectCoordinateID?.pum}</p>
                 </p>
-                <p className='mb-4 h-max w-[50%] py-2 border-y border-y-slate-300 pb-4'>
+                <p className='mb-4 h-max w-full lg:w-[50%] py-2 border-y border-y-slate-300 pb-4'>
                   <div className='font-bold flex items-center w-full'>WADMPR <span className='ml-2 text-[12px] text-slate-500 font-normal'>(Nama Provinsi)</span></div> 
                   <br />
-                  {!selectCoordinateID?.province || selectCoordinateID?.province === '-' ? '-' : selectCoordinateID?.province}
+                  <p className='text-[12px] lg:text-[16px]'>{!selectCoordinateID?.province || selectCoordinateID?.province === '-' ? '-' : selectCoordinateID?.province}</p>
                 </p>
-                <p className='mb-4 h-max w-[50%] py-2 border-l border-l-slate-300 pl-4 border-y border-y-slate-300 pb-4'>
+                <p className='mb-4 h-max w-full lg:w-[50%] py-2 border-l-0 lg:border-l lg:border-l-slate-300 lg:pl-4 border-y border-y-slate-300 pb-4'>
                   <div className='font-bold flex items-center w-full'>WIADPR <span className='ml-2 text-[12px] text-slate-500 font-normal'>(Kode Provinsi)</span></div> 
                   <br />
-                  {!selectCoordinateID?.provinceCode || selectCoordinateID?.provinceCode === '-' ? '-' : selectCoordinateID?.provinceCode}
+                  <p className='text-[12px] lg:text-[16px]'>{!selectCoordinateID?.provinceCode || selectCoordinateID?.provinceCode === '-' ? '-' : selectCoordinateID?.provinceCode}</p>
                 </p>
-                <p className='mb-4 h-max w-[50%] py-2 border-y border-y-slate-300 pb-4'>
+                <p className='mb-4 h-max w-full lg:w-[50%] py-2 border-y border-y-slate-300 pb-4'>
                   <div className='font-bold flex items-center w-full'>WADMKK <span className='ml-2 text-[12px] text-slate-500 font-normal'>(Jenis Wilayah)</span></div> 
                   <br />
-                  {!selectCoordinateID?.typeArea || selectCoordinateID?.typeArea === '-' ? '-' : selectCoordinateID?.typeArea}
+                  <p className='text-[12px] lg:text-[16px]'>{!selectCoordinateID?.typeArea || selectCoordinateID?.typeArea === '-' ? '-' : selectCoordinateID?.typeArea}</p>
                 </p>
-                <p className='mb-4 h-max w-[50%] py-2 border-l border-l-slate-300 pl-4 border-y border-y-slate-300 pb-4'>
+                <p className='mb-4 h-max w-full lg:w-[50%] py-2 border-l-0 lg:border-l lg:border-l-slate-300 lg:pl-4 border-y border-y-slate-300 pb-4'>
                   <div className='font-bold flex items-center w-full'>WADMKD <span className='ml-2 text-[12px] text-slate-500 font-normal'>(Nama Desa)</span></div> 
                   <br />
-                  {!selectCoordinateID?.ward || selectCoordinateID?.ward === '-' ? '-' : selectCoordinateID?.ward}
+                  <p className='text-[12px] lg:text-[16px]'>{!selectCoordinateID?.ward || selectCoordinateID?.ward === '-' ? '-' : selectCoordinateID?.ward}</p>
                 </p>
-                <p className='mb-4 h-max w-[50%] py-2 border-y border-y-slate-300 pb-4'>
+                <p className='mb-4 h-max w-full lg:w-[50%] py-2 border-y border-y-slate-300 pb-4'>
                   <div className='font-bold flex items-center w-full'>WIADKK <span className='ml-2 text-[12px] text-slate-500 font-normal'>(Kode Kabupaten)</span></div> 
                   <br />
-                  {!selectCoordinateID?.typeAreCode || selectCoordinateID?.typeAreCode === '-' ? '-' : selectCoordinateID?.typeAreCode}
+                  <p className='text-[12px] lg:text-[16px]'>{!selectCoordinateID?.typeAreCode || selectCoordinateID?.typeAreCode === '-' ? '-' : selectCoordinateID?.typeAreCode}</p>
                 </p>
-                <p className='mb-4 h-max w-[50%] py-2 border-l border-l-slate-300 pl-4 border-y border-y-slate-300 pb-4'>
+                <p className='mb-4 h-max w-full lg:w-[50%] py-2 border-l-0 lg:border-l lg:border-l-slate-300 lg:pl-4 border-y border-y-slate-300 pb-4'>
                   <div className='font-bold flex items-center w-full'>WIADKC <span className='ml-2 text-[12px] text-slate-500 font-normal'>(Kode Kecamatan)</span></div> 
                   <br />
-                  {!selectCoordinateID?.subdstrictCode || selectCoordinateID?.subdstrictCode === '-' ? '-' : selectCoordinateID?.subdstrictCode}
+                  <p className='text-[12px] lg:text-[16px]'>{!selectCoordinateID?.subdstrictCode || selectCoordinateID?.subdstrictCode === '-' ? '-' : selectCoordinateID?.subdstrictCode}</p>
                 </p>
-                <p className='mb-4 h-max w-[50%] py-2 border-y border-y-slate-300 pb-4'>
+                <p className='mb-4 h-max w-full lg:w-[50%] py-2 border-y border-y-slate-300 pb-4'>
                   <div className='font-bold flex items-center w-full'>WIADKD <span className='ml-2 text-[12px] text-slate-500 font-normal'>(Kode Desa)</span></div> 
                   <br />
-                  {!selectCoordinateID?.wardCode || selectCoordinateID?.wardCode === '-' ? '-' : selectCoordinateID?.wardCode}
+                  <p className='text-[12px] lg:text-[16px]'>{!selectCoordinateID?.wardCode || selectCoordinateID?.wardCode === '-' ? '-' : selectCoordinateID?.wardCode}</p>
                 </p>
-                <p className='mb-4 h-max w-[50%] py-2 border-l border-l-slate-300 pl-4 border-y border-y-slate-300 pb-4'>
+                <p className='mb-4 h-max w-full lg:w-[50%] py-2 border-l-0 lg:border-l lg:border-l-slate-300 lg:pl-4 border-y border-y-slate-300 pb-4'>
                   <div className='font-bold flex items-center w-full'>LUAS <span className='ml-2 text-[12px] text-slate-500 font-normal'>(Luas Wilayah)</span></div> 
                   <br />
-                  {!selectCoordinateID?.wide || selectCoordinateID?.wide === '-' ? '-' : selectCoordinateID?.wide}
+                  <p className='text-[12px] lg:text-[16px]'>{!selectCoordinateID?.wide || selectCoordinateID?.wide === '-' ? '-' : selectCoordinateID?.wide}</p>
                 </p>
                 <p className='mb-4 h-max w-full py-2 border-y border-y-slate-300 pb-4'>
                   <div className='font-bold flex items-center w-full'>METADATA <span className='ml-2 text-[12px] text-slate-500 font-normal'>(Sumber Data)</span></div> 
                   <br />
-                  {!selectCoordinateID?.source || selectCoordinateID?.source === '-' ? '-' : selectCoordinateID?.source}
+                  <p className='text-[12px] lg:text-[16px]'>{!selectCoordinateID?.source || selectCoordinateID?.source === '-' ? '-' : selectCoordinateID?.source}</p>
                 </p>
                 <p className='h-max w-full pb-4'>
                   <div className='font-bold flex items-center w-full'>ADDRESS <span className='ml-2 text-[12px] text-slate-500 font-normal'>(Alamat)</span></div> 
                   <br />
-                  {!selectCoordinateID?.address || selectCoordinateID?.address === '-' ? '-' : selectCoordinateID?.address}
+                  <p className='text-[12px] lg:text-[16px]'>{!selectCoordinateID?.address || selectCoordinateID?.address === '-' ? '-' : selectCoordinateID?.address}</p>
                 </p>
               </div>
             </div>
@@ -733,27 +745,27 @@ const Map: React.FC<mapProps> = ({
                           <div className='relative overflow-hidden mb-2 rounded-[12px] w-full h-[160px]'>
                             <img src={marker?.thumbnail} onClick={() => {window.location.href = marker?.thumbnail as string, '__blank' }} alt="thumbnail" className='cursor-pointer hover:scale-[1.2] duration-300 hover:brightness-[70%]' />
                           </div>
-                          <small className='text-[12px] rounded-[8px] hover:brightness-[90%] duration-200 py-3 mb-4 mt-2 bg-blue-700 text-white text-center' onClick={() => {window.location.href = marker?.link as string, '__blank' }}>Lihat di google map</small>
-                          <small className='text-[12px] rounded-[8px] hover:brightness-[90%] duration-200 py-3 mb-4 bg-white border border-slate-400 text-slate-800 text-center' onClick={() => {setActiveDetailMarker(!activeDetailMarker), setSelectCoordinateID(marker)}}>Cek Detail</small>
-                          <div className='w-[300px] flex flex-wrap items-center'>
-                            {
-                              marker.condition && marker.condition.slice(0, 3)
-                              .map((con: any, index: number) => (
-                                <div className='w-max rounded-full bg-white border border-slate-300 h-[35px] mb-2 px-3 flex items-center'>
-                                  <p key={index}>{con.label} {con.icon}</p>
-                                  <div className='w-[6px] h-1'></div>
-                                </div>
-                              ))
-                            }
+                          <div className='w-full flex items-center mb-4 mt-2 justify-between'>
+                            <small className='w-[145px] text-[12px] rounded-[8px] hover:brightness-[90%] duration-200 py-3 bg-blue-700 text-white text-center' onClick={() => {window.location.href = marker?.link as string, '__blank' }}>Google map</small>
+                            <small className='w-[145px] text-[12px] rounded-[8px] hover:brightness-[90%] duration-200 py-3 bg-white border border-slate-400 text-slate-800 text-center' onClick={() => {setActiveDetailMarker(!activeDetailMarker), setSelectCoordinateID(marker)}}>Cek Detail</small>
+                          </div>
+                          <div className='w-[300px] overflow-x-auto flex items-center'>
+                            <div className='w-max flex items-center'>
+                              {
+                                marker.condition && marker.condition.slice(0, 3)
+                                .map((con: any, index: number) => (
+                                  <div className='w-max mr-2 rounded-full bg-white border border-slate-300 h-[35px] mb-2 px-3 flex items-center'>
+                                    <p key={index}>{con.label} {con.icon}</p>
+                                    <div className='w-[6px] h-1'></div>
+                                  </div>
+                                ))
+                              }
+                            </div>
                           </div>
                         </div>
-                        <p className='text-left relative left-[1.6px] mt-[-10px]'>
+                        <p className='text-left relative left-[1.7px] mt-[-10px]'>
                           {marker?.name_location}
                         </p>
-                        {/* <hr />
-                        <p className='text-center mt-[-10px]'>
-                          {marker?.address ?? 'Alamat tidak tersedia'}
-                        </p> */}
                       </Popup>
                     }
                   <Tooltip sticky>{(subdistrictDots ? marker.name_subdistrict : marker.name_location)}</Tooltip> {/* Label hanya muncul saat hover */}
