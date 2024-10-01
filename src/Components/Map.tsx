@@ -1,14 +1,16 @@
 import domtoimage from 'dom-to-image'; // Jika menggunakan dom-to-image
 import { saveAs } from 'file-saver';
+import geojson2kml from 'geojson-to-kml'; // Make sure to install this package
 import L, { icon } from 'leaflet';
 import markerIconUrl from 'leaflet/dist/images/marker-icon.png';
 import markerShadowUrl from 'leaflet/dist/images/marker-shadow.png';
 import 'leaflet/dist/leaflet.css';
 import React, { useEffect, useRef, useState } from "react";
 import ReactDOMServer from 'react-dom/server';
-import { FaArrowRight, FaBuilding, FaCamera, FaCameraRetro, FaChevronDown, FaCompress, FaExpand, FaEye, FaEyeSlash, FaFileExport, FaGoogle, FaGripLines, FaIcons, FaLayerGroup, FaMapMarkerAlt, FaPlus, FaRulerCombined, FaTextHeight, FaTimes, FaTrashAlt, FaVectorSquare } from 'react-icons/fa';
+import { FaArrowRight, FaBuilding, FaCamera, FaCameraRetro, FaChevronDown, FaCompress, FaExpand, FaEye, FaEyeSlash, FaGoogle, FaGripLines, FaIcons, FaLayerGroup, FaMapMarkerAlt, FaPlus, FaRulerCombined, FaTextHeight, FaTimes, FaTrashAlt, FaVectorSquare } from 'react-icons/fa';
 import { GeoJSON, MapContainer, Marker, Polygon, Polyline, Popup, TileLayer, Tooltip, useMapEvent } from "react-leaflet";
 import { useDispatch, useSelector } from 'react-redux';
+import shpWrite from 'shp-write';
 import * as XLSX from 'xlsx';
 import geoJsonKecamatan from '../GeoJson/desa.json';
 import geoJsonDataPantai from '../GeoJson/garisPantai.json';
@@ -41,6 +43,7 @@ const Map: React.FC<mapProps> = ({
   const [activeDesa, setActiveDesa] = useState<boolean>(false)
   const [activePantai, setActivePantai] = useState<boolean>(false)
   const [activeSungai, setActiveSungai] = useState<boolean>(false)
+  const [activeMenuExport, setActiveMenuExport] = useState<boolean>(false)
   const [activeMenuBatas, setActiveMenuBatas] = useState<boolean>(false)
   const [lines, setLines] = useState<any>([]);
   const [excelData, setExcelData] = useState<any>([]);
@@ -198,8 +201,8 @@ const Map: React.FC<mapProps> = ({
     return null;
   }
 
-  const exportToGeoJSON = () => {
-    const geoJSON = {
+  const exportToGeoJSON: any = () => {
+    const geoJSON: any = {
       type: 'FeatureCollection',
       features: (excelData.length > 0 ? excelData : data?.[0]?.coordinate).map((point: any, index: number) => ({
         type: 'Feature',
@@ -220,6 +223,83 @@ const Map: React.FC<mapProps> = ({
     // Simpan sebagai file GeoJSON menggunakan FileSaver.js
     saveAs(geoJSONBlob, 'geospasial.geojson');
   };
+
+  const exportToShapefile = () => {
+    const geoJSON: any = {
+        type: 'FeatureCollection',
+        features: (excelData.length > 0 ? excelData : data?.[0]?.coordinate).map((point: any, index: number) => ({
+            type: 'Feature',
+            properties: { id: index + 1 },
+            geometry: {
+                type: 'Point',
+                    coordinates: [point.long, point.lat]
+            }
+        }))
+    };
+  
+    // Assuming shpWrite.write exists
+    shpWrite.write(geoJSON, 'sigeo_shapefile');  // Replace with appropriate method name
+  };
+
+  const exportToKML = () => {
+      const geoJSON: any = {
+          type: 'FeatureCollection',
+          features: (excelData.length > 0 ? excelData : data?.[0]?.coordinate).map((point: any, index: number) => ({
+              type: 'Feature',
+              properties: { id: index + 1 },
+              geometry: {
+                  type: 'Point',
+                  coordinates: [point.long, point.lat]
+              }
+          }))
+      };
+       // Convert GeoJSON to KML
+      const kmlString = geojson2kml(geoJSON);
+      
+      // Create a Blob from the KML string
+      const blob = new Blob([kmlString], {
+          type: 'application/vnd.google-earth.kml+xml'
+      });
+
+      // Save the KML file
+      saveAs(blob, 'sigeo.kml');
+  };
+
+  const exportToGML = () => {
+    const geoJSON: any = {
+        type: 'FeatureCollection',
+        features: (excelData.length > 0 ? excelData : data?.[0]?.coordinate).map((point: any, index: number) => ({
+            type: 'Feature',
+            properties: { id: index + 1 },
+            geometry: {
+                type: 'Point',
+                coordinates: [point.long, point.lat]
+            }
+        }))
+    };
+
+    let gmlContent = '<?xml version="1.0" encoding="UTF-8"?>\n';
+    gmlContent += '<gml:FeatureCollection xmlns:gml="http://www.opengis.net/gml">\n';
+
+    geoJSON.features.forEach((feature: any) => {
+        const { coordinates } = feature.geometry;
+        const { id } = feature.properties;
+        gmlContent += `  <gml:featureMember>\n`;
+        gmlContent += `    <gml:Point gml:id="${id}">\n`;
+        gmlContent += `      <gml:coordinates>${coordinates[0]},${coordinates[1]}</gml:coordinates>\n`;
+        gmlContent += `    </gml:Point>\n`;
+        gmlContent += `  </gml:featureMember>\n`;
+    });
+
+    gmlContent += '</gml:FeatureCollection>';
+
+    const blob = new Blob([gmlContent], {
+        type: 'application/gml+xml'
+    });
+
+    saveAs(blob, 'sigeo.gml');
+};
+
 
   const CustomIcon = ({number}: {number: number}) => (
     <div className="w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center">
@@ -619,11 +699,30 @@ const Map: React.FC<mapProps> = ({
             <div title='Multi layar' onClick={() => setActiveLayer(!activeLayer)} className={`${activeLayer ? 'bg-green-200' : 'bg-white'} mr-4 cursor-pointer hover:bg-green-200 z-[22222] w-[45px] h-[45px] md:w-max md:h-max md:px-4 md:py-2 flex items-center justify-center text-center rounded-full text-[16px] border border-slate-700 right-0 top-36`}><span className='hidden md:flex mr-2'>Layer</span> <FaLayerGroup />
             </div>
             <div title='Kotak area koordinat' onClick={() => subdistrictDots ? null : setActiveArea(!activeArea)} className={`${activeArea ? 'bg-green-200' : 'bg-white'} ${subdistrictDots ? 'cursor-not-allowed bg-red-400 before:absolute before:h-[50px] before:w-[3px] before:rotate-[40deg] before:bg-red-400 text-slate-400' : 'cursor-pointer active:scale-[0.98] hover:bg-green-200'} z-[22222] w-max h-max px-4 py-2 hidden md:flex items-center justify-center text-center rounded-full text-[16px] border border-slate-700 top-4 right-4`}>Area titik <FaVectorSquare className="ml-3" /></div>
-            <div onClick={() => exportToGeoJSON()} className={`bg-white hover:bg-green-200 cursor-pointer active:scale-[0.98] z-[22222] w-max h-max px-4 ml-4 py-2 hidden md:flex items-center justify-center text-center rounded-full text-[16px] border border-slate-700 top-4`}>GeoJSON <FaFileExport className="ml-3" /></div>
+            {/* <div onClick={() => exportToShapefile()} className={`bg-white hover:bg-green-200 cursor-pointer active:scale-[0.98] z-[22222] w-max h-max px-4 ml-4 py-2 hidden md:flex items-center justify-center text-center rounded-full text-[16px] border border-slate-700 top-4`}>GeoJSON <FaFileExport className="ml-3" /></div> */}
             <div title='Bukan google map' className="hidden md:flex items-center top-4 mr-3">
               <div title='Lihat garis antar koordinat' onClick={() => setActiveLineMarker(!activeLineMarker)} className={`${activeLineMarker ? 'bg-green-200' : 'bg-white'} ml-4 cursor-pointer active:scale-[0.98] hover:bg-green-200 z-[22222] w-[45px] h-[45px] px-2 py-2 flex items-center justify-center text-center rounded-full text-[16px] border border-slate-700 right-0 top-36`}><FaGripLines /></div>
               <div title='Layar tinggi penuh' onClick={() => handleHeight()} className={`${height ? 'bg-green-200' : 'bg-white'} ml-4 cursor-pointer active:scale-[0.98] hover:bg-green-200 z-[22222] w-[45px] h-[45px] px-2 py-2 flex items-center justify-center text-center rounded-full text-[16px] border border-slate-700 right-0 top-36`}><FaTextHeight /></div>
             </div>
+
+            {/* Export */}
+            <div onClick={() => setActiveMenuExport(!activeMenuExport)} className={`${activeMenuExport ? 'bg-green-200' : 'bg-white'} mr-3 hover:bg-green-200 cursor-pointer z-[22222] w-max h-max px-4 py-2 flex items-center justify-center text-center rounded-full text-[16px] border border-slate-700 top-4`}>Export <FaChevronDown className={`${activeMenuExport ? 'rotate-[-180deg]' : 'rotate-[0deg]'} duration-300 text-[14px] ml-3`} />
+              <div className={`absolute h-max w-max mr-6 justify-between z-[33] flex flex-col ${activeMenuExport ? 'bottom-[-200px] opacity-[1] block' : 'bottom-[-160px] hidden opacity-[0]'} duration-100 text-left rounded-[14px] bg-white py-4 px-2 shadow-lg`}>
+                <div onClick={() => exportToGeoJSON()} className='w-flex items-center bg-white cursor-pointer active:scale-[0.98] duration-100 border-b border-b-slate-300 px-5 py-2 hover:brightness-[90%] h-max'>
+                  GeoJSON
+                </div>
+                <div onClick={() => exportToShapefile()} className='w-flex items-center bg-white cursor-pointer active:scale-[0.98] duration-100 border-b border-b-slate-300 px-5 py-2 hover:brightness-[90%] h-max'>
+                  SHP
+                </div>
+                <div onClick={() => exportToKML()} className='w-flex items-center bg-white cursor-pointer active:scale-[0.98] duration-100 border-b border-b-slate-300 px-5 py-2 hover:brightness-[90%] h-max'>
+                  KML
+                </div>
+                <div onClick={() => exportToGML()} className='w-flex items-center bg-white cursor-pointer active:scale-[0.98] duration-100 border-b border-b-slate-300 px-5 py-2 hover:brightness-[90%] h-max'>
+                  GML
+                </div>
+              </div>
+            </div>
+
             <div title='Area perbatasan kabupaten' onClick={() => setActiveMenuBatas(!activeMenuBatas)} className={`${activeMenuBatas ? 'bg-green-200' : 'bg-white'} hover:bg-green-200 cursor-pointer z-[22222] w-max h-max px-4 py-2 flex items-center justify-center text-center rounded-full text-[16px] border border-slate-700 top-4`}>Perbatasan <FaChevronDown className={`${activeMenuBatas ? 'rotate-[-180deg]' : 'rotate-[0deg]'} duration-300 text-[14px] ml-3`} />
               <div className={`absolute h-max w-max mr-10 justify-between z-[33] flex flex-col ${activeMenuBatas ? 'bottom-[-230px] opacity-[1] block' : 'bottom-[-160px] hidden opacity-[0]'} duration-100 text-left rounded-[14px] bg-white p-4 shadow-lg`}>
                 <div className='w-flex items-center mb-3 h-[30px]'>
