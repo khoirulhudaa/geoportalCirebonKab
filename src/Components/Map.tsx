@@ -707,7 +707,7 @@ const Map: React.FC<mapProps> = ({
 
             {/* Export */}
             <div onClick={() => setActiveMenuExport(!activeMenuExport)} className={`${activeMenuExport ? 'bg-green-200' : 'bg-white'} mr-3 hover:bg-green-200 cursor-pointer z-[22222] w-max h-max px-4 py-2 flex items-center justify-center text-center rounded-full text-[16px] border border-slate-700 top-4`}>Export <FaChevronDown className={`${activeMenuExport ? 'rotate-[-180deg]' : 'rotate-[0deg]'} duration-300 text-[14px] ml-3`} />
-              <div className={`absolute h-max w-max mr-6 justify-between z-[33] flex flex-col ${activeMenuExport ? 'bottom-[-200px] opacity-[1] block' : 'bottom-[-160px] hidden opacity-[0]'} duration-100 text-left rounded-[14px] bg-white py-4 px-2 shadow-lg`}>
+              <div className={`absolute h-max w-max mr-6 justify-between z-[33] flex flex-col ${activeMenuExport ? 'bottom-[-180px] opacity-[1] block' : 'bottom-[-160px] hidden opacity-[0]'} duration-100 text-left rounded-[14px] bg-white py-2 px-2 shadow-lg`}>
                 <div onClick={() => exportToGeoJSON()} className='w-flex items-center bg-white cursor-pointer active:scale-[0.98] duration-100 border-b border-b-slate-300 px-5 py-2 hover:brightness-[90%] h-max'>
                   GeoJSON
                 </div>
@@ -717,14 +717,14 @@ const Map: React.FC<mapProps> = ({
                 <div onClick={() => exportToKML()} className='w-flex items-center bg-white cursor-pointer active:scale-[0.98] duration-100 border-b border-b-slate-300 px-5 py-2 hover:brightness-[90%] h-max'>
                   KML
                 </div>
-                <div onClick={() => exportToGML()} className='w-flex items-center bg-white cursor-pointer active:scale-[0.98] duration-100 border-b border-b-slate-300 px-5 py-2 hover:brightness-[90%] h-max'>
+                <div onClick={() => exportToGML()} className='w-flex items-center bg-white cursor-pointer active:scale-[0.98] duration-100 px-5 py-2 hover:brightness-[90%] h-max'>
                   GML
                 </div>
               </div>
             </div>
 
             <div title='Area perbatasan kabupaten' onClick={() => setActiveMenuBatas(!activeMenuBatas)} className={`${activeMenuBatas ? 'bg-green-200' : 'bg-white'} hover:bg-green-200 cursor-pointer z-[22222] w-max h-max px-4 py-2 flex items-center justify-center text-center rounded-full text-[16px] border border-slate-700 top-4`}><span className='lg:hidden flex'>Batas</span><span className='lg:flex hidden'>Perbatasan</span> <FaChevronDown className={`${activeMenuBatas ? 'rotate-[-180deg]' : 'rotate-[0deg]'} duration-300 text-[14px] ml-3`} />
-              <div className={`absolute h-max w-max mr-10 justify-between z-[33] flex flex-col ${activeMenuBatas ? 'bottom-[-230px] opacity-[1] block' : 'bottom-[-160px] hidden opacity-[0]'} duration-100 text-left rounded-[14px] bg-white p-4 shadow-lg`}>
+              <div className={`absolute h-max w-max mr-24 lg:mr-10 justify-between z-[33] flex flex-col ${activeMenuBatas ? 'bottom-[-230px] opacity-[1] block' : 'bottom-[-160px] hidden opacity-[0]'} duration-100 text-left rounded-[14px] bg-white p-4 shadow-lg`}>
                 <div className='w-flex items-center mb-3 h-[30px]'>
                   <input type="checkbox" name='kabupaten' onClick={() => setActiveLineSub(!activeLineSub)} className='mr-2 scale-[1.3] rounded-[10px]' /> Batas Kabupaten
                 </div>
@@ -765,10 +765,10 @@ const Map: React.FC<mapProps> = ({
         <div className='absolute right-2 pl-5 md:pl-7 bottom-4 w-max lg:w-full flex items-center justify-between'>
           <div title='FullScreen' onClick={() => setFullScreen(!fullScreen)} className={`${fullScreen ? 'bg-green-200 fixed bottom-6 right-4 w-[50px] h-[50px]' : 'bg-white bottom-36 w-[40px] h-[40px]'} mr-3 lg:mr-4 cursor-pointer hover:bg-green-200 z-[22222223] md:px-2 md:py-2 flex md:hidden items-center justify-center text-center rounded-full text-[16px] border border-slate-700 ml-4`}>{fullScreen ? <FaCompress /> : <FaExpand />}
           </div>
-          <div title='Multi-layer' onClick={() => setActiveLayer(!activeLayer)}  className={`${activeLayer ? 'bg-green-200 fixed bottom-6 right-8 w-[50px] h-[50px]' : 'bg-white bottom-36 w-[40px] h-[40px]'} mr-3 cursor-pointer hover:bg-green-200 z-[22222223] md:px-2 md:py-2 flex md:hidden items-center justify-center text-center rounded-full text-[16px] border border-slate-700 lg:ml-4`}> <FaLayerGroup />
+          <div title='Multi-layer' onClick={() => setActiveLayer(!activeLayer)}  className={`${activeLayer ? 'bg-green-200 fixed bottom-6 right-8 w-[50px] h-[50px]' : 'bg-white bottom-36 w-[40px] h-[40px]'} mr-0 cursor-pointer hover:bg-green-200 z-[22222223] md:px-2 md:py-2 flex md:hidden items-center justify-center text-center rounded-full text-[16px] border border-slate-700 lg:ml-4`}> <FaLayerGroup />
           </div>  
           <div className='w-max flex lg:mr-0 mr-3 items-center'>
-            <div className={`z-[552] ml-0 w-max h-max px-4 py-2 flex items-center justify-center text-center bg-white rounded-full text-[16px] border border-slate-700 bottom-4`}>{ currentPosition?.[0]?.toFixed(5) + `  |  ` + currentPosition?.[1]?.toFixed(5) ?? 0 }</div>
+            <div className={`z-[552] ml-0 w-max h-max px-4 py-2 hidden lg:flex items-center justify-center text-center bg-white rounded-full text-[16px] border border-slate-700 bottom-4`}>{ currentPosition?.[0]?.toFixed(5) + `  |  ` + currentPosition?.[1]?.toFixed(5) ?? 0 }</div>
           </div>
           <div className={`w-max ${activeClick ? 'hidden' : 'hidden md:flex'} items-center`}>
             <div title='FullScreen' onClick={() => setFullScreen(!fullScreen)} className={`${fullScreen ? 'bg-white fixed top-3 right-0' : 'hidden'} mr-4 cursor-pointer hover:bg-green-200 z-[22222223] w-[50px] h-[50px] text-[22px] flex items-center justify-center text-center rounded-full text-[16px] border border-slate-700`}>{fullScreen ? <FaCompress /> : <FaExpand />}
