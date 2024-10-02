@@ -885,7 +885,7 @@ const Homepage = () => {
                         
                         <h2 className='text-[26px] w-full md:text-[30px] font-normal'>Daftar Peta 🗺️</h2>
                         <p className='md:block hidden text-slate-500 mt-2 mb-10'>Data sebaran lokasi berdasarkan kategori dan kelompok dinas.</p>
-                        <div className="relative w-[95%] md:w-[60%] flex z-[4944] items-center mx-auto mb-4 md:mt-0 mt-4">
+                        <div className="relative w-[92%] md:w-[60%] flex z-[4944] items-center mx-auto mb-4 md:mt-0 mt-4">
                             <div className='relative w-full Z-[555555] rounded-[10px] bg-white text-slate-600 outline-0 border border-slate-400 text-[14px] flex items-center pr-2'>
                                 <input name="search" value={search} onChange={(e) => setSearch(e.target.value)} type="text" className="w-full rounded-[10px] bg-whit px-3 py-3 text-slate-600 outline-0 border-0 text-[14px]" placeholder="Cari judul data..." />
                                 {
@@ -960,7 +960,7 @@ const Homepage = () => {
                                 }
                                 </div>
                             </div>
-                            <div className='w-[94vw] md:w-[70%] mx-auto md:mx-0 md:px-4'>
+                            <div className='w-[92vw] md:w-[70%] mx-auto md:mx-0 md:px-4'>
                                 <div className='relative mb-5 z-[44] w-full h-max flex flex-col'>
                                     {
                                         !loading ? (
