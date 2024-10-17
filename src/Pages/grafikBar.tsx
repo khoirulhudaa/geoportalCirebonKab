@@ -73,17 +73,31 @@ const Grafik: React.FC<GrafikProps> = ({ data, titleID }) => {
                 if (chartRef2.current.chart) {
                     chartRef2.current.chart.destroy();
                 }
-
+    
+                // Siapkan data dengan elemen kosong di antara
+                const modifiedSubdistrictNames = [];
+                const modifiedSubdistrictValues = [];
+    
+                for (let i = 0; i < subdistrictNames.length; i++) {
+                    modifiedSubdistrictNames.push(subdistrictNames[i]);
+                    modifiedSubdistrictValues.push(subdistrictValues[i]);
+    
+                    // Menambahkan elemen kosong untuk jarak
+                    modifiedSubdistrictNames.push(""); // Nama kosong untuk jarak
+                    modifiedSubdistrictValues.push(0); // Nilai nol untuk jarak
+                }
+    
                 // Buat chart baru
                 chartRef2.current.chart = new Chart(ctx, {
                     type: 'bar',
                     data: {
-                        labels: subdistrictNames,
+                        labels: modifiedSubdistrictNames,
                         datasets: [{
-                            data: subdistrictValues,
+                            data: modifiedSubdistrictValues,
                             backgroundColor: 'rgba(75, 192, 192, 0.2)',
                             borderColor: 'rgba(75, 192, 192, 1)',
-                            borderWidth: 1
+                            barThickness: 2,
+                            categoryPercentage: 1, // Mengatur jarak antar kategori
                         }]
                     },
                     options: {
@@ -92,26 +106,47 @@ const Grafik: React.FC<GrafikProps> = ({ data, titleID }) => {
                                 beginAtZero: true,
                                 ticks: {
                                     precision: 0
-                                },
+                                }
                             },
+                            y: {
+                                ticks: {
+                                    autoSkip: true,
+                                    padding: 10, // Memberikan jarak antar label y
+                                    maxRotation: 0,
+                                    minRotation: 0,
+                                },
+                                grid: {
+                                    lineWidth: 1,
+                                    color: 'rgba(0, 0, 0, 0.1)', // Gaya garis grid
+                                },
+                                offset: true,
+                            }
                         },
                         indexAxis: 'y',
                         elements: {
-                          bar: {
-                            borderWidth: 2,
-                          }
+                            bar: {
+                                borderWidth: 2,
+                            }
                         },
                         responsive: true,
                         plugins: {
-                          legend: {
-                            display: false
+                            legend: {
+                                display: false
+                            },
                         },
+                        layout: {
+                            padding: {
+                                top: 10,
+                                bottom: 10,
+                                left: 20,
+                                right: 20
+                            }
                         }
                     },
                 });
             }
-        }
-    }, [subdistrictNames, subdistrictValues]);
+        }        
+    }, [subdistrictNames, subdistrictValues]);    
   
     return (
         <div className='w-[90%] mx-auto bg-white border-[2px] border-blue-500 border-dashed rounded-[20px] mt-8 h-max md:flex justify-center'>

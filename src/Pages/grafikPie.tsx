@@ -28,7 +28,7 @@ const GrafikPie: React.FC<{titleID: string}> = ({titleID}) => {
 
   return (
      <div className='w-[90%] mx-auto bg-white border-[2px] border-blue-500 border-dashed rounded-[20px] mt-8 h-max md:flex'>
-        <div className='relative overflow-hidden w-full h-max md:w-[60%] flex justify-center items-center h-max left-[-20px]'>
+        <div className='relative overflow-hidden w-full md:w-[60%] flex justify-center items-center h-max mx-auto left-[5%] top-6'>
             {
                 dataChart && dataChart?.length > 0 ? (
                     <PieChart
@@ -39,22 +39,15 @@ const GrafikPie: React.FC<{titleID: string}> = ({titleID}) => {
                                 data: dataChart ?? [],
                                 innerRadius: 25,
                                 outerRadius: 200,
-                                paddingAngle: 5,
                                 cornerRadius: 5,
+                                paddingAngle: 3,
                                 startAngle: -180,
                                 endAngle: 180,
                             },
                         ]}
                         slotProps={{
                             legend: {
-                                direction: 'column',
-                                position: { 
-                                    vertical: 'middle', // 'top', 'middle', atau 'bottom' untuk posisi vertikal
-                                    horizontal: 'right' // 'left', 'middle', atau 'right' untuk posisi horizontal
-                                },
-                                padding: {
-                                    top: 40
-                                },
+                                hidden: true
                             },
                         }}
                         height={500}
