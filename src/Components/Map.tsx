@@ -1,3 +1,4 @@
+import axios from 'axios';
 import domtoimage from 'dom-to-image'; // Jika menggunakan dom-to-image
 import { saveAs } from 'file-saver';
 import geojson2kml from 'geojson-to-kml'; // Make sure to install this package
@@ -75,10 +76,10 @@ const Map: React.FC<mapProps> = ({
   const [endPointPoly, setEndPointPoly] = useState<any>(null);
   const [unit, setUnit] = useState<string>('kilometer');
   const [fullScreen, setFullScreen] = useState<boolean>(false);
-  const [activeRangeCustomIcon, setActiveRangeCustomIcon] = useState<boolean>(false);
   const [selectCoordinateID, setSelectCoordinateID] = useState<any>(null);
   const [activeDetailMarker, setActiveDetailMarker] = useState<boolean>(false);
-
+  const [route, setRoute] = useState<any[]>([]);
+  
   const coorNew = useSelector((state: any) => state.Coordinate?.coordinate)
   
   const onEachFeature = (feature: any, layer: any) => {
@@ -87,7 +88,7 @@ const Map: React.FC<mapProps> = ({
       layer.bindTooltip(feature?.properties?.NAMOBJ ?? feature?.properties?.namobj);
     }
   };
-
+  
   useEffect(() => {
     (async () => {
       if(activeDetail) {
@@ -96,6 +97,12 @@ const Map: React.FC<mapProps> = ({
       }
     })()
   }, [activeDetail])
+  
+  useEffect(() => {
+    if (startPointPoly && endPointPoly) {
+      handleFindRoute();
+    }
+  }, [startPointPoly, endPointPoly]);
 
   const geoJsonStyle = {
     color: '#87A922',
@@ -418,18 +425,9 @@ const Map: React.FC<mapProps> = ({
       coordinate: prevState.coordinate.filter((coord: any) => coord.title_id !== titleIdToDelete)
     }));
   };
-
-  const formatDistance = (distance: any) => {
-    if (unit === 'kilometer') {
-      return (distance / 1000).toFixed(2);
-    } else {
-      return (Math.round(distance));
-    }
-  };
-
+  
   useEffect(() => {
     if (startPoint !== null && endPoint !== null) {
-      setActiveRangeCustomIcon(true);
       setStartPointPoly([filteredData[startPoint].lat, filteredData[startPoint].long]);
       setEndPointPoly([filteredData[endPoint].lat, filteredData[endPoint].long]);
 
@@ -442,10 +440,69 @@ const Map: React.FC<mapProps> = ({
     if (startPoint && endPoint && unit) {
       let point1 = L.latLng([filteredData[startPoint].lat, filteredData[startPoint].long]);
       let point2 = L.latLng([filteredData[endPoint].lat, filteredData[endPoint].long]);
-      
-      let distance = point1.distanceTo(point2);
-      
-      return formatDistance(distance);
+  
+      let distance = point1.distanceTo(point2); // Jarak dalam meter
+  
+      return formatDistance(distance); // Format jarak
+    }
+    return '0.00'; // Nilai default jika tidak ada jarak
+  };
+
+  // Fungsi untuk memformat jarak
+  const formatDistance = (distance: number) => {
+    return (distance / 1000).toLocaleString('id-ID', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  };
+  
+
+  const decodePolyline = (str: any) => {
+    const coordinates = [];
+    let index = 0, len = str.length;
+    let lat = 0, lng = 0;
+  
+    while (index < len) {
+      let b, shift = 0, result = 0;
+      do {
+        b = str.charCodeAt(index++) - 63;
+        result |= (b & 0x1f) << shift;
+        shift += 5;
+      } while (b >= 0x20);
+      const dlat = ((result >> 1) ^ -(result & 1));
+      lat += dlat;
+  
+      shift = 0;
+      result = 0;
+      do {
+        b = str.charCodeAt(index++) - 63;
+        result |= (b & 0x1f) << shift;
+        shift += 5;
+      } while (b >= 0x20);
+      const dlng = ((result >> 1) ^ -(result & 1));
+      lng += dlng;
+  
+      coordinates.push([lat / 1E5, lng / 1E5]);
+    }
+    return coordinates;
+  };
+
+
+  const handleFindRoute = async () => {
+    const start = startPointPoly ?? 0;
+    const end = endPointPoly ?? 0;
+
+    try {
+      const response = await axios.get(`https://router.project-osrm.org/route/v1/driving/${start[1]},${start[0]};${end[1]},${end[0]}?overview=full`);
+
+      console.log(response.data); // Cek respons
+
+      if (response.data.routes && response.data.routes.length > 0) {
+        const routeCoords = decodePolyline(response.data.routes[0].geometry);
+        setRoute(routeCoords);
+      } else {
+        console.error("Tidak ada rute yang ditemukan");
+        setRoute([]); // Reset rute jika tidak ditemukan
+      }
+    } catch (error) {
+      console.error("Error fetching route:", error);
     }
   };
 
@@ -639,7 +696,7 @@ const Map: React.FC<mapProps> = ({
       <div className={`absolute z-[3333] w-[31vw] h-screen ${activeRange ? 'left-[0%]' : 'left-[-100%] duration-300'} top-[0px] bg-white shadow-lg rounded-[12px] p-4 duration-200`}>
         <div className='w-full px-3 flex items-center justify-between'>
           <h2 className='text-[16px] relative top-1'>Jarak Antar Titik</h2>
-          <div onClick={() => {setActiveRange(false), setActiveRangeCustomIcon(false)}} className='rounded-[8px] w-[46px] h-[46px] bg-red-500 ml-2 flex items-center justify-center text-white cursor-pointer hover:brightness-[90%] active:scale-[0.98]'>
+          <div onClick={() => {setStartPoint(null), setEndPoint(null), setActiveRange(false), setStartPointPoly(null), setEndPointPoly(null), setRoute([])}} className='rounded-[8px] w-[46px] h-[46px] bg-red-500 ml-2 flex items-center justify-center text-white cursor-pointer hover:brightness-[90%] active:scale-[0.98]'>
             <FaTimes />
           </div>
         </div>
@@ -768,7 +825,7 @@ const Map: React.FC<mapProps> = ({
           <div title='Multi-layer' onClick={() => setActiveLayer(!activeLayer)}  className={`${activeLayer ? 'bg-green-200 fixed bottom-6 right-8 w-[50px] h-[50px]' : 'bg-white bottom-36 w-[40px] h-[40px]'} mr-0 cursor-pointer hover:bg-green-200 z-[22222223] md:px-2 md:py-2 flex md:hidden items-center justify-center text-center rounded-full text-[16px] border border-slate-700 lg:ml-4`}> <FaLayerGroup />
           </div>  
           <div className='w-max flex lg:mr-0 mr-3 items-center'>
-            <div className={`z-[552] ml-0 w-max h-max px-4 py-2 hidden lg:flex items-center justify-center text-center bg-white rounded-full text-[16px] border border-slate-700 bottom-4`}>{ currentPosition?.[0]?.toFixed(5) + `  |  ` + currentPosition?.[1]?.toFixed(5) ?? 0 }</div>
+            <div className={`z-[552] ml-0 w-max h-max px-4 py-2 hidden lg:flex items-center justify-center text-center bg-white rounded-full text-[16px] border border-slate-700 bottom-4`}>{(currentPosition?.[0]?.toFixed(5) + `  |  ` + currentPosition?.[1]?.toFixed(5)) || 0 }</div>
           </div>
           <div className={`w-max ${activeClick ? 'hidden' : 'hidden md:flex'} items-center`}>
             <div title='FullScreen' onClick={() => setFullScreen(!fullScreen)} className={`${fullScreen ? 'bg-white fixed top-3 right-0' : 'hidden'} mr-4 cursor-pointer hover:bg-green-200 z-[22222223] w-[50px] h-[50px] text-[22px] flex items-center justify-center text-center rounded-full text-[16px] border border-slate-700`}>{fullScreen ? <FaCompress /> : <FaExpand />}
@@ -998,14 +1055,22 @@ const Map: React.FC<mapProps> = ({
             ):
               null
           }
-          {
+          {/* {
             activeRangeCustomIcon ? (
               <Polyline positions={[startPointPoly, endPointPoly]} color="black">
                 <Tooltip>{calculateDistance()} {unit}</Tooltip>
               </Polyline>
             ):
               null
-          }
+          } */}
+
+        {route.length && (
+          <Polyline positions={route} color="blue">
+            <Tooltip permanent>
+              Jarak: {calculateDistance()} {unit}
+            </Tooltip>
+          </Polyline>
+        )}
 
           </MapContainer>
         </div>
